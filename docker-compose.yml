@@ -1,0 +1,23 @@
+version: '3'
+services:
+  dashboard-server:
+    build: ./server
+    ports: 
+      - "8080:8080"
+    env_file:
+      - ./server/.env
+    networks:
+      - server-tier
+    restart: unless-stopped
+  dashboard-client:
+    build: ./client
+    ports:
+      - "8081:3000"
+    networks:
+      - client-tier
+      - server-tier
+    restart: unless-stopped
+
+networks:
+  server-tier:
+  client-tier:
