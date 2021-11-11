@@ -1,0 +1,39 @@
+/* container */
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-v {
+    display: flex;
+    align-items: center;
+}
+
+.center-h {
+    display: flex;
+    justify-content: center;
+}
+
+/* bg-color */
+
+.white-bg {
+    background-color: #ffffff;
+}
+
+.lightBlue-bg {
+    background-color: #00a7e1;
+}
+
+.black-bg {
+    background-color: #00171f;
+}
+
+.darkBlue-bg {
+    background-color: #003459;
+}
+
+.primaryBlue-bg {
+    background-color: #007ea7;
+}
