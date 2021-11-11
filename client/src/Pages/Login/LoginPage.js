@@ -1,10 +1,9 @@
 import React from 'react';
 import GoogleLogin from 'react-google-login';
 import Button from '@mui/material/Button';
-import { TextField, Box } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/system';
+import { TextField } from '@mui/material';
+import { createTheme } from '@mui/system';
 import './LoginPage.css';
-import { colorTheme } from '../../Styles/Colors';
 
 const responseGoogle = (response) => {
     console.log(response);
@@ -50,7 +49,7 @@ function LoginPage() {
 
                 <h2><span>Pas encore inscrit ?</span></h2>
 
-                <Button sx={theme.inputField} variant="contained">
+                <Button href="/register" sx={theme.inputField} variant="contained">
                     S'inscire
                 </Button>
             </div>
