@@ -4,11 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import LoginPage from './Pages/Login/LoginPage';
+import RegisterPage from './Pages/Register/RegisterPage';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <LoginPage />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="login" element={<LoginPage/>} />
+      <Route path="register" element={<RegisterPage />} />
+    </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

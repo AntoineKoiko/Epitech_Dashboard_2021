@@ -4,7 +4,6 @@ import { getTest } from './requestTest'
 import React from 'react'
 import LoginPage from './Pages/Login/LoginPage';
 
-
 function Test() {
   const [test, setTest] = React.useState({foo: "KO"});
 
