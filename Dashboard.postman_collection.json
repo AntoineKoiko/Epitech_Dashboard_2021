@@ -10,28 +10,153 @@
 			"item": [
 				{
 					"name": "search artist",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": null
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{spotify token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.spotify.com/v1/search?q=Renaud&type=artist",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Renaud"
+								},
+								{
+									"key": "type",
+									"value": "artist"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "artist top track",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": null
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{spotify token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.spotify.com/v1/artists/15uNxh8omvRvH71kcdIe2r/top-tracks?market=FR",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"artists",
+								"15uNxh8omvRvH71kcdIe2r",
+								"top-tracks"
+							],
+							"query": [
+								{
+									"key": "market",
+									"value": "FR"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "user's top item",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": null
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{spotify token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.spotify.com/v1/me/top/artists?time_range=medium_term",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spotify",
+								"com"
+							],
+							"path": [
+								"v1",
+								"me",
+								"top",
+								"artists"
+							],
+							"query": [
+								{
+									"key": "time_range",
+									"value": "medium_term"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -45,7 +170,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": "https://goweather.herokuapp.com/weather/Paris",
+							"protocol": "https",
+							"host": [
+								"goweather",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"weather",
+								"Paris"
+							]
+						}
 					},
 					"response": []
 				}
@@ -59,7 +196,29 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": "https://finnhub.io/api/v1/quote?symbol=AAPL&token=c657pliad3i9pn79lu3g",
+							"protocol": "https",
+							"host": [
+								"finnhub",
+								"io"
+							],
+							"path": [
+								"api",
+								"v1",
+								"quote"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "AAPL"
+								},
+								{
+									"key": "token",
+									"value": "c657pliad3i9pn79lu3g"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -70,10 +229,54 @@
 			"item": [
 				{
 					"name": "video comments",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": null
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer AIzaSyDm_oJ8mNmTL4ojZtI-WP18gFcffEqv5wM",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=wtLJPvx7-ys&key=AIzaSyDm_oJ8mNmTL4ojZtI-WP18gFcffEqv5wM",
+							"protocol": "https",
+							"host": [
+								"youtube",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"youtube",
+								"v3",
+								"commentThreads"
+							],
+							"query": [
+								{
+									"key": "part",
+									"value": "snippet%2Creplies"
+								},
+								{
+									"key": "videoId",
+									"value": "wtLJPvx7-ys"
+								},
+								{
+									"key": "key",
+									"value": "AIzaSyDm_oJ8mNmTL4ojZtI-WP18gFcffEqv5wM"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -82,7 +285,34 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": "https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCAuUUnT6oDeKwE6v1NGQxug&key=AIzaSyDm_oJ8mNmTL4ojZtI-WP18gFcffEqv5wM",
+							"protocol": "https",
+							"host": [
+								"www",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"youtube",
+								"v3",
+								"channels"
+							],
+							"query": [
+								{
+									"key": "part",
+									"value": "statistics"
+								},
+								{
+									"key": "id",
+									"value": "UCAuUUnT6oDeKwE6v1NGQxug"
+								},
+								{
+									"key": "key",
+									"value": "AIzaSyDm_oJ8mNmTL4ojZtI-WP18gFcffEqv5wM"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -91,7 +321,42 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=underscore&type=video&key=AIzaSyDm_oJ8mNmTL4ojZtI-WP18gFcffEqv5wM",
+							"protocol": "https",
+							"host": [
+								"www",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"youtube",
+								"v3",
+								"search"
+							],
+							"query": [
+								{
+									"key": "part",
+									"value": "snippet"
+								},
+								{
+									"key": "maxResults",
+									"value": "20"
+								},
+								{
+									"key": "q",
+									"value": "underscore"
+								},
+								{
+									"key": "type",
+									"value": "video"
+								},
+								{
+									"key": "key",
+									"value": "AIzaSyDm_oJ8mNmTL4ojZtI-WP18gFcffEqv5wM"
+								}
+							]
+						}
 					},
 					"response": []
 				}
