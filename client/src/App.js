@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { getTest } from './requestTest'
 import React from 'react'
+import LoginPage from './Pages/Login/LoginPage';
+
 
 function Test() {
   const [test, setTest] = React.useState({foo: "KO"});
@@ -26,6 +28,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <LoginPage/>
         <a
           className="App-link"
           href="https://reactjs.org"
