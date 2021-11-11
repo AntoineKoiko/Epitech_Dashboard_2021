@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import LoginPage from './Pages/Login/LoginPage';
 import RegisterPage from './Pages/Register/RegisterPage';
+import DashboardPage from './Pages/Dashboard/DashBoardPage';
+
 import {
   BrowserRouter,
   Routes,
@@ -18,6 +20,7 @@ ReactDOM.render(
       <Route path="/" element={<App />} />
       <Route path="login" element={<LoginPage/>} />
       <Route path="register" element={<RegisterPage />} />
+      <Route path="dashboard" element={<DashboardPage />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')
