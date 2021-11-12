@@ -5,7 +5,6 @@ import { TextField } from '@mui/material';
 import { createTheme } from '@mui/system';
 import './LoginPage.css';
 import '../../Styles/GlobalStyle.css';
-import DefaultHeader from '../../Components/DefaultHeader/DefaultHeader';
 
 
 const responseGoogle = (response) => {
@@ -15,7 +14,6 @@ const responseGoogle = (response) => {
 function LoginPage() {
     return (
         <div>
-            <DefaultHeader/>
             <div className="center-h">
                 <div className="main-container">
                     <p>Pour continuer, connectez-vous a Dashboard</p>

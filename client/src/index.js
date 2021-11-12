@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import AppRouter from './Components/AppRouter';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
 ReactDOM.render(
-  <AppRouter/>,
+  <App/>,
   document.getElementById('root')
 );
 

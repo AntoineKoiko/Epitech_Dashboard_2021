@@ -5,7 +5,6 @@ import { TextField } from '@mui/material';
 import { createTheme } from '@mui/system';
 import './RegisterPage.css';
 import '../../Styles/GlobalStyle.css';
-import DefaultHeader from '../../Components/DefaultHeader/DefaultHeader';
 
 const responseGoogle = (response) => {
     console.log(response);
@@ -14,7 +13,6 @@ const responseGoogle = (response) => {
 function RegisterPage() {
     return (
         <div>
-            <DefaultHeader />
             <div className="center-h">
                 <div className="main-container">
                     <p>Pour continuer, inscrivez-vous a Dashboard</p>
