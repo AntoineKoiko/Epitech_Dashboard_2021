@@ -5,7 +5,7 @@ import { TextField } from '@mui/material';
 import { createTheme } from '@mui/system';
 import './LoginPage.css';
 import '../../Styles/GlobalStyle.css';
-import DefaultHeader from '../../Compontents/DefaultHeader/DefaultHeader';
+import DefaultHeader from '../../Components/DefaultHeader/DefaultHeader';
 
 
 const responseGoogle = (response) => {

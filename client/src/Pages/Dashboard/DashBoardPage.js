@@ -1,5 +1,5 @@
 import React from 'react';
-import DefaultHeader from '../../Compontents/DefaultHeader/DefaultHeader';
+import DefaultHeader from '../../Components/DefaultHeader/DefaultHeader';
 
 function DashboardPage() {
     return (
