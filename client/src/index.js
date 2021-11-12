@@ -1,28 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import AppRouter from './Components/AppRouter';
 import reportWebVitals from './reportWebVitals';
-import LoginPage from './Pages/Login/LoginPage';
-import RegisterPage from './Pages/Register/RegisterPage';
-import DashboardPage from './Pages/Dashboard/DashBoardPage';
-
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
 
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="login" element={<LoginPage/>} />
-      <Route path="register" element={<RegisterPage />} />
-      <Route path="dashboard" element={<DashboardPage />} />
-    </Routes>
-  </BrowserRouter>,
+  <AppRouter/>,
   document.getElementById('root')
 );
 
