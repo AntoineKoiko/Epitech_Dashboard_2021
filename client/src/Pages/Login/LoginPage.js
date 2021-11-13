@@ -17,7 +17,7 @@ function LoginPage() {
             <div className="center-h">
                 <div className="main-container">
                     <p>Pour continuer, connectez-vous a Dashboard</p>
-                    <Button sx={theme.inputField} className="input-field" href="https://www.spotify.com" variant="contained">Continuer avec spotifyd</Button>
+                    <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/spotify" variant="contained">Continuer avec spotifyd</Button>
                     <Button sx={theme.inputField} className="input-field" href="https://www.reddit.com" variant="contained">Continuer avec reddit</Button>
                     <GoogleLogin
                         className="input-field"
