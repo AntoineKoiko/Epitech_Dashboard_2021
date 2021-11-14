@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const passport = require("passport");
+const passportSetup = require("../passport/spotifyPassport");
 const CLIENT_HOME_PAGE_URL = "http://localhost:3000";
 
 router.get("/login/success", (req, res) => {
