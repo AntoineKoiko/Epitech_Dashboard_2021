@@ -1,23 +1,42 @@
 version: '3'
 services:
+  dashboard-database:
+    image: mongo:latest
+    volumes:
+      - dashboard-db-data:/data/db
+      - dashboard-db-config:/data/configdb
+    ports:
+      - 27017:27017
+    networks:
+      - server-tier
   dashboard-server:
     build: ./server
+    depends_on:
+      - dashboard-database
     ports: 
       - "8080:8080"
     env_file:
       - ./server/.env
+    environment:
+      - ENV=PROD
     networks:
       - server-tier
+      - client-tier
     restart: unless-stopped
   dashboard-client:
     build: ./client
+    depends_on:
+      - dashboard-server
     ports:
-      - "8081:3000"
+      - "3000:3000"
     networks:
       - client-tier
-      - server-tier
     restart: unless-stopped
 
 networks:
   server-tier:
   client-tier:
+
+volumes:
+  dashboard-db-data:
+  dashboard-db-config:
