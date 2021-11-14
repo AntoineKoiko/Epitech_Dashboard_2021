@@ -7,9 +7,16 @@ const passport = require('passport');
 const session = require("express-session");
 const authRoutes = require("./routes/authRoutes");
 const appRoutes = require("./routes/appRoutes");
+const mongoose = require("mongoose")
 const serverConfig = require('./config/serverConfig');
 const cors = require('cors');
 const cookieParser = require("cookie-parser")
+const mongodbConfig = require("./config/mongodbConfig")
+
+mongoose.connect(mongodbConfig.MONGODB_URI, () => {
+    //TODO: GERER ERREUR DB
+    console.log(`connected to mongo db: ${mongodbConfig.MONGODB_URI}`);
+})
 
 app.use(
     cookieSession({
