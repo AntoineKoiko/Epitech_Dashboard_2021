@@ -1,0 +1,8 @@
+.stock-widget p {
+    width: 100%;
+}
+
+.stock-widget p span {
+    position: relative;
+    float: right;
+}
