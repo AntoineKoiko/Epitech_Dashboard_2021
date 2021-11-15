@@ -4,8 +4,13 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     name: String,
     screenName: String,
-    spotifyId: String,
+    accountId: String,
     profileImageUrl: String,
+    spotifyAccessToken: String,
+    spotifyRefreshToken: String,
+    spotifyExpiresIn: String,
+    redditAccessToken: String,
+    redditRefreshToken: String,
 });
 
 const User = mongoose.model("user", userSchema);

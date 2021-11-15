@@ -3,28 +3,21 @@ const SpotifyStrategy = require("passport-spotify").Strategy;
 const spotifyConfig = require("../config/spotifyConfig");
 const User = require("../models/userModels");
 
-passport.serializeUser((user, done) => {
-    done(null, user._id);
-});
-
-passport.deserializeUser((id, done) => {
-    User.findById(id)
-        .then(user => {
-            done(null, user);
-        })
-        .catch(e => {
-            done(new Error("failed to deserialize an user"));
-        });
-});
-
-
 const successfullyAuthentificated = async (accessToken, refreshToken, expires_in, profile, done) => {
     const currentUser = await User.findOne({
         spotifyId: profile.id
     });
     if (!currentUser) {
         const newUser = await new User({
-            spotifyId: profile.id
+            name: profile.username,
+            screenName: profile.displayName,
+            accountId: profile.id,
+            profileImageUrl: "",
+            spotifyAccessToken: accessToken,
+            spotifyRefreshToken: refreshToken,
+            spotifyExpiresIn: expires_in,
+            redditAccessToken: "",
+            redditRefreshToken: "",
         }).save();
         if (newUser) {
             return done(null, newUser);

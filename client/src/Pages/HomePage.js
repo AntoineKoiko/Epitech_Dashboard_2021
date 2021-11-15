@@ -45,8 +45,8 @@ export default function HomePage() {
             ) : (
                 <div>
                     <h1>You have login sucessfully!</h1>
-                    <h2>Welcome {user.name}!</h2>
-                    <h2>Spotify ID: {user.spotifyId}</h2>
+                    <h2>Welcome {user.screenName}!</h2>
+                    <h2>Account ID: {user.accountId}</h2>
                 </div>
             )}
         </div>
