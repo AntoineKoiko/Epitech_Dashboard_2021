@@ -7,6 +7,7 @@ const passport = require('passport');
 const session = require("express-session");
 const authRoutes = require("./routes/authRoutes");
 const appRoutes = require("./routes/appRoutes");
+const stockRoutes = require("./routes/stockRoutes");
 const mongoose = require("mongoose")
 const serverConfig = require('./config/serverConfig');
 const cors = require('cors');
@@ -51,11 +52,12 @@ const authCheck = (req, res, next) => {
     } else {
         next();
     }
-    
-    next();
 };
 
-app.get("/", authCheck, (req, res) => {
+app.use(authCheck);
+app.use("/stock", stockRoutes); 
+
+app.get("/", (req, res) => {
     res.status(200);
 })
 

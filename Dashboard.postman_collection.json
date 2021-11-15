@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f1e5c8bf-4c8b-4f03-999b-61239753cb4f",
+		"_postman_id": "cc0386e4-4124-47af-98c0-7c6bb0c44bb5",
 		"name": "Dashboard",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -359,6 +359,106 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "DashboardAPI",
+			"item": [
+				{
+					"name": "Get Stock Price",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/stock?name=AAPL",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stock"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "AAPL"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Apple Stock Price",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/stock?name=AAPL",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"stock"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "AAPL"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "173"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ad-CAh1/0cu6oiouz0SWvInSlcEv0g\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Nov 2021 18:27:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"currentPrice\": 150.0254,\n    \"change\": 0.0354,\n    \"percentChange\": 0.0236,\n    \"highestPrice\": 151.88,\n    \"lowestPrice\": 149.43,\n    \"openPrice\": 150.37,\n    \"prevClosePrice\": 149.99,\n    \"timestamp\": 1637000794\n}"
+						}
+					]
 				}
 			]
 		}
