@@ -1,13 +1,13 @@
 const router = require("express").Router();
-const stockService = require("../services/stockService");
+const weatherService = require("../services/weatherService");
 
 router.get("/", (req, res) => {
-    let stockName = req.query.name;
-    
-    if (!stockName) {
+    let cityName = req.query.city;
+
+    if (!cityName) {
         return res.sendStatus(400);
     }
-    stockService.getStockPrice(stockName)
+    weatherService.getWeather(cityName)
         .then(response => {
             res.json(response);
         })

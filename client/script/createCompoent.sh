@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 create_index () {
     echo "export {default} from '${1}';" >> "${2}/index.js"
