@@ -1,5 +1,5 @@
 const axios = require("axios");
-const weatherConfig = require("../config/WeatherConfig")
+const weatherConfig = require("../config/weatherConfig")
 
 const getWeather = async (cityName) => {
     const weatherURL = new URL(`${weatherConfig.WEATHER_API_URI}forecast.json`)

@@ -1,5 +1,5 @@
 const axios = require("axios");
-const stockConfig = require("../config/StockConfig");
+const stockConfig = require("../config/stockConfig");
 
 const getStockPrice = async (stockName) => {
     const stockURL = new URL(`${stockConfig.STOCK_API_URI}/quote`);

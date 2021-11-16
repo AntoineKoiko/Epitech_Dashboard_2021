@@ -9,6 +9,7 @@ const authRoutes = require("./routes/authRoutes");
 const appRoutes = require("./routes/appRoutes");
 const stockRoutes = require("./routes/stockRoutes");
 const weatherRoutes = require("./routes/weatherRoutes");
+const spotifyRoutes = require("./routes/spotifyRoutes");
 const mongoose = require("mongoose")
 const serverConfig = require('./config/serverConfig');
 const cors = require('cors');
@@ -58,6 +59,7 @@ const authCheck = (req, res, next) => {
 app.use(authCheck);
 app.use("/stock", stockRoutes); 
 app.use("/weather", weatherRoutes)
+app.use("/spotify", spotifyRoutes);
 
 app.get("/", (req, res) => {
     res.status(200);
