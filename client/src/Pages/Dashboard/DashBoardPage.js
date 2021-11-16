@@ -1,11 +1,11 @@
 import React from 'react';
-import StockWidget from '../../Components/StockWidget';
+import RenderStockWidget from '../../Components/StockWidget/RenderStockWidget';
 
 function DashboardPage() {
     return (
         <div>
             <p>I'm the dasboard page</p>
-            <StockWidget/>
+            <RenderStockWidget stockID="AAPL"/>
         </div>
     )
 }
