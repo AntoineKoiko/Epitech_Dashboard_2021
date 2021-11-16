@@ -23,7 +23,9 @@ router.get("/logout", (req, res) => {
     res.redirect(CLIENT_HOME_PAGE_URL)
 })
 
-router.get("/spotify", passport.authenticate("spotify"));
+router.get("/spotify", passport.authenticate("spotify", {
+    scope: ['user-top-read']
+  }));
 
 router.get("/spotify/redirect", passport.authenticate("spotify", {
     successRedirect: CLIENT_HOME_PAGE_URL,
