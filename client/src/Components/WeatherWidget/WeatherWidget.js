@@ -15,7 +15,7 @@ function WeatherWidget ({city, weatherInfo}) {
                 <p id="weather-temperature">{temp} °C</p>
             </div>
             <div className="center-h">
-                <p>{weatherInfo.current.condition.text}</p>
+                <p>{weatherInfo.current ? weatherInfo.current.condition.text : 'Inconnu'}</p>
             </div>
         </WidgetFrame>
     )
