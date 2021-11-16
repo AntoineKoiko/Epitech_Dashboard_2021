@@ -7,7 +7,10 @@ function StockDetail ({stockInfo}) {
     return (
         <div className="stock-widget">
             <p>
-                lowestPrice: {stockInfo.lowestPrice} / Highest price: {stockInfo.highestPrice}
+                lowestPrice: {stockInfo.lowestPrice}
+            </p>
+            <p>
+                Highest price: {stockInfo.highestPrice}
             </p>
             <p>
                 Open price: {stockInfo.openPrice}
