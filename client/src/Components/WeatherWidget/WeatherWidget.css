@@ -1,0 +1,12 @@
+.weather-widget {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.weather-widget #weather-logo {
+}
+
+.weather-widget #weather-temperature {
+}
