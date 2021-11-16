@@ -1,1 +1,1 @@
-export {default} from './StockWindget';
+export {default} from './RenderStockWidget';
