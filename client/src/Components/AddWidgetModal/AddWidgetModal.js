@@ -134,7 +134,7 @@ function AddWidgetModal ({handler, open}) {
             >
                 {FormItems.map((service) => {
                     return (
-                        <FormControlLabel value={service.id} control={<Radio />} label={service.label} />
+                        <FormControlLabel key={service.id} value={service.id} control={<Radio />} label={service.label} />
                     )
                 })}
 
@@ -149,7 +149,7 @@ function AddWidgetModal ({handler, open}) {
               >
                 {serviceSelect.widgets.map((widget) => {
                     return (
-                        <FormControlLabel value={widget.id} control={<Radio />} label={widget.label} />
+                        <FormControlLabel key={widget.id} value={widget.id} control={<Radio />} label={widget.label} />
                     )
                 })}
 
