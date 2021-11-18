@@ -5,10 +5,10 @@ router.get("/artists", (req, res) => {
     const timeRange = req.query.time_range;
 
     if (!timeRange || !spotifyService.checkValidTimeRange(timeRange)) {
-        return res.sendStatus(400);
+        return res.send("Bad request: invalid params").status(400);
     }
     if (!req.user.spotifyAccessToken) {
-        return res.send("Bad request: invalid params").status(400);
+        return res.send("Bad request: no token for spotify service").status(400);
     }
     spotifyService.getUserTopArtists(timeRange, req.user.spotifyAccessToken)
         .then(response => {

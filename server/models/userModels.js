@@ -11,6 +11,8 @@ const userSchema = new Schema({
     spotifyExpiresIn: String,
     redditAccessToken: String,
     redditRefreshToken: String,
+    googleAccessToken: String,
+    googleRefreshToken: String
 });
 
 const User = mongoose.model("user", userSchema);

@@ -18,6 +18,8 @@ const sucessfullyAuthentificated = async(accessToken, refreshToken, profile, don
             spotifyExpiresIn: "",
             redditAccessToken: accessToken,
             redditRefreshToken: refreshToken,
+            googleAccessToken: "",
+            googleRefreshToken: "",
         }).save();
         if (newUser) {
             return done(null, newUser);

@@ -5,7 +5,7 @@ const User = require("../models/userModels");
 
 const successfullyAuthentificated = async (accessToken, refreshToken, expires_in, profile, done) => {
     const currentUser = await User.findOne({
-        spotifyId: profile.id
+        accountId: profile.id
     });
     if (!currentUser) {
         const newUser = await new User({
@@ -18,6 +18,8 @@ const successfullyAuthentificated = async (accessToken, refreshToken, expires_in
             spotifyExpiresIn: expires_in,
             redditAccessToken: "",
             redditRefreshToken: "",
+            googleAccessToken: "",
+            googleRefreshToken: "",
         }).save();
         if (newUser) {
             return done(null, newUser);

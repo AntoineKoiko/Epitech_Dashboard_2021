@@ -19,14 +19,15 @@ function LoginPage() {
                     <p>Pour continuer, connectez-vous a Dashboard</p>
                     <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/spotify" variant="contained">Continuer avec spotifyd</Button>
                     <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/reddit" variant="contained">Continuer avec reddit</Button>
-                    <GoogleLogin
+                    <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/google" variant="contained">Continuer avec google</Button>
+                    {/* <GoogleLogin
                         className="input-field"
                         clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
                         buttonText="Continuer avec Google"
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle}
                         cookiePolicy={'single_host_origin'}
-                    />
+                    /> */}
 
                     <h2><span>ou</span></h2>
 
