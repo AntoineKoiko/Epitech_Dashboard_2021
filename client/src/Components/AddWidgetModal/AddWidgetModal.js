@@ -39,9 +39,45 @@ const FormItems = [
         label: 'Spotify',
         widgets: [
             {
-                id: 'trackts',
+                id: 'tracks',
                 label: 'Tracks',
                 optionLabel: 'Choose artist / time'
+            },
+        ],
+    },
+
+    {
+        id: 'reddit',
+        label: 'Reddit',
+        widgets: [
+            {
+                id: 'subPost',
+                label: 'Post of a sub',
+                optionLabel: 'Choose a sub reddit'
+            },
+        ],
+    },
+
+    {
+        id: 'stock',
+        label: 'Stock',
+        widgets: [
+            {
+                id: 'firmmStock',
+                label: 'Follow a Stock',
+                optionLabel: 'Enter a Stock code'
+            },
+        ],
+    },
+
+    {
+        id: 'weather',
+        label: 'Weather',
+        widgets: [
+            {
+                id: 'cityWeather',
+                label: 'Weather of a city',
+                optionLabel: 'Enter a city name'
             },
         ],
     },
