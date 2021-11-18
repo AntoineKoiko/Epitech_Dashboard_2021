@@ -16,16 +16,12 @@ function DefaultHeader() {
          setOpenModal(val);
     }
 
-    useEffect(() => {
-        setOpenModal(false);
-    }, [])
-
     return (
         <div className="header">
             <h1>Dashboard</h1>
             <div className="header-buttons">
                 <ButtonGroup size="small" disableElevation variant="contained">
-                    <Button sx={{backgroundColor: "#003459"}} onClick={handler(true)}>
+                    <Button sx={{backgroundColor: "#003459"}} onClick={() => setOpenModal(true)}>
                         <AddCircleOutlineRoundedIcon/>Add
                     </Button>
 
