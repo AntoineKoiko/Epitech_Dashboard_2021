@@ -31,6 +31,6 @@ passport.use(
         clientID: redditConfig.CLIENT_ID,
         clientSecret: redditConfig.SECRET_ID,
         callbackURL: redditConfig.CALLBACK_URL,
-        state: "FOOBAR"
+        scope: [ 'read', 'identity' ],
     }, sucessfullyAuthentificated)
 )

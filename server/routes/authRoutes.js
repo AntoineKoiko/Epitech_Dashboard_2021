@@ -32,7 +32,9 @@ router.get("/spotify/redirect", passport.authenticate("spotify", {
     failureRedirect: `${CLIENT_HOME_PAGE_URL}/login?status=failed`
 }))
 
-router.get("/reddit", passport.authenticate("reddit"));
+router.get("/reddit", passport.authenticate("reddit", {
+    state: "Foobar"
+}));
 
 router.get("/reddit/redirect", passport.authenticate("reddit", {
     successRedirect: CLIENT_HOME_PAGE_URL,
