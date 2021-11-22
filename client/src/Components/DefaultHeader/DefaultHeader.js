@@ -25,7 +25,7 @@ function DefaultHeader() {
                         <AddCircleOutlineRoundedIcon/>Add
                     </Button>
 
-                    <Button sx={{backgroundColor: "#003459"}} >
+                    <Button sx={{backgroundColor: "#003459"}} onClick={() => window.open("http://localhost:8080/auth/logout", "_self")}>
                         <LogoutRoundedIcon/>Logout
                     </Button>
                 </ButtonGroup>
