@@ -4,6 +4,7 @@ import WeatherWidget from '../../Components/WeatherWidget/';
 import YoutubeCommentWidget from '../../Components/YoutubeCommentWidget';
 import YoutubeSubNBWidget from '../../Components/YoutubeSubNBWidget';
 import RedditSubFeedWidget from '../../Components/RedditSubFeedWidget';
+import SpotifyTopWidget from '../../Components/SpotifyTopWidget/SpotifyTopWidget';
 
 function DashboardPage() {
     return (
@@ -14,6 +15,7 @@ function DashboardPage() {
             <YoutubeCommentWidget videoTitle="test"/>
             <YoutubeSubNBWidget/>
             <RedditSubFeedWidget/>
+            <SpotifyTopWidget/>
         </div>
     )
 }
