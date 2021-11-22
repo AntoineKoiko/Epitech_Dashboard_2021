@@ -8,29 +8,17 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 
 import AddWidgetModal from '../AddWidgetModal/AddWidgetModal';
+import HeaderOptions from '../HeaderOptions';
 
 function DefaultHeader() {
-    const [openModal, setOpenModal] = useState(false);
-
-    const handler = (val) => {
-         setOpenModal(val);
-    }
 
     return (
         <div className="header">
             <h1>Dashboard</h1>
-            <div className="header-buttons">
-                <ButtonGroup size="small" disableElevation variant="contained">
-                    <Button sx={{backgroundColor: "#003459"}} onClick={() => setOpenModal(true)}>
-                        <AddCircleOutlineRoundedIcon/>Add
-                    </Button>
 
-                    <Button sx={{backgroundColor: "#003459"}} onClick={() => window.open("http://localhost:8080/auth/logout", "_self")}>
-                        <LogoutRoundedIcon/>Logout
-                    </Button>
-                </ButtonGroup>
+            <div className="header-buttons">
+                <HeaderOptions/>
             </div>
-            <AddWidgetModal handler={handler} open={openModal}/>
         </div>
     )
 }
