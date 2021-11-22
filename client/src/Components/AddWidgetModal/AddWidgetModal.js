@@ -9,12 +9,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 import TextField from '@mui/material/TextField';
+
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 
 const FormItems = [
     {
@@ -97,14 +98,23 @@ function AddWidgetModal ({handler, open}) {
         setWidget(newSelected.widgets[0]);
     };
 
-    const ChangeWidget = (event) => {
-        const newID = event.target.value;
-        const newSelected = serviceSelect.widgets.find(elt => elt.id === newID);
-        setWidget(newSelected);
-    };
 
     const handleClose = () => {
       handler(false);
+    };
+
+
+    const handleChangeService = (event) => {
+        const newID = event.target.value;
+        const newSelected = FormItems.find(elt => elt.id === newID);
+        setService(newSelected);
+        setWidget(newSelected.widgets[0]);
+    };
+
+    const handleChangeWidget = (event) => {
+      const newID = event.target.value;
+      const newSelected = serviceSelect.widgets.find(elt => elt.id === newID);
+      setWidget(newSelected);
     };
 
     return (
@@ -120,51 +130,46 @@ function AddWidgetModal ({handler, open}) {
             {"Which widget do you want to add ? "}
           </DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              Choose a service:
-            </DialogContentText>
+            <div>
+      <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="service-input-label">Service</InputLabel>
+        <Select
+          labelId="Service-select-label"
+          id="service-select"
+          value={serviceSelect.id}
+          onChange={handleChangeService}
+          label="Service"
+        >
+          {FormItems.map((service) => {
+            return <MenuItem key={service.id} value={service.id}>{service.label}</MenuItem>;
+          })}
+        </Select>
+      </FormControl>
+      <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="widget-input-label">Widget</InputLabel>
+        <Select
+          labelId="widget-select-label"
+          id="widget-select"
+          value={widgetSelect.id}
+          onChange={handleChangeWidget}
+        >
+            {serviceSelect.widgets.map((widget) => {
+              return <MenuItem key={widget.id} value={widget.id}>{widget.label}</MenuItem>;
+            })}
 
-            <FormControl component="fieldset">
-              <FormLabel component="legend">Service</FormLabel>
-              <RadioGroup
-                row aria-label="service"
-                name="row-radio-buttons-group"
-                onChange={ChangeService}
-                value={serviceSelect.id}
-            >
-                {FormItems.map((service) => {
-                    return (
-                        <FormControlLabel key={service.id} value={service.id} control={<Radio />} label={service.label} />
-                    )
-                })}
+        </Select>
+      <TextField id="opt" label={widgetSelect.optionLabel} variant="standard" />
 
-              </RadioGroup>
-
-              <FormLabel component="legend">Widget</FormLabel>
-              <RadioGroup
-              row aria-label="widget"
-              name="row-radio-buttons-group"
-              onChange={ChangeWidget}
-              value={widgetSelect.id}
-              >
-                {serviceSelect.widgets.map((widget) => {
-                    return (
-                        <FormControlLabel key={widget.id} value={widget.id} control={<Radio />} label={widget.label} />
-                    )
-                })}
-
-              </RadioGroup>
-              <TextField id="opt" label={widgetSelect.optionLabel} variant="standard" />
-            </FormControl>
-
+      </FormControl>
+    </div>
 
           </DialogContent>
           <DialogActions>
             <Button autoFocus onClick={handleClose}>
-              Disagree
+              Cancel
             </Button>
             <Button onClick={handleClose} autoFocus>
-              Agree
+              Add
             </Button>
           </DialogActions>
         </Dialog>
