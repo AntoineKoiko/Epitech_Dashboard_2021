@@ -15,6 +15,7 @@ router.get("/login/success", (req, res) => {
             cookies: req.cookies
         });
     } else {
+        res.send(401).status("User is not Login");
         console.log("user null")
     }
 })
