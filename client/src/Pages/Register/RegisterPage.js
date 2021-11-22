@@ -1,6 +1,7 @@
 import React from 'react';
 import GoogleLogin from 'react-google-login';
 import Button from '@mui/material/Button';
+import RegistrationForm from '../../Components/RegistrationForm';
 import { TextField } from '@mui/material';
 import { createTheme } from '@mui/system';
 import './RegisterPage.css';
@@ -30,44 +31,7 @@ function RegisterPage() {
 
                     <h2><span>ou</span></h2>
 
-                    <p>Inscrivez-vous avec votre email:</p>
-                    <TextField
-                    sx={theme.inputField}
-                    required
-                    id="register-mail"
-                    label="Quel est votre email ?"
-                    variant="outlined"
-                    placeholder="John.doe@email.com"
-                    />
-                    <TextField
-                    sx={theme.inputField}
-                    required
-                    id="register-mail-conf"
-                    label="Confirmez votre email ?"
-                    variant="outlined"
-                    placeholder="John.doe@email.com"
-                    />
-
-                    <TextField
-                    sx={theme.inputField}
-                    required
-                    id="register-password"
-                    label="Quel est votre mot de passe ?"
-                    variant="outlined"
-                    type="password"
-                    autoComplete="current-password"
-                    />
-                    <TextField
-                    sx={theme.inputField}
-                    required
-                    id="register-password-conf"
-                    label="Confirmez votre mot de passe ?"
-                    variant="outlined"
-                    type="password"
-                    autoComplete="current-password"
-                    />
-
-                    <Button sx={theme.inputField} variant="contained">S'inscrire</Button>
+                    <RegistrationForm/>
 
                     <h2><span>Déja un compte ?</span></h2>
 
