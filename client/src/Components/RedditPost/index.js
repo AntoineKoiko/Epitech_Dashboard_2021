@@ -1,1 +1,1 @@
-export {default} from 'RedditPost';
+export {default} from './RedditPost';

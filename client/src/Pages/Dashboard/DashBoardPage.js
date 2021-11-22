@@ -1,10 +1,10 @@
 import React from 'react';
-import RenderStockWidget from '../../Components/StockWidget/RenderStockWidget';
-import WeatherWidget from '../../Components/WeatherWidget/';
-import YoutubeCommentWidget from '../../Components/YoutubeCommentWidget';
-import YoutubeSubNBWidget from '../../Components/YoutubeSubNBWidget';
-import RedditSubFeedWidget from '../../Components/RedditSubFeedWidget';
-import SpotifyTopWidget from '../../Components/SpotifyTopWidget/SpotifyTopWidget';
+import RenderStockWidget from '../../Components/Widgets/StockWidget/RenderStockWidget';
+import WeatherWidget from '../../Components/Widgets/WeatherWidget/';
+import YoutubeCommentWidget from '../../Components/Widgets/YoutubeCommentWidget';
+import YoutubeSubNBWidget from '../../Components/Widgets/YoutubeSubNBWidget';
+import RedditSubFeedWidget from '../../Components/Widgets/RedditSubFeedWidget';
+import SpotifyTopWidget from '../../Components/Widgets/SpotifyTopWidget/SpotifyTopWidget';
 
 function DashboardPage() {
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import './WeatherWidget.css';
 import WidgetFrame from '../WidgetFrame';
-import '../../Styles/GlobalStyle.css';
+import '../../../Styles/GlobalStyle.css';
 
 function WeatherWidget ({city, weatherInfo}) {
     const iconUrl = 'https:' + (weatherInfo.current ? weatherInfo.current.condition.icon : '');

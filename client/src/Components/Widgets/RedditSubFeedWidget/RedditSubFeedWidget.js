@@ -1,6 +1,6 @@
 import React from 'react';
 import WidgetFrame from '../WidgetFrame';
-import RedditPost from '../RedditPost/RedditPost';
+import RedditPost from '../../RedditPost';
 import { Divider } from '@material-ui/core';
 
 function RedditSubFeedWidget () {
