@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Button from '@mui/material/Button';
-import { TextField } from '@mui/material';
+import { TextField, Button } from '@mui/material';
 import { createTheme } from '@mui/system';
 import './RegistrationForm.css';
 
@@ -16,8 +15,9 @@ function RegistrationForm() {
     function validateEmail() {
         if (email !== emailConfirm) {
             setEmailError(true);
+            return false;
         }
-        return valid;
+        return true;
     }
 
     function validatePassword() {
