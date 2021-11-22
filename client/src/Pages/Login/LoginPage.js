@@ -15,33 +15,29 @@ function LoginPage() {
                     <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/spotify" variant="contained">Continuer avec spotifyd</Button>
                     <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/reddit" variant="contained">Continuer avec reddit</Button>
                     <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/google" variant="contained">Continuer avec google</Button>
-
-                    <h2><span>ou</span></h2>
-
+                    <h2 className="word-divider"><span>ou</span></h2>
                     <p>Continuer avec vos identifiants:</p>
                     <TextField
-                    sx={theme.inputField}
-                    required
-                    id="login-name"
-                    label="Email / Pseudo"
-                    variant="outlined"
-                    placeholder="John.doe@email.com"
+                        sx={theme.inputField}
+                        required
+                        id="login-name"
+                        label="Email / Pseudo"
+                        variant="outlined"
+                        placeholder="John.doe@email.com"
                     />
                     <TextField
-                    sx={theme.inputField}
-                    required
-                    id="login-name"
-                    label="Mot de passe"
-                    variant="outlined"
-                    type="password"
-                    autoComplete="current-password"
+                        sx={theme.inputField}
+                        required
+                        id="login-name"
+                        label="Mot de passe"
+                        variant="outlined"
+                        type="password"
+                        autoComplete="current-password"
                     />
                     <Button sx={theme.inputField} variant="contained">Se Connecter</Button>
-
-                    <h2><span>Pas encore inscrit ?</span></h2>
-
+                    <h2 className="word-divider"><span>Pas encore inscrit ?</span></h2>
                     <Button href="/register" sx={theme.inputField} variant="contained">
-                        S'inscire
+                    S'inscire
                     </Button>
                 </div>
             </div>
