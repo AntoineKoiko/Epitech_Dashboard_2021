@@ -1,46 +1,17 @@
 import { Header } from "../Components/Header"
 import React from "react"
-
-const requestOptions = {
-    method: "GET",
-    credentials: "include",
-    headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Credentials": true
-    }
-}
+import useAuth from "../Context/AuthConsumer/AuthConsumer"
 
 export default function HomePage() {
-    const [authenticated, setAutenticated] = React.useState(false);
-    const [user, setUser] = React.useState({});
-    const [error, setError] = React.useState({});
-    
-    React.useEffect(() => {
-        fetch("http://localhost:8080/auth/login/success", requestOptions)
-        .then(response => {
-            if (response.status === 200)
-                return response.json();
-            throw new Error("failed to authenticate user")
-        })
-        .then(responseJSON => {
-            setUser(responseJSON.user);
-            setAutenticated(true);
-        })
-        .catch(error => {
-            setAutenticated(false);
-            setError("Failed to authenticate user");
-        })
-
-    }, []);
+    const { authed } = useAuth();
+    const { user } = useAuth();
 
     return (<div>
         <Header
-            authenticated={authenticated}
-            handleNotAuthenticated={() => setAutenticated(false)}
+            authenticated={authed}
         />
         <div>
-            {!authenticated ? (
+        {!authed ? (
                 <h1>Welcome!</h1>
             ) : (
                 <div>
