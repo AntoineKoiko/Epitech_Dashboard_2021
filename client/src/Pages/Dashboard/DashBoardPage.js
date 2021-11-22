@@ -3,6 +3,7 @@ import RenderStockWidget from '../../Components/StockWidget/RenderStockWidget';
 import WeatherWidget from '../../Components/WeatherWidget/';
 import YoutubeCommentWidget from '../../Components/YoutubeCommentWidget';
 import YoutubeSubNBWidget from '../../Components/YoutubeSubNBWidget';
+import RedditSubFeedWidget from '../../Components/RedditSubFeedWidget';
 
 function DashboardPage() {
     return (
@@ -12,6 +13,7 @@ function DashboardPage() {
             <WeatherWidget cityID="Rennes"/>
             <YoutubeCommentWidget videoTitle="test"/>
             <YoutubeSubNBWidget/>
+            <RedditSubFeedWidget/>
         </div>
     )
 }
