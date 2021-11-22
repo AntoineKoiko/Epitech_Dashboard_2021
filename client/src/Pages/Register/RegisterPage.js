@@ -1,8 +1,7 @@
 import React from 'react';
 import GoogleLogin from 'react-google-login';
 import Button from '@mui/material/Button';
-import RegistrationForm from '../../Components/RegistrationForm';
-import { TextField } from '@mui/material';
+import RegistrationForm from '../../Components/Forms/RegistrationForm';
 import { createTheme } from '@mui/system';
 import './RegisterPage.css';
 import '../../Styles/GlobalStyle.css';
