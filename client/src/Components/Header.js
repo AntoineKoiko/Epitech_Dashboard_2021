@@ -7,7 +7,6 @@ export function Header(props) {
     
     const _handleLogoutClick = () => {
         window.open("http://localhost:8080/auth/logout", "_self");
-        props.handleNotAuthenticated();
     }
 
     return (
