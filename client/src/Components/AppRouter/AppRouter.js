@@ -11,26 +11,26 @@ import { BrowserRouter as Router, Route, Routes, Navigate} from "react-router-do
 export default function AppRouter() {
     return (
         <Router>
-           <AuthProvider> 
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route exact path="/login" element={
-                    <RequireNotAuth>
-                        <LoginPage />
-                    </RequireNotAuth>
-                } />
-                <Route exact path="/register" element={
-                    <RequireNotAuth>
-                        <RegisterPage />
-                    </RequireNotAuth>
-                } />
-                <Route exact path="/dashboard" element={
-                    <RequireAuth>
-                        <DashboardPage />
-                    </RequireAuth>
-                } />
-                <Route path="*" element={<Navigate to="/"/>}/>
-            </Routes>
+            <AuthProvider>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route exact path="/login" element={
+                        <RequireNotAuth>
+                            <LoginPage />
+                        </RequireNotAuth>
+                    } />
+                    <Route exact path="/register" element={
+                        <RequireNotAuth>
+                            <RegisterPage />
+                        </RequireNotAuth>
+                    } />
+                    <Route exact path="/dashboard" element={
+                        <RequireAuth>
+                            <DashboardPage />
+                        </RequireAuth>
+                    } />
+                    <Route path="*" element={<Navigate to="/"/>}/>
+                </Routes>
             </AuthProvider>
         </Router>
     )
