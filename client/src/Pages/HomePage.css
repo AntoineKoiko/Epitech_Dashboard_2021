@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    flex: 8;
+    justify-content: center;
+    align-items: center;
+}
