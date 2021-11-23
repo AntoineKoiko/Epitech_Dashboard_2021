@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, Alert } from '@mui/material';
 import { createTheme } from '@mui/system';
 import './RegistrationForm.css';
 
@@ -21,6 +21,7 @@ function RegistrationForm() {
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError ] = useState(false);
     const [passwordErrorText, setPasswordErrorText ] = useState(false);
+    const [registerErrorMsg, setRegisterErrorMsg] = useState("");
 
     function registerReq() {
         const config = {...requestOptions, body: JSON.stringify({
@@ -30,7 +31,15 @@ function RegistrationForm() {
         console.log(config)
         fetch("http://localhost:8080/register", config)
             .then(response => {
-                console.log(response)
+                if (response.status === 200) {
+                    window.open("http://localhost:3000/login", "_self");
+                }
+                if (response.status === 500) {
+                    setRegisterErrorMsg("Internal Server Error.");
+                }
+                if (response.status === 401) {
+                    setRegisterErrorMsg("Cet email est déjà enregistré.");
+                }
             })
             .catch(err => {
                 console.log(err)
@@ -133,6 +142,9 @@ function RegistrationForm() {
                 onChange={e => setPasswordConfirm(e.target.value)}
                 helperText={passwordError ? passwordErrorText : ""}
             />
+            {
+                registerErrorMsg.length ? <Alert severity="error">{registerErrorMsg}</Alert> : <></>
+            }
 
             <Button type="submit" sx={theme.inputField} variant="contained">S'inscrire</Button>
         </form>
