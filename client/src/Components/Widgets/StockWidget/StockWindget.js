@@ -1,7 +1,6 @@
 import React from 'react';
 import './StockWidget.css';
 import WidgetFrame from '../WidgetFrame';
-import { useState, useEffect } from 'react';
 
 function StockDetail ({stockInfo}) {
     return (
@@ -30,14 +29,14 @@ function StockWidget({stockID, stockInfo}) {
             <div className="stock-widget">
                 <p>
                     Value: {stockInfo.currentPrice}$
-                      <span style={{color: stockInfo.percentChange < 0 ? '#F00' : '#0F0'}}>
-                          {stockInfo.percentChange < 0 ? '-' : '+'}{stockInfo.percentChange}%
-                      </span>
+                    <span style={{color: stockInfo.percentChange < 0 ? '#F00' : '#0F0'}}>
+                        {stockInfo.percentChange < 0 ? '-' : '+'}{stockInfo.percentChange}%
+                    </span>
                 </p>
                 <p>
                     <span style={{color: stockInfo.valueChange < 0 ? '#F00' : '#0F0'}}>
-                          {stockInfo.change < 0 ? '-' : '+'}{stockInfo.change}$
-                      </span>
+                        {stockInfo.change < 0 ? '-' : '+'}{stockInfo.change}$
+                    </span>
                 </p>
             </div>
         </WidgetFrame>

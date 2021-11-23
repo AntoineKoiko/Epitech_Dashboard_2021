@@ -18,30 +18,30 @@ function useAuth() {
     const [loading, setLoading] = React.useState({});
 
     React.useEffect(() => {
-      setLoading(true);
-      fetch("http://localhost:8080/auth/login/success", requestOptions)
-        .then(response => {
-          if (response.status === 200)
-            return response.json();
-          throw new Error("failed to authenticate user")
-        })
-        .then(responseJSON => {
-          setUser(responseJSON.user);
-          setAuthed(true);
-          setLoading(false);
-        })
-        .catch(error => {
-          setAuthed(false);
-          setUser({});
-          setLoading(false);
-        })
+        setLoading(true);
+        fetch("http://localhost:8080/auth/login/success", requestOptions)
+            .then(response => {
+                if (response.status === 200)
+                    return response.json();
+                throw new Error("failed to authenticate user")
+            })
+            .then(responseJSON => {
+                setUser(responseJSON.user);
+                setAuthed(true);
+                setLoading(false);
+            })
+            .catch(error => {
+                setAuthed(false);
+                setUser({});
+                setLoading(false);
+            })
     }, []);
 
     return {
         authed,
         loading,
         user,
-      };
+    };
 }
 
 export function AuthProvider({ children }) {

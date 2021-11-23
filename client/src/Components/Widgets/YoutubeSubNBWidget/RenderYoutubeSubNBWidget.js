@@ -3,11 +3,11 @@ import YoutubeSubNBWidget from './YoutubeSubNBWidget';
 import { useState } from 'react';
 
 function RenderYoutubeSubNBWidget () {
-    const [channel, setChannel] = useState("Unknown user");
-    const [subNB, setSubNB] = useState("Fail to load");
+    const [channel, setChannel] = useState("TauteYT");
+    const [subNB, setSubNB] = useState(42);
 
 
-    return <YoutubeSubNBWidget channel="TauteYT" subNb={42} />
+    return <YoutubeSubNBWidget channel={channel} subNb={subNB} />
 }
 
 export default RenderYoutubeSubNBWidget;

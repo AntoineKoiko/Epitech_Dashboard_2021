@@ -10,10 +10,10 @@ function HeaderOptions () {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
-      setAnchorEl(null);
+        setAnchorEl(null);
     };
     const [openModal, setOpenModal] = useState(false);
 
@@ -23,36 +23,36 @@ function HeaderOptions () {
     }
 
     const handler = (val) => {
-         setOpenModal(val);
+        setOpenModal(val);
     }
 
     return (
-      <div>
-        <Button
-          id="basic-button"
-          aria-controls="basic-menu"
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
-        >
-          <MenuIcon/>
-        </Button>
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          MenuListProps={{
-            'aria-labelledby': 'basic-button',
-          }}
-        >
-          <MenuItem onClick={openAddModal}>Add Widget</MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-          <MenuItem onClick={() => window.open("http://localhost:8080/auth/logout", "_self")}>Logout</MenuItem>
-        </Menu>
+        <div>
+            <Button
+                id="basic-button"
+                aria-controls="basic-menu"
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+            >
+                <MenuIcon/>
+            </Button>
+            <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                }}
+            >
+                <MenuItem onClick={openAddModal}>Add Widget</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={() => window.open("http://localhost:8080/auth/logout", "_self")}>Logout</MenuItem>
+            </Menu>
 
-        <AddWidgetModal handler={handler} open={openModal}/>
-      </div>
+            <AddWidgetModal handler={handler} open={openModal}/>
+        </div>
     );
 }
 
