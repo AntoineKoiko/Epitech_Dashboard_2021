@@ -1,1 +1,1 @@
-export {default} from './YoutubeCommentWidget';
+export {default} from './RenderYoutubeCommentWidget';
