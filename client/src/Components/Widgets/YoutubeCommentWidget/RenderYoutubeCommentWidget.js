@@ -12,7 +12,7 @@ const requestOptions = {
 }
 
 function RenderYoutubeCommentWidget() {
-    const [videoId, setId] = useState('yzb');
+    const [videoId, setId] = useState('yeYGZmnW_kc');
     const [videoName, setName] = useState('Unknown');
     const [comments, setComments] = useState([]);
 
@@ -30,6 +30,7 @@ function RenderYoutubeCommentWidget() {
             })
             .then(responseJSON => {
                 console.log('json youtube comment response ', responseJSON);
+                setComments(responseJSON);
             })
             .catch(error => {
                 console.log('fetch error for youtube comment');
@@ -39,7 +40,7 @@ function RenderYoutubeCommentWidget() {
             })
     }, [videoId]);
 
-    return <YoutubeCommentWidget/>;
+    return <YoutubeCommentWidget commentList={comments}/>;
 }
 
 export default RenderYoutubeCommentWidget;

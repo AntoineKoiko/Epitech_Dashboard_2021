@@ -59,8 +59,16 @@ function YoutubeCommentWidget ({videoTitle, commentList}) {
             <h4>Comment of the video: {videoTitle}</h4>
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
 
-                {Items.map((item, idx) => {
-                    return <Comment key={idx} pseudo={item.pseudo} avatar={item.avatar} comment={item.comment} />;
+                {commentList.map((item, idx) => {
+                    console.log('item :', item);
+                    return (
+                        <Comment
+                            key={item.id}
+                            pseudo={item.snippet.topLevelComment.snippet.authorDisplayName}
+                            avatar={item.snippet.topLevelComment.snippet.authorProfileImageUrl}
+                            comment={item.snippet.topLevelComment.snippet.textDisplay}
+                        />
+                    );
                 })}
             </List>
         </WidgetFrame>

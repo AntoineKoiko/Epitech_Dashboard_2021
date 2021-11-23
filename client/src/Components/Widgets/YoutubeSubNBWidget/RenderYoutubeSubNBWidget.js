@@ -13,9 +13,14 @@ const requestOptions = {
 }
 
 function RenderYoutubeSubNBWidget ({channelID}) {
-    const [channelId, setChannelId] = useState("yeYGZmnW_kc")
-    const [channel, setChannel] = useState("TauteYT");
-    const [subNB, setSubNB] = useState(42);
+    const [channelId, setChannelId] = useState("UCAuUUnT6oDeKwE6v1NGQxug")
+    const [channelName, setChannelName] = useState("TauteYT");
+    const [channelInfo, setChannelInfo] = useState({
+        viewCount: "0",
+        subscriberCount: "0",
+        hiddenSubscriberCount: false,
+        videoCount: "0",
+    });
 
     useEffect(() => {
         const ytURL = new URL('http://localhost:8080/youtube/channelStats');
@@ -31,7 +36,8 @@ function RenderYoutubeSubNBWidget ({channelID}) {
                 throw new Error("failed to authenticate user")
             })
             .then(responseJSON => {
-                console.log('json yt response ', responseJSON);
+                console.log('json yt response success ', responseJSON);
+                setChannelInfo(responseJSON);
             })
             .catch(error => {
                 console.log('fetch error for youtube sub nb');
@@ -42,7 +48,7 @@ function RenderYoutubeSubNBWidget ({channelID}) {
 
     }, [channelId]);
 
-    return <YoutubeSubNBWidget channel={channel} subNb={subNB} />
+    return <YoutubeSubNBWidget channelName={channelName} channelInfo={channelInfo} />
 }
 
 export default RenderYoutubeSubNBWidget;
