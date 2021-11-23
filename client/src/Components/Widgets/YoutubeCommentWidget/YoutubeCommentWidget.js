@@ -8,25 +8,6 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 
-const Items = [
-    {
-        'pseudo': 'abc',
-        'avatar': 'hop',
-        'comment': 'good',
-    },
-    {
-        'pseudo': 'bca',
-        'avatar': 'hop',
-        'comment': 'good',
-    },
-    {
-        'pseudo': 'cab',
-        'avatar': 'hop',
-        'comment': 'good',
-    },
-];
-
-
 function Comment ({pseudo, avatar, comment}) {
     return (
         <ListItem alignItems="flex-start">
@@ -43,7 +24,7 @@ function Comment ({pseudo, avatar, comment}) {
                             variant="body2"
                             color="text.primary"
                         >
-                            {comment}
+                            <div dangerouslySetInnerHTML={{ __html: comment}} />
                         </Typography>
                     </React.Fragment>
                 }
