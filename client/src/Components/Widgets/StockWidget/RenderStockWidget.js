@@ -28,20 +28,20 @@ function RenderStockWidget({stockID}) {
 
     useEffect(() => {
         fetch('http://localhost:8080/stock?name=' + stockName, requestOptions)
-        .then(response => {
-            if (response.status === 200)
-                return response.json();
-            throw new Error("failed to authenticate user")
-        })
-        .then(responseJSON => {
-            console.log('json response', responseJSON);
-            setStockInfo(responseJSON)
-        })
-        .catch(error => {
-            console.log('fetch error');
+            .then(response => {
+                if (response.status === 200)
+                    return response.json();
+                throw new Error("failed to authenticate user")
+            })
+            .then(responseJSON => {
+                console.log('json response', responseJSON);
+                setStockInfo(responseJSON)
+            })
+            .catch(error => {
+                console.log('fetch error');
             // setAutenticated(false);
             // setError("Failed to authenticate user");
-        })
+            })
 
     }, [stockName]);
 

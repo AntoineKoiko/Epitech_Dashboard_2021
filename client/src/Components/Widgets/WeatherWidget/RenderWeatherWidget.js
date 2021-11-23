@@ -23,20 +23,20 @@ function RenderWeatherWidget ({cityID}) {
 
         weatherURL.searchParams.append('city', cityName);
         fetch(weatherURL, requestOptions)
-        .then(response => {
-            if (response.status === 200)
-                return response.json();
-            throw new Error("failed to authenticate user")
-        })
-        .then(responseJSON => {
-            console.log('json weather response ', responseJSON);
-            setInfo(responseJSON);
-        })
-        .catch(error => {
-            console.log('fetch error');
+            .then(response => {
+                if (response.status === 200)
+                    return response.json();
+                throw new Error("failed to authenticate user")
+            })
+            .then(responseJSON => {
+                console.log('json weather response ', responseJSON);
+                setInfo(responseJSON);
+            })
+            .catch(error => {
+                console.log('fetch error');
             // setAutenticated(false);
             // setError("Failed to authenticate user");
-        })
+            })
 
     }, [cityName]);
 

@@ -38,18 +38,18 @@ function Comment ({pseudo, avatar, comment}) {
                 secondary={
                     <React.Fragment>
                         <Typography
-                        sx={{ display: 'inline' }}
-                        component="span"
-                        variant="body2"
-                        color="text.primary"
-                      >
-                    {comment}
-                </Typography>
-            </React.Fragment>
-          }
-        />
-      <Divider variant="inset" component="li" />
-      </ListItem>
+                            sx={{ display: 'inline' }}
+                            component="span"
+                            variant="body2"
+                            color="text.primary"
+                        >
+                            {comment}
+                        </Typography>
+                    </React.Fragment>
+                }
+            />
+            <Divider variant="inset" component="li" />
+        </ListItem>
     )
 }
 
@@ -57,12 +57,12 @@ function YoutubeCommentWidget ({videoTitle, commentList}) {
     return (
         <WidgetFrame title="Youtube">
             <h4>Comment of the video: {videoTitle}</h4>
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
 
-        {Items.map((item, idx) => {
-            return <Comment key={idx} pseudo={item.pseudo} avatar={item.avatar} comment={item.comment} />;
-        })}
-        </List>
+                {Items.map((item, idx) => {
+                    return <Comment key={idx} pseudo={item.pseudo} avatar={item.avatar} comment={item.comment} />;
+                })}
+            </List>
         </WidgetFrame>
     )
 }
