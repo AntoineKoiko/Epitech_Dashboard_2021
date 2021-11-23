@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Alert } from "@mui/material";
 import { createTheme } from '@mui/system'
 import "./LoginForm.css"
 
@@ -16,7 +16,7 @@ const requestOptions = {
 function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const [loginErrorMsg, setLoginErrorMsg] = useState("");
 
     function loginReq() {
         const config = {...requestOptions, body: JSON.stringify({
@@ -25,10 +25,17 @@ function LoginForm() {
         })}
         fetch("http://localhost:8080/auth/login", config)
             .then(response => {
-                console.log(response)
+                if (response.status === 200) {
+                    window.open("http://localhost:3000/dashboard", "_self");
+                }
+                return response.json();
+            }).then(responseJSON => {
+                if (responseJSON.error) {
+                    setLoginErrorMsg(responseJSON.msg)
+                }
             })
             .catch(err => {
-                console.log(err)
+                console.log(err);
             })
     }
 
@@ -61,6 +68,7 @@ function LoginForm() {
                 onChange={e => setPassword(e.target.value)}
 
             />
+            { loginErrorMsg.length ? <Alert severity="error">{loginErrorMsg}</Alert> : <></> }
             <Button type="submit" sx={theme.inputField} variant="contained">Se Connecter</Button>
         </form>
     )
