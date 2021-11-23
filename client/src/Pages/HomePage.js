@@ -14,7 +14,19 @@ export default function HomePage() {
         />
         <div>
             {!authed ? (
-                <h1>Welcome!</h1>
+                <div className="container">
+                    <div className="info-container">
+                        <h1>Welcome!</h1>
+                    </div>
+                    <div className="button-container">
+                        <Button variant="contained" href="/login">
+                            Login
+                        </Button>
+                        <Button variant="contained" href="/register">
+                            Register
+                        </Button>
+                    </div>
+                </div>
             ) : (
                 <div className="container">
                     <div className="info-container">

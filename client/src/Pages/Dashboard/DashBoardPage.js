@@ -4,7 +4,7 @@ import WeatherWidget from '../../Components/Widgets/WeatherWidget/';
 import YoutubeCommentWidget from '../../Components/Widgets/YoutubeCommentWidget';
 import YoutubeSubNBWidget from '../../Components/Widgets/YoutubeSubNBWidget';
 import RedditSubFeedWidget from '../../Components/Widgets/RedditSubFeedWidget';
-import SpotifyTopWidget from '../../Components/Widgets/SpotifyTopWidget/SpotifyTopWidget';
+import SpotifyTopWidget from '../../Components/Widgets/SpotifyTopWidget';
 
 //Drag
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
