@@ -1,1 +1,1 @@
-export {default} from './RenderSpotifyTopWidgetSpotifyTopWidget';
+export {default} from './RenderSpotifyTopWidget';

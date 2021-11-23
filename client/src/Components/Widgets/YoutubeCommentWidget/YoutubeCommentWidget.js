@@ -41,7 +41,6 @@ function YoutubeCommentWidget ({videoTitle, commentList}) {
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
 
                 {commentList.map((item, idx) => {
-                    console.log('item :', item);
                     return (
                         <Comment
                             key={item.id}

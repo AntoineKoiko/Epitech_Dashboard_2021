@@ -12,14 +12,14 @@ const requestOptions = {
 }
 
 function RenderRedditSubFeedWidget () {
-    const [subName, setSubName] = useState('python');
-    const [sort, setSort] = useState('hot');
+    const [subName, setSubName] = useState('r/mac');
+    const [sort, setSort] = useState('new');
 
     useEffect(() => {
         const redditURL = new URL('http://localhost:8080/reddit/post');
 
-        redditURL.searchParams.append('sort', sort);
         redditURL.searchParams.append('name', subName);
+        redditURL.searchParams.append('sort', sort);
 
         console.log('reddit url ', redditURL.toString());
         fetch(redditURL, requestOptions)
