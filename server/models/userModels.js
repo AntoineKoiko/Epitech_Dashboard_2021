@@ -12,7 +12,8 @@ const userSchema = new Schema({
     redditAccessToken: String,
     redditRefreshToken: String,
     googleAccessToken: String,
-    googleRefreshToken: String
+    googleRefreshToken: String,
+    passwordLocal: String
 });
 
 const User = mongoose.model("user", userSchema);

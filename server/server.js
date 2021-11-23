@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const cookieSession = require("cookie-session");
+const bodyParser = require("body-parser");
 const express = require('express');
 const app = express();
 const passport = require('passport');
@@ -22,6 +23,8 @@ mongoose.connect(mongodbConfig.MONGODB_URI, () => {
     //TODO: GERER ERREUR DB
     console.log(`connected to mongo db: ${mongodbConfig.MONGODB_URI}`);
 })
+
+app.use(bodyParser.json())
 
 app.use(
     cookieSession({
