@@ -3,6 +3,16 @@ import { TextField, Button } from '@mui/material';
 import { createTheme } from '@mui/system';
 import './RegistrationForm.css';
 
+const requestOptions = {
+    method: "POST",
+    credentials: "include",
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Credentials": true
+    },
+}
+
 function RegistrationForm() {
     const [email, setEmail] = useState("");
     const [emailConfirm, setEmailConfirm] = useState("");
@@ -11,6 +21,21 @@ function RegistrationForm() {
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError ] = useState(false);
     const [passwordErrorText, setPasswordErrorText ] = useState(false);
+
+    function registerReq() {
+        const config = {...requestOptions, body: JSON.stringify({
+            "email": email,
+            "password": password
+        })}
+        console.log(config)
+        fetch("http://localhost:8080/register", config)
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     function validateEmail() {
         if (email !== emailConfirm) {
@@ -44,6 +69,7 @@ function RegistrationForm() {
     }
 
     const handleSubmit = (event) => {
+        event.preventDefault();
         setEmailError(false)
         setPasswordError(false);
         setPasswordErrorText("");
@@ -52,6 +78,7 @@ function RegistrationForm() {
             return;
         }
         console.log("Username:", email, " password:", password);
+        registerReq();
     }
 
     return (

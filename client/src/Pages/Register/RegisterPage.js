@@ -1,14 +1,9 @@
 import React from 'react';
-import GoogleLogin from 'react-google-login';
 import Button from '@mui/material/Button';
 import RegistrationForm from '../../Components/Forms/RegistrationForm';
 import { createTheme } from '@mui/system';
 import './RegisterPage.css';
 import '../../Styles/GlobalStyle.css';
-
-const responseGoogle = (response) => {
-    console.log(response);
-}
 
 function RegisterPage() {
     return (
@@ -17,16 +12,9 @@ function RegisterPage() {
                 <div className="main-container">
                     <p>Pour continuer, inscrivez-vous a Dashboard</p>
 
-                    <Button sx={theme.inputField} className="input-field" href="https://www.spotify.com" variant="contained">Inscrivez-vous avec spotifyd</Button>
+                    <Button sx={theme.inputField} className="input-field" href="https://www.spotify.com" variant="contained">Inscrivez-vous avec spotify</Button>
                     <Button sx={theme.inputField} className="input-field" href="https://www.reddit.com" variant="contained">Inscrivez-vous avec reddit</Button>
-                    <GoogleLogin
-                        className="input-field"
-                        clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-                        buttonText="Inscrivez-vous avec Google"
-                        onSuccess={responseGoogle}
-                        onFailure={responseGoogle}
-                        cookiePolicy={'single_host_origin'}
-                    />
+                    <Button sx={theme.inputField} className="input-field" href="https://www.google.com" variant="contained">Inscrivez-vous avec google</Button>
 
                     <h2 className="word-divider"><span>ou</span></h2>
 

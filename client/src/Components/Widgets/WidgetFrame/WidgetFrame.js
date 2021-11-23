@@ -1,5 +1,4 @@
 import React from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import IconButton from '@mui/material/IconButton';
@@ -24,15 +23,15 @@ function WidgetFrame({title, subtitle, expand, children, expandContent}) {
             <CardHeader
                 action={
                     <IconButton aria-label="settings">
-                      <MoreVertIcon />
+                        <MoreVertIcon />
                     </IconButton>
-                  }
+                }
                 title={title}
                 subheader={subtitle}
             />
             {children}
             {expand
-            ? (<><CardActions disableSpacing>
+                ? (<><CardActions disableSpacing>
                     <ExpandMore
                         expand={expanded}
                         onClick={handleExpandClick}
@@ -42,10 +41,10 @@ function WidgetFrame({title, subtitle, expand, children, expandContent}) {
                         <ExpandMoreIcon />
                     </ExpandMore>
                 </CardActions><Collapse in={expanded} timeout="auto" unmountOnExit>
-                        {expandContent}
-                    </Collapse></>
-            )
-        : []}
+                    {expandContent}
+                </Collapse></>
+                )
+                : []}
         </Card>
     )
 }
