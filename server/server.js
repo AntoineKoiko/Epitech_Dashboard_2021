@@ -13,6 +13,7 @@ const weatherRoutes = require("./routes/weatherRoutes");
 const spotifyRoutes = require("./routes/spotifyRoutes");
 const redditRoutes = require("./routes/redditRoutes");
 const youtubeRoutes = require("./routes/youtubeRoutes");
+const widgetsRoutes = require("./routes/widgetsRoutes");
 const mongoose = require("mongoose")
 const serverConfig = require('./config/serverConfig');
 const cors = require('cors');
@@ -66,7 +67,8 @@ app.use("/stock", stockRoutes);
 app.use("/weather", weatherRoutes)
 app.use("/spotify", spotifyRoutes);
 app.use("/reddit", redditRoutes);
-app.use("/youtube", youtubeRoutes)
+app.use("/youtube", youtubeRoutes);
+app.use("/widgets", widgetsRoutes);
 
 app.get("/", (req, res) => {
     res.status(200);
