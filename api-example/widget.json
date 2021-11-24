@@ -1,0 +1,62 @@
+{
+    "widgets": [
+        {
+            "service": "stock",
+            "type": "stock_value",
+            "params": {
+                "stock_id": "AAPL"
+            },
+            "refresh_rate": 120
+        },
+        {
+            "service": "weather",
+            "type": "actual_weather",
+            "params": {
+                "city": "Rennes"
+            },
+            "refresh_rate": 120
+        },
+        {
+            "service": "youtube",
+            "type": "channel_stat",
+            "params": {
+                "channel_id": ""
+            },
+            "refresh_rate": 120
+        },
+        {
+            "service": "youtube",
+            "type": "video_comment",
+            "params": {
+                "video_id": ""
+            },
+            "refresh_rate": 120
+        },
+        {
+            "service": "reddit",
+            "type": "subreddit_post",
+            "params": {
+                "subreddit_name": "r/mac",
+                "sort": "new"
+
+            },
+            "refresh_rate": 120
+        },
+        {
+            "service": "spotify",
+            "type": "top_artists",
+            "params": {
+                "time_range": "short_term"
+            },
+            "refresh_rate": 120
+        },
+        {
+            "service": "spotify",
+            "type": "top_tracks",
+            "params": {
+                "time_range": "short_term"
+            },
+            "refresh_rate": 120
+        }
+    ]
+}
