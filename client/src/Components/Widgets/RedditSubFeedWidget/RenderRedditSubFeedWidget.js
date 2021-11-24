@@ -14,6 +14,7 @@ const requestOptions = {
 function RenderRedditSubFeedWidget () {
     const [subName, setSubName] = useState('r/mac');
     const [sort, setSort] = useState('new');
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         const redditURL = new URL('http://localhost:8080/reddit/post');
@@ -30,6 +31,7 @@ function RenderRedditSubFeedWidget () {
             })
             .then(responseJSON => {
                 console.log('json reddit response ', responseJSON);
+                setPosts(responseJSON.data.children);
             })
             .catch(error => {
                 console.log('fetch error for reddit');
@@ -40,7 +42,7 @@ function RenderRedditSubFeedWidget () {
     }, [subName, sort]);
 
 
-    return <RedditSubFeedWidget/>;
+    return <RedditSubFeedWidget name={subName} data={posts}/>;
 }
 
 export default RenderRedditSubFeedWidget;

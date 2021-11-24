@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import SpotifyTopWidget from './SpotifyTopWidget';
+import SpotifyTopArtistsWidget from './SpotifyTopArtistsWidget';
 
 const requestOptions = {
     method: "GET",
@@ -11,9 +11,10 @@ const requestOptions = {
     }
 }
 
-function RenderSpotifyTopWidget() {
+function RenderSpotifyTopArtistsWidget() {
     const [topMode, setTopMode] = useState('artists'); // artists | tracks
     const [timeRange, setTimeRange] = useState('short_term'); // 'short_term', 'medium_term', 'long_term'
+    const [items, setItems] = useState([]);
 
     console.log('spotify');
     useEffect(() => {
@@ -32,6 +33,7 @@ function RenderSpotifyTopWidget() {
             })
             .then(responseJSON => {
                 console.log('json spotify response ', responseJSON);
+                setItems(responseJSON.items.slice(0, 5));
             })
             .catch(error => {
                 console.log('fetch error for spotify');
@@ -41,8 +43,8 @@ function RenderSpotifyTopWidget() {
             })
     }, [timeRange]);
 
-    return <SpotifyTopWidget />;
+    return <SpotifyTopArtistsWidget mode={topMode} data={items}/>;
 }
 
-export default RenderSpotifyTopWidget;
+export default RenderSpotifyTopArtistsWidget;
 

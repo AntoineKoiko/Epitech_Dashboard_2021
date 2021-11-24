@@ -30,7 +30,7 @@ function RenderYoutubeCommentWidget() {
             })
             .then(responseJSON => {
                 console.log('json youtube comment response ', responseJSON);
-                setComments(responseJSON);
+                setComments(responseJSON.slice(0, 5));
             })
             .catch(error => {
                 console.log('fetch error for youtube comment');
