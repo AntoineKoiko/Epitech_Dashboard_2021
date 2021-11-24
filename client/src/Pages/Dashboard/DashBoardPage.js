@@ -4,7 +4,8 @@ import WeatherWidget from '../../Components/Widgets/WeatherWidget/';
 import YoutubeCommentWidget from '../../Components/Widgets/YoutubeCommentWidget';
 import YoutubeSubNBWidget from '../../Components/Widgets/YoutubeSubNBWidget';
 import RedditSubFeedWidget from '../../Components/Widgets/RedditSubFeedWidget';
-import SpotifyTopWidget from '../../Components/Widgets/SpotifyTopWidget';
+import SpotifyTopTrackWidget from '../../Components/Widgets/SpotifyTopTrackWidget';
+import SpotifyTopArtistsWidget from '../../Components/Widgets/SpotifyTopArtistsWidget';
 
 //Drag
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
@@ -37,7 +38,8 @@ function DashboardPage() {
             <ToDrag x={0} y={0}><YoutubeCommentWidget videoTitle="test"/></ToDrag>
             <ToDrag x={0} y={0}><YoutubeSubNBWidget/></ToDrag>
             <ToDrag x={0} y={0}><RedditSubFeedWidget/></ToDrag>
-            <ToDrag x={0} y={0}><SpotifyTopWidget/></ToDrag>
+            <ToDrag x={0} y={0}><SpotifyTopTrackWidget/></ToDrag>
+            <ToDrag x={0} y={0}><SpotifyTopArtistsWidget/></ToDrag>
         </div>
     )
 }
