@@ -1,7 +1,7 @@
 version: '3'
 services:
   dashboard-database:
-    image: mongo:latest
+    image: mongo:5
     volumes:
       - dashboard-db-data:/data/db
       - dashboard-db-config:/data/configdb
