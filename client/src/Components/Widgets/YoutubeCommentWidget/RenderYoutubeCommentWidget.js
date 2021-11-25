@@ -11,8 +11,7 @@ const requestOptions = {
     }
 }
 
-function RenderYoutubeCommentWidget() {
-    const [videoId, setId] = useState('yeYGZmnW_kc');
+function RenderYoutubeCommentWidget({videoId}) {
     const [videoName, setName] = useState('Unknown');
     const [comments, setComments] = useState([]);
 

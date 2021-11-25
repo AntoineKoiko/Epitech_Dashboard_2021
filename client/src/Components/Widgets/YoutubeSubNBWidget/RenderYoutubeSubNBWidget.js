@@ -12,8 +12,7 @@ const requestOptions = {
     }
 }
 
-function RenderYoutubeSubNBWidget ({channelID}) {
-    const [channelId, setChannelId] = useState("UCAuUUnT6oDeKwE6v1NGQxug")
+function RenderYoutubeSubNBWidget ({channelId}) {
     const [channelName, setChannelName] = useState("TauteYT");
     const [channelInfo, setChannelInfo] = useState({
         viewCount: "0",

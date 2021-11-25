@@ -11,15 +11,13 @@ const requestOptions = {
     }
 }
 
-function RenderRedditSubFeedWidget () {
-    const [subName, setSubName] = useState('r/mac');
-    const [sort, setSort] = useState('new');
+function RenderRedditSubFeedWidget ({subredditName, sort}) {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         const redditURL = new URL('http://localhost:8080/reddit/post');
 
-        redditURL.searchParams.append('name', subName);
+        redditURL.searchParams.append('name', subredditName);
         redditURL.searchParams.append('sort', sort);
 
         console.log('reddit url ', redditURL.toString());
@@ -39,10 +37,10 @@ function RenderRedditSubFeedWidget () {
             // setAutenticated(false);
             // setError("Failed to authenticate user");
             })
-    }, [subName, sort]);
+    }, [subredditName, sort]);
 
 
-    return <RedditSubFeedWidget name={subName} data={posts}/>;
+    return <RedditSubFeedWidget name={subredditName} data={posts}/>;
 }
 
 export default RenderRedditSubFeedWidget;
