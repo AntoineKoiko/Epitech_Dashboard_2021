@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import RenderStockWidget from '../../Components/Widgets/StockWidget/RenderStockWidget';
 import WeatherWidget from '../../Components/Widgets/WeatherWidget/';
 import YoutubeCommentWidget from '../../Components/Widgets/YoutubeCommentWidget';
@@ -6,9 +6,20 @@ import YoutubeSubNBWidget from '../../Components/Widgets/YoutubeSubNBWidget';
 import RedditSubFeedWidget from '../../Components/Widgets/RedditSubFeedWidget';
 import SpotifyTopTrackWidget from '../../Components/Widgets/SpotifyTopTrackWidget';
 import SpotifyTopArtistsWidget from '../../Components/Widgets/SpotifyTopArtistsWidget';
+import WidgetFactory from '../../Components/Widgets/Factory/WidgetFactory';
 
 //Drag
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
+
+const requestOptions = {
+    method: "GET",
+    credentials: "include",
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Credentials": true
+    }
+}
 
 function ToDrag({x, y, children}) {
     return (
@@ -29,6 +40,25 @@ function ToDrag({x, y, children}) {
 
 
 function DashboardPage() {
+    const [widgetList, setWidgetList] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/widgets", requestOptions)
+            .then(response => {
+                console.log(response.status);
+                if (response.status === 200)
+                    return response.json();
+                throw new Error("failed to parse json"); 
+            })
+            .then(responseJSON => {
+                setWidgetList(responseJSON);
+                console.log("JSON widget: ", responseJSON)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }, []);
+
     return (
         <div>
             <p>I'm the dasboard page</p>
@@ -40,6 +70,11 @@ function DashboardPage() {
             <ToDrag x={0} y={0}><RedditSubFeedWidget subredditName="r/mac" sort="new"/></ToDrag>
             <ToDrag x={0} y={0}><SpotifyTopTrackWidget timeRange="short_term"/></ToDrag>
             <ToDrag x={0} y={0}><SpotifyTopArtistsWidget timeRange="short_term"/></ToDrag>
+            {
+                widgetList.length ? widgetList.map((widget) => {
+                    return <ToDrag x={0} y={0}><WidgetFactory key={widget._id} widget={widget}/></ToDrag>;
+                }) : <></>
+            }
         </div>
     )
 }
