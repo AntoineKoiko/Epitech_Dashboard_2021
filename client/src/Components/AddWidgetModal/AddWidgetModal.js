@@ -102,6 +102,11 @@ const FormItems = [
 
 const RefreshRateList = [
     {
+        value: 30,
+        label: '30 Seconds'
+    },
+
+    {
         value: 60,
         label: '1 Minute'
     },
@@ -136,7 +141,6 @@ function AddWidgetModal ({handler, open}) {
     const [widgetSelect, setWidget] = useState(serviceSelect.widgets[0]);
     const [timeRefresh, setTimeRefresh] = useState(60);
     const [textParams, setTextParams] = useState("");
-    const [refreshRate, setRefreshRate] = useState(RefreshRateList[0].value);
 
     const handleClose = () => {
         addWidgetReq();
@@ -211,8 +215,8 @@ function AddWidgetModal ({handler, open}) {
                             <Select
                                 labelId="refresh-select-label"
                                 id="refresh-select"
-                                value={refreshRate}
-                                onChange={(event) => setRefreshRate(event.target.value)}
+                                value={timeRefresh}
+                                onChange={(event) => setTimeRefresh(event.target.value)}
                                 label="Service"
                             >
                                 {RefreshRateList.map((rate) => {
