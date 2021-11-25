@@ -4,6 +4,7 @@ const spotifyConfig = require("../config/spotifyConfig");
 const User = require("../models/userModels");
 
 const successfullyAuthentificated = async (accessToken, refreshToken, expires_in, profile, done) => {
+    const actualDate = new Date();
     const currentUser = await User.findOne({
         accountId: profile.id
     });
@@ -15,6 +16,7 @@ const successfullyAuthentificated = async (accessToken, refreshToken, expires_in
             spotifyAccessToken: accessToken,
             spotifyRefreshToken: refreshToken,
             spotifyExpiresIn: expires_in,
+            spotifyExpirationDate: actualDate.setSeconds(actualDate.getSeconds() + expires_in - 10),
         }).save();
         if (newUser) {
             return done(null, newUser);

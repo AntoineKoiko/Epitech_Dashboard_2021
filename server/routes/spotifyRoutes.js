@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const spotifyService = require("../services/spotifyService");
 
-router.get("/artists", (req, res) => {
+router.get("/artists", spotifyService.shouldRefreshToken, (req, res) => {
     const timeRange = req.query.time_range;
 
     if (!timeRange || !spotifyService.checkValidTimeRange(timeRange)) {
@@ -19,7 +19,7 @@ router.get("/artists", (req, res) => {
         })
 })
 
-router.get("/tracks", (req, res) => {
+router.get("/tracks", spotifyService.shouldRefreshToken, (req, res) => {
     const timeRange = req.query.time_range;
 
     if (!timeRange || !spotifyService.checkValidTimeRange(timeRange)) {
