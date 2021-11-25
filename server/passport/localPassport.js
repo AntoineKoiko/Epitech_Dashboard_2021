@@ -22,14 +22,6 @@ const registerUser = async (req, res) => {
             name: displayName,
             screenName: displayName,
             accountId: email,
-            profileImageUrl: "",
-            spotifyAccessToken: "",
-            spotifyRefreshToken: "",
-            spotifyExpiresIn: "",
-            redditAccessToken: "",
-            redditRefreshToken: "",
-            googleAccessToken: "",
-            googleRefreshToken: "",
             passwordLocal: hash
         }).save();
         if (newUser) {

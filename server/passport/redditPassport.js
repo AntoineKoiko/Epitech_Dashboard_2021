@@ -12,14 +12,8 @@ const sucessfullyAuthentificated = async(accessToken, refreshToken, profile, don
             name: profile.name,
             screenName: profile.name,
             accountId: profile.id,
-            profileImageUrl: "",
-            spotifyAccessToken: "",
-            spotifyRefreshToken: "",
-            spotifyExpiresIn: "",
             redditAccessToken: accessToken,
             redditRefreshToken: refreshToken,
-            googleAccessToken: "",
-            googleRefreshToken: "",
         }).save();
         if (newUser) {
             return done(null, newUser);
