@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import IconButton from '@mui/material/IconButton';
@@ -11,12 +11,10 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 
-
 function WidgetFrame({title, subtitle, expand, children, expandContent}) {
     const [expanded, setExpanded] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-    const [openModal, setOpenModal] = useState(false);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -25,17 +23,6 @@ function WidgetFrame({title, subtitle, expand, children, expandContent}) {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
-    const openAddModal = () => {
-        handleClose();
-        setOpenModal(true);
-    }
-
-    const handler = (val) => {
-        setOpenModal(val);
-    }
-
-
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
