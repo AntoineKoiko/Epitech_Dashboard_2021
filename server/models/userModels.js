@@ -10,6 +10,7 @@ const userSchema = new Schema({
     spotifyAccessToken: {type: String, default: ""},
     spotifyRefreshToken: {type: String, default: ""},
     spotifyExpiresIn: {type: String, default: ""},
+    spotifyExpirationDate: {type: Number},
     redditAccessToken: {type: String, default: ""},
     redditRefreshToken: {type: String, default: ""},
     googleAccessToken: {type: String, default: ""},
