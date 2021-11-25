@@ -21,7 +21,6 @@ const getChannelStats = async(channelId) => {
                 id: channelId
             }
         })
-        console.log(result.data);
         return result.data.items[0].statistics;
     } catch (error) {
         throw `getChannelStats ${error.toString()}`;
@@ -36,7 +35,6 @@ const getVideoComments = async(videoId) => {
                 videoId: videoId
             }
         })
-        console.log(result.data.items);
         return result.data.items;
     } catch (error) {
         throw `getVideoComments ${error.toString()}`;
