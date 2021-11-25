@@ -31,7 +31,7 @@ function WidgetFrame({title, subtitle, expand, children, expandContent}) {
     return (
         <Card
             variant="outlined"
-            sx={{maxWidth: 300, minWidth: 50}}
+            sx={{maxWidth: 300, minWidth: 50, borderRadius: 4}}
         >
             <CardHeader
                 action={
@@ -42,7 +42,7 @@ function WidgetFrame({title, subtitle, expand, children, expandContent}) {
                 title={title}
                 subheader={subtitle}
             />
-            {children}
+            <CardContent>{children}</CardContent>
             {expand
                 ? (<><CardActions disableSpacing>
                     <ExpandMore
