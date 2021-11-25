@@ -11,9 +11,9 @@ const requestOptions = {
     }
 }
 
-function RenderSpotifyTopTrackWidget() {
+function RenderSpotifyTopTrackWidget({timeRange}) {
     const [topMode, setTopMode] = useState('tracks'); // artists | tracks
-    const [timeRange, setTimeRange] = useState('short_term'); // 'short_term', 'medium_term', 'long_term'
+    //const [timeRange, setTimeRange] = useState('short_term'); // 'short_term', 'medium_term', 'long_term'
     const [items, setItems] = useState([]);
 
     console.log('spotify');
