@@ -98,6 +98,37 @@ const FormItems = [
 ];
 
 
+//value in seconds
+
+const RefreshRateList = [
+    {
+        value: 60,
+        label: '1 Minute'
+    },
+
+    {
+        value: 300,
+        label: '5 Minutes'
+    },
+
+    {
+        value: 600,
+        label: '10 Minutes'
+    },
+
+    {
+        value: 1800,
+        label: '30 Minutes'
+    },
+
+    {
+        value: 3600,
+        label: '1 Hour'
+    },
+];
+
+
+
 function AddWidgetModal ({handler, open}) {
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -105,6 +136,7 @@ function AddWidgetModal ({handler, open}) {
     const [widgetSelect, setWidget] = useState(serviceSelect.widgets[0]);
     const [timeRefresh, setTimeRefresh] = useState(60);
     const [textParams, setTextParams] = useState("");
+    const [refreshRate, setRefreshRate] = useState(RefreshRateList[0].value);
 
     const handleClose = () => {
         addWidgetReq();
@@ -174,14 +206,30 @@ function AddWidgetModal ({handler, open}) {
                                     return <MenuItem key={service.id} value={service.id}>{service.label}</MenuItem>;
                                 })}
                             </Select>
+
+                            <InputLabel id="refresh-input-label">Refresh rate</InputLabel>
+                            <Select
+                                labelId="refresh-select-label"
+                                id="refresh-select"
+                                value={refreshRate}
+                                onChange={(event) => setRefreshRate(event.target.value)}
+                                label="Service"
+                            >
+                                {RefreshRateList.map((rate) => {
+                                    return <MenuItem key={rate.value} value={rate.value}>{rate.label}</MenuItem>;
+                                })}
+                            </Select>
+
+
                         </FormControl>
-                        <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+                        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                             <InputLabel id="widget-input-label">Widget</InputLabel>
                             <Select
                                 labelId="widget-select-label"
                                 id="widget-select"
                                 value={widgetSelect.id}
                                 onChange={handleChangeWidget}
+                                label="Widget"
                             >
                                 {serviceSelect.widgets.map((widget) => {
                                     return <MenuItem key={widget.id} value={widget.id}>{widget.label}</MenuItem>;
