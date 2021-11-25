@@ -15,6 +15,15 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
+const requestOptions = {
+    method: "Post",
+    credentials: "include",
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Credentials": true
+    },
+}
 
 const FormItems = [
     {
@@ -22,12 +31,12 @@ const FormItems = [
         label: 'Youtube',
         widgets: [
             {
-                id: 'comment',
+                id: 'video_comment',
                 label: 'Comment',
                 optionLabel: 'Choose a video',
             },
             {
-                id: 'view',
+                id: 'channel_stat',
                 label: 'View',
                 optionLabel: 'Choose a video',
             },
@@ -39,9 +48,14 @@ const FormItems = [
         label: 'Spotify',
         widgets: [
             {
-                id: 'tracks',
+                id: 'top_tracks',
                 label: 'Tracks',
-                optionLabel: 'Choose artist / time'
+                optionLabel: 'Choose a time range'
+            },
+            {
+                id: 'top_artists',
+                label: 'Artists',
+                optionLabel: 'Choose a time range'
             },
         ],
     },
@@ -51,7 +65,7 @@ const FormItems = [
         label: 'Reddit',
         widgets: [
             {
-                id: 'subPost',
+                id: 'subreddit_post',
                 label: 'Post of a sub',
                 optionLabel: 'Choose a sub reddit'
             },
@@ -63,7 +77,7 @@ const FormItems = [
         label: 'Stock',
         widgets: [
             {
-                id: 'firmmStock',
+                id: 'stock_value',
                 label: 'Follow a Stock',
                 optionLabel: 'Enter a Stock code'
             },
@@ -75,7 +89,7 @@ const FormItems = [
         label: 'Weather',
         widgets: [
             {
-                id: 'cityWeather',
+                id: 'actual_weather',
                 label: 'Weather of a city',
                 optionLabel: 'Enter a city name'
             },
@@ -89,10 +103,36 @@ function AddWidgetModal ({handler, open}) {
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
     const [serviceSelect, setService] = useState(FormItems[0]);
     const [widgetSelect, setWidget] = useState(serviceSelect.widgets[0]);
+    const [timeRefresh, setTimeRefresh] = useState(60);
+    const [textParams, setTextParams] = useState("");
 
     const handleClose = () => {
+        addWidgetReq();
         handler(false);
     };
+
+    const addWidgetReq = () => {
+        const config = {...requestOptions, body: JSON.stringify({
+            service: serviceSelect.id,
+            type: widgetSelect.id,
+            params: {
+                params1: textParams
+            },
+            refreshRate: timeRefresh
+        })}
+        fetch("http://localhost:8080/widgets/", config)
+            .then(response => {
+                response.text().then(function (text) {
+                    console.log(text);
+                });
+                console.log(response.statusText)
+                console.log(response.status);
+                console.log(response.text);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
     const handleChangeService = (event) => {
         const newID = event.target.value;
@@ -148,7 +188,7 @@ function AddWidgetModal ({handler, open}) {
                                 })}
 
                             </Select>
-                            <TextField id="opt" label={widgetSelect.optionLabel} variant="standard" />
+                            <TextField id="opt" label={widgetSelect.optionLabel} variant="standard" onChange={e => setTextParams(e.target.value)}/>
 
                         </FormControl>
                     </div>
