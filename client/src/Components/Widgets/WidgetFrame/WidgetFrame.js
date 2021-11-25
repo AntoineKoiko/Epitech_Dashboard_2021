@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import IconButton from '@mui/material/IconButton';
@@ -7,9 +7,35 @@ import CardActions from '@mui/material/CardActions';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { Collapse } from '@mui/material';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
+
 
 function WidgetFrame({title, subtitle, expand, children, expandContent}) {
     const [expanded, setExpanded] = React.useState(false);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const openAddModal = () => {
+        handleClose();
+        setOpenModal(true);
+    }
+
+    const handler = (val) => {
+        setOpenModal(val);
+    }
+
+
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -22,7 +48,7 @@ function WidgetFrame({title, subtitle, expand, children, expandContent}) {
         >
             <CardHeader
                 action={
-                    <IconButton aria-label="settings">
+                    <IconButton aria-label="settings" onClick={handleClick}>
                         <MoreVertIcon />
                     </IconButton>
                 }
@@ -45,6 +71,21 @@ function WidgetFrame({title, subtitle, expand, children, expandContent}) {
                 </Collapse></>
                 )
                 : []}
+
+            <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                }}
+            >
+                <MenuItem >Update</MenuItem>
+                <MenuItem >Lock position</MenuItem>
+                <MenuItem >Delete</MenuItem>
+            </Menu>
+
         </Card>
     )
 }
