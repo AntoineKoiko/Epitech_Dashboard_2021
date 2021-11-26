@@ -12,15 +12,11 @@ const requestOptions = {
 }
 
 function RenderSpotifyTopArtistsWidget({timeRange, refresh}) {
-    const [topMode, setTopMode] = useState('artists'); // artists | tracks
-    //const [timeRange, setTimeRange] = useState('short_term'); // 'short_term', 'medium_term', 'long_term'
+    const refreshRate = refresh !== undefined ? refresh : 60;
     const [items, setItems] = useState([]);
 
-
     function fetchData() {
-        const artistUrl = '/spotify/artists';
-        const trackUrl = '/spotify/tracks';
-        const spotifyURL = new URL('http://localhost:8080' + (topMode === 'artists' ? artistUrl : trackUrl));
+        const spotifyURL = new URL('http://localhost:8080/spotify/artists');
         spotifyURL.searchParams.append('time_range', timeRange);
 
         console.log('spotify  url ', spotifyURL.toString());
@@ -37,17 +33,15 @@ function RenderSpotifyTopArtistsWidget({timeRange, refresh}) {
             .catch(error => {
                 console.log('fetch error for spotify');
                 console.log(error);
-            // setAutenticated(false);
-            // setError("Failed to authenticate user");
             })
     }
 
     useEffect(() => {
         console.log(`initializing interval`);
         const interval = setInterval(() => {
-            console.log("spotify top Artist of ", "unknown" , "refresh is ", refresh, " mount at ", new Date().getSeconds() );
+            console.log("spotify top Artist of ", "unknown" , "refresh is ", refreshRate, " mount at ", new Date().getSeconds() );
             fetchData();
-        }, 60 * 1000);
+        }, refreshRate * 1000);
 
         fetchData();
 
@@ -56,9 +50,9 @@ function RenderSpotifyTopArtistsWidget({timeRange, refresh}) {
             clearInterval(interval);
         };
 
-    }, [timeRange]);
+    }, []);
 
-    return <SpotifyTopArtistsWidget mode={topMode} data={items}/>;
+    return <SpotifyTopArtistsWidget mode="artists" data={items}/>;
 }
 
 export default RenderSpotifyTopArtistsWidget;

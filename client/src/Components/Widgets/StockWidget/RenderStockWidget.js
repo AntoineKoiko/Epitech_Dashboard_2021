@@ -14,6 +14,7 @@ const requestOptions = {
 }
 
 function RenderStockWidget({stockID, refresh}) {
+    const refreshRate = refresh !== undefined ? refresh : 60;
     const stockName = stockID ? stockID : 'MSFT';
     const [stockInfo, setStockInfo] = useState({
         'currentPrice': 0,
@@ -48,9 +49,9 @@ function RenderStockWidget({stockID, refresh}) {
     useEffect(() => {
         console.log(`initializing interval`);
         const interval = setInterval(() => {
-            console.log("stock of ", stockName, "refresh is ", refresh, " mount at ", new Date().getSeconds() );
+            console.log("stock of ", stockName, "refresh is ", refreshRate, " mount at ", new Date().getSeconds() );
             fetchData();
-        }, 30 * 1000);
+        }, refreshRate * 1000);
 
         fetchData();
 

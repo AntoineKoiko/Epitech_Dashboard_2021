@@ -12,6 +12,7 @@ const requestOptions = {
 }
 
 function RenderYoutubeCommentWidget({videoId, refresh}) {
+    const refreshRate = refresh !== undefined ? refresh : 60;
     const [videoName, setName] = useState('Unknown');
     const [comments, setComments] = useState([]);
 
@@ -32,8 +33,6 @@ function RenderYoutubeCommentWidget({videoId, refresh}) {
             .catch(error => {
                 console.log('fetch error for youtube comment');
                 console.log(error);
-            // setAutenticated(false);
-            // setError("Failed to authenticate user");
             })
     }
 
@@ -42,7 +41,7 @@ function RenderYoutubeCommentWidget({videoId, refresh}) {
         const interval = setInterval(() => {
             console.log("youtube comment of ", videoName , "refresh is ", refresh, " mount at ", new Date().getSeconds() );
             fetchData();
-        }, 60 * 1000);
+        }, refreshRate * 1000);
 
         fetchData();
 

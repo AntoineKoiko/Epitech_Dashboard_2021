@@ -13,6 +13,7 @@ const requestOptions = {
 }
 
 function RenderYoutubeSubNBWidget ({channelId, refresh}) {
+    const refreshRate = refresh !== undefined ? refresh : 60;
     const [channelName, setChannelName] = useState("TauteYT");
     const [channelInfo, setChannelInfo] = useState({
         viewCount: "0",
@@ -40,8 +41,6 @@ function RenderYoutubeSubNBWidget ({channelId, refresh}) {
             .catch(error => {
                 console.log('fetch error for youtube sub nb');
                 console.log(error);
-            // setAutenticated(false);
-            // setError("Failed to authenticate user");
             })
     };
 
@@ -50,7 +49,7 @@ function RenderYoutubeSubNBWidget ({channelId, refresh}) {
         const interval = setInterval(() => {
             console.log("youtube sub nb of ", channelName , "refresh is ", refresh, " mount at ", new Date().getSeconds() );
             fetchData();
-        }, 60 * 1000);
+        }, refreshRate * 1000);
 
         fetchData();
 
