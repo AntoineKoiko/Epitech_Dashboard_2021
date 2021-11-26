@@ -11,10 +11,11 @@ const requestOptions = {
     }
 }
 
-function RenderRedditSubFeedWidget ({subredditName, sort}) {
+function RenderRedditSubFeedWidget ({subredditName, sort, refresh}) {
     const [posts, setPosts] = useState([]);
 
-    useEffect(() => {
+
+    function fetchData() {
         const redditURL = new URL('http://localhost:8080/reddit/post');
 
         redditURL.searchParams.append('name', subredditName);
@@ -37,6 +38,22 @@ function RenderRedditSubFeedWidget ({subredditName, sort}) {
             // setAutenticated(false);
             // setError("Failed to authenticate user");
             })
+    };
+
+    useEffect(() => {
+        console.log(`initializing interval`);
+        const interval = setInterval(() => {
+            console.log("spotify top Artist of ", "unknown" , "refresh is ", refresh, " mount at ", new Date().getSeconds() );
+            fetchData();
+        }, 60 * 1000);
+
+        fetchData();
+
+        return () => {
+            console.log(`clearing interval`);
+            clearInterval(interval);
+        };
+
     }, [subredditName, sort]);
 
 
