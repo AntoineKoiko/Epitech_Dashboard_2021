@@ -12,7 +12,7 @@ const requestOptions = {
     }
 }
 
-function RenderWeatherWidget ({cityID}) {
+function RenderWeatherWidget ({cityID, refresh}) {
     const cityName = cityID ? cityID : 'Paris';
     const [weatherInfo, setInfo] = useState({
         'temperature': 0,
@@ -65,7 +65,7 @@ function RenderWeatherWidget ({cityID}) {
     useEffect(() => {
         console.log(`initializing interval`);
         const interval = setInterval(() => {
-            console.log("weather mount at ", new Date().getSeconds() );
+            console.log("weather of ", cityID, "refresh is ", refresh, "mount at ", new Date().getSeconds() );
             fetchData();
         }, 30 * 1000);
 

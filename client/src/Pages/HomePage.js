@@ -9,9 +9,6 @@ export default function HomePage() {
     const { user } = useAuth();
 
     return (<div>
-        <Header
-            authenticated={authed}
-        />
         <div>
             {!authed ? (
                 <div className="container">

@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
+import { CardContent } from '@material-ui/core';
 import IconButton from '@mui/material/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CardActions from '@mui/material/CardActions';

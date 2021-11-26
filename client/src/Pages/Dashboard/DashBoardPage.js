@@ -48,7 +48,7 @@ function DashboardPage() {
                 console.log(response.status);
                 if (response.status === 200)
                     return response.json();
-                throw new Error("failed to parse json"); 
+                throw new Error("failed to parse json");
             })
             .then(responseJSON => {
                 setWidgetList(responseJSON);
@@ -61,10 +61,8 @@ function DashboardPage() {
 
     return (
         <div>
-            <p>I'm the dasboard page</p>
-
             <ToDrag x={0} y={0}><RenderStockWidget stockID="AAPL"/></ToDrag>
-            <ToDrag x={0} y={0}><WeatherWidget cityID="Rennes"/></ToDrag>
+            <ToDrag x={0} y={0}><WeatherWidget cityID="Rennes" refresh={30} /></ToDrag>
             <ToDrag x={0} y={0}><YoutubeCommentWidget videoId="yeYGZmnW_kc" videoTitle="test"/></ToDrag>
             <ToDrag x={0} y={0}><YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug"/></ToDrag>
             <ToDrag x={0} y={0}><RedditSubFeedWidget subredditName="r/mac" sort="new"/></ToDrag>
