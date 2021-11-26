@@ -11,20 +11,18 @@ const requestOptions = {
     }
 }
 
-function RenderSpotifyTopTrackWidget({timeRange}) {
+function RenderSpotifyTopTrackWidget({timeRange, refresh}) {
     const [topMode, setTopMode] = useState('tracks'); // artists | tracks
     //const [timeRange, setTimeRange] = useState('short_term'); // 'short_term', 'medium_term', 'long_term'
     const [items, setItems] = useState([]);
 
-    console.log('spotify');
-    useEffect(() => {
+
+    function fetchData() {
         const artistUrl = '/spotify/artists';
         const trackUrl = '/spotify/tracks';
         const spotifyURL = new URL('http://localhost:8080' + (topMode === 'artists' ? artistUrl : trackUrl));
-
         spotifyURL.searchParams.append('time_range', timeRange);
 
-        console.log('spotify  url ', spotifyURL.toString());
         fetch(spotifyURL, requestOptions)
             .then(response => {
                 if (response.status === 200)
@@ -41,6 +39,22 @@ function RenderSpotifyTopTrackWidget({timeRange}) {
             // setAutenticated(false);
             // setError("Failed to authenticate user");
             })
+    }
+
+    useEffect(() => {
+        console.log(`initializing interval`);
+        const interval = setInterval(() => {
+            console.log("spotify top Track of ", "unknown" , "refresh is ", refresh, " mount at ", new Date().getSeconds() );
+            fetchData();
+        }, 60 * 1000);
+
+        fetchData();
+
+        return () => {
+            console.log(`clearing interval`);
+            clearInterval(interval);
+        };
+
     }, [timeRange]);
 
     return <SpotifyTopTrackWidget mode={topMode} data={items}/>;

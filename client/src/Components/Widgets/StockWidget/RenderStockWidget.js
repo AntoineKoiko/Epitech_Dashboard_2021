@@ -13,7 +13,7 @@ const requestOptions = {
     }
 }
 
-function RenderStockWidget({stockID}) {
+function RenderStockWidget({stockID, refresh}) {
     const stockName = stockID ? stockID : 'MSFT';
     const [stockInfo, setStockInfo] = useState({
         'currentPrice': 0,
@@ -26,7 +26,8 @@ function RenderStockWidget({stockID}) {
         'timestamp': 0,
     });
 
-    useEffect(() => {
+
+    function fetchData() {
         fetch('http://localhost:8080/stock?name=' + stockName, requestOptions)
             .then(response => {
                 if (response.status === 200)
@@ -42,8 +43,22 @@ function RenderStockWidget({stockID}) {
             // setAutenticated(false);
             // setError("Failed to authenticate user");
             })
+    };
 
-    }, [stockName]);
+    useEffect(() => {
+        console.log(`initializing interval`);
+        const interval = setInterval(() => {
+            console.log("stock of ", stockName, "refresh is ", refresh, " mount at ", new Date().getSeconds() );
+            fetchData();
+        }, 30 * 1000);
+
+        fetchData();
+
+        return () => {
+            console.log(`clearing interval`);
+            clearInterval(interval);
+        };
+    }, []);
 
     return <StockWidget stockID={stockID} stockInfo={stockInfo}/>;
 }

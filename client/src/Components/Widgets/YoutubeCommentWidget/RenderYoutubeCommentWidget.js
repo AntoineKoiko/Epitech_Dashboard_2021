@@ -11,16 +11,14 @@ const requestOptions = {
     }
 }
 
-function RenderYoutubeCommentWidget({videoId}) {
+function RenderYoutubeCommentWidget({videoId, refresh}) {
     const [videoName, setName] = useState('Unknown');
     const [comments, setComments] = useState([]);
 
-    useEffect(() => {
+    function fetchData() {
         const ytURL = new URL('http://localhost:8080/youtube/comments');
-
         ytURL.searchParams.append('video_id', videoId);
 
-        console.log('Youtube comment url ', ytURL.toString());
         fetch(ytURL, requestOptions)
             .then(response => {
                 if (response.status === 200)
@@ -37,6 +35,22 @@ function RenderYoutubeCommentWidget({videoId}) {
             // setAutenticated(false);
             // setError("Failed to authenticate user");
             })
+    }
+
+    useEffect(() => {
+        console.log(`initializing interval`);
+        const interval = setInterval(() => {
+            console.log("youtube comment of ", videoName , "refresh is ", refresh, " mount at ", new Date().getSeconds() );
+            fetchData();
+        }, 60 * 1000);
+
+        fetchData();
+
+        return () => {
+            console.log(`clearing interval`);
+            clearInterval(interval);
+        };
+
     }, [videoId]);
 
     return <YoutubeCommentWidget commentList={comments}/>;
