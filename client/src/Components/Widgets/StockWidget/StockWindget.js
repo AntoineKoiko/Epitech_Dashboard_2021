@@ -23,29 +23,32 @@ function StockDetail ({stockInfo}) {
 
 function StockWidget({stockID, stockInfo}) {
     const expandContent = <StockDetail stockInfo={stockInfo} />;
+    const tableur = [
+        {label: "Ouverture", value: Math.round(stockInfo.openPrice * 100) / 100},
+        {label: "+Haut", value: Math.round(stockInfo.highestPrice * 100) / 100},
+        {label: "+Bas", value: Math.round(stockInfo.lowestPrice * 100) / 100},
+        {label: "Cours de clôture", value: Math.round(stockInfo.prevClosePrice * 100) / 100},
+    ];
 
     return (
         <WidgetFrame title="Stock" subtitle={stockID} expand={true} expandContent={expandContent}>
             <div className="stock-widget">
                 <h2>${stockInfo.currentPrice}</h2>
-                <h4 style={{color: stockInfo.percentChange < 0 ? '#D0312D' : '#3CB043', fontWeight: "bold" }}>
-                    {stockInfo.change < 0 ? '' : '+'}{stockInfo.change} ({Math.round(stockInfo.percentChange * 100) / 100} %) aujourd'hui 
+                <h4 style={{color: stockInfo.percentChange < 0 ? '#D0312D' : '#3CB043', fontWeight: "bold", margin: "0 0 4% 0"}}>
+                    {stockInfo.change < 0 ? '' : '+'}{(Math.round(stockInfo.change * 100) / 100).toFixed(2)} ({Math.round(stockInfo.percentChange * 100) / 100} %) aujourd'hui 
                 </h4>
-                <h5>Ouverture {stockInfo.openPrice}</h5>
-                <h5>+Haut {stockInfo.highestPrice}</h5>
-                <h5>+Bas {stockInfo.lowestPrice}</h5>
-                <h5>Cours de clôture {stockInfo.prevClosePrice}</h5>
-                {/* <p>
-                    Value: {stockInfo.currentPrice}$
-                    <span style={{color: stockInfo.percentChange < 0 ? '#F00' : '#0F0'}}>
-                        {stockInfo.percentChange < 0 ? '-' : '+'}{stockInfo.percentChange}%
-                    </span>
-                </p>
-                <p>
-                    <span style={{color: stockInfo.change < 0 ? '#F00' : '#0F0'}}>
-                        {stockInfo.change < 0 ? '-' : '+'}{stockInfo.change}$
-                    </span>
-                </p> */}
+                <table style={{width: "100%"}}>
+                    <tbody>
+                        {
+                            tableur.map((value) => {
+                                return <tr key={value.label}>
+                                    <td><h5>{value.label}</h5></td>
+                                    <td style={{textAlign: "right"}}><h5>{value.value.toFixed(2)}</h5></td>
+                                </tr>      
+                            })
+                        }
+                    </tbody>
+                </table>
             </div>
         </WidgetFrame>
     )
