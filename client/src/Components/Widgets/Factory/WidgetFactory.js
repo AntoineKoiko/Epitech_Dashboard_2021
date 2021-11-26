@@ -7,7 +7,7 @@ import SpotifyTopTrackWidget from '../SpotifyTopTrackWidget';
 import SpotifyTopArtistsWidget from '../SpotifyTopArtistsWidget';
 
 function WidgetFactory({widget}) {
-    console.log(widget)
+    console.log('widget factory: ', widget)
     if (widget.service === "stock") {
         if (widget.type === "stock_value") {
             return <RenderStockWidget stockID={widget.params.params1}/>;
@@ -15,7 +15,7 @@ function WidgetFactory({widget}) {
     }
     if (widget.service === "weather") {
         if (widget.type === "actual_weather") {
-            return <WeatherWidget cityID={widget.params.params1}/>;
+            return <WeatherWidget cityID={widget.params.params1} refresh={widget.refreshRate}/>;
         }
     }
     if (widget.service === "youtube") {
