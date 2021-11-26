@@ -12,7 +12,7 @@ const requestOptions = {
     }
 }
 
-function RenderYoutubeSubNBWidget ({channelId}) {
+function RenderYoutubeSubNBWidget ({channelId, refresh}) {
     const [channelName, setChannelName] = useState("TauteYT");
     const [channelInfo, setChannelInfo] = useState({
         viewCount: "0",
@@ -21,12 +21,11 @@ function RenderYoutubeSubNBWidget ({channelId}) {
         videoCount: "0",
     });
 
-    useEffect(() => {
+    function fetchData() {
         const ytURL = new URL('http://localhost:8080/youtube/channelStats');
-
         ytURL.searchParams.append('channel_id', channelId);
 
-        console.log('yt url ', ytURL.toString());
+        console.log('yt sub url ', ytURL.toString());
         fetch(ytURL, requestOptions)
             .then(response => {
                 if (response.status === 200)
@@ -44,6 +43,21 @@ function RenderYoutubeSubNBWidget ({channelId}) {
             // setAutenticated(false);
             // setError("Failed to authenticate user");
             })
+    };
+
+    useEffect(() => {
+        console.log(`initializing interval`);
+        const interval = setInterval(() => {
+            console.log("youtube sub nb of ", channelName , "refresh is ", refresh, " mount at ", new Date().getSeconds() );
+            fetchData();
+        }, 60 * 1000);
+
+        fetchData();
+
+        return () => {
+            console.log(`clearing interval`);
+            clearInterval(interval);
+        };
 
     }, [channelId]);
 
