@@ -154,7 +154,7 @@ function AddWidgetModal ({handler, open}) {
             params: {
                 params1: textParams
             },
-            refreshRate: timeRefresh
+            refresh: timeRefresh
         })}
         fetch("http://localhost:8080/widgets/", config)
             .then(response => {
