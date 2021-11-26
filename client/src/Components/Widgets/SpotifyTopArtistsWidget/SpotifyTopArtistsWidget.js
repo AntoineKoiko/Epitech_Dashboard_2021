@@ -9,14 +9,14 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 
 
-function TopElt ({title, img, comment}) {
+function TopElt ({title, avatar, comment}) {
     return (
         <ListItem alignItems="center" >
             <Typography sx={{marginRight: 5}}>
                 {comment}
             </Typography>
             <ListItemIcon>
-                <Avatar alt={title} src={img} />
+                <Avatar alt={title} src={avatar} />
             </ListItemIcon>
             <ListItemText
                 primary={title}
