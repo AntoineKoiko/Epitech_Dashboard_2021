@@ -12,6 +12,7 @@ const requestOptions = {
 }
 
 function RenderRedditSubFeedWidget ({subredditName, sort, refresh}) {
+    const refreshRate = refresh !== undefined ? refresh : 60;
     const [posts, setPosts] = useState([]);
 
 
@@ -35,8 +36,6 @@ function RenderRedditSubFeedWidget ({subredditName, sort, refresh}) {
             .catch(error => {
                 console.log('fetch error for reddit');
                 console.log(error);
-            // setAutenticated(false);
-            // setError("Failed to authenticate user");
             })
     };
 
@@ -45,7 +44,7 @@ function RenderRedditSubFeedWidget ({subredditName, sort, refresh}) {
         const interval = setInterval(() => {
             console.log("spotify top Artist of ", "unknown" , "refresh is ", refresh, " mount at ", new Date().getSeconds() );
             fetchData();
-        }, 60 * 1000);
+        }, refreshRate * 1000);
 
         fetchData();
 

@@ -13,6 +13,7 @@ const requestOptions = {
 }
 
 function RenderWeatherWidget ({cityID, refresh}) {
+    const refreshRate = refresh ? refresh : 60;
     const cityName = cityID ? cityID : 'Paris';
     const [weatherInfo, setInfo] = useState({
         'temperature': 0,
@@ -34,40 +35,15 @@ function RenderWeatherWidget ({cityID, refresh}) {
             })
             .catch(error => {
                 console.log('fetch error with wather', error);
-                // setAutenticated(false);
-                // setError("Failed to authenticate user");
             })
     }
-
-    // useEffect(() => {
-    //     const weatherURL = new URL('http://localhost:8080/weather');
-
-    //     weatherURL.searchParams.append('city', cityName);
-    //     fetch(weatherURL, requestOptions)
-    //         .then(response => {
-    //             if (response.status === 200)
-    //                 return response.json();
-    //             throw new Error("failed to authenticate user")
-    //         })
-    //         .then(responseJSON => {
-    //             console.log('json weather response ', responseJSON);
-    //             setInfo(responseJSON);
-    //         })
-    //         .catch(error => {
-    //             console.log('fetch error');
-    //         // setAutenticated(false);
-    //         // setError("Failed to authenticate user");
-    //         })
-
-    // }, [cityName]);
-
 
     useEffect(() => {
         console.log(`initializing interval`);
         const interval = setInterval(() => {
-            console.log("weather of ", cityID, "refresh is ", refresh, "mount at ", new Date().getSeconds() );
+            console.log("weather of ", cityID, "refresh is ", refreshRate, "mount at ", new Date().getSeconds() );
             fetchData();
-        }, 30 * 1000);
+        }, refreshRate * 1000);
 
         fetchData();
 
@@ -75,7 +51,7 @@ function RenderWeatherWidget ({cityID, refresh}) {
             console.log(`clearing interval`);
             clearInterval(interval);
         };
-    }, []);
+    }, [cityID]);
 
     return <WeatherWidget weatherInfo={weatherInfo} city={cityName}/>
 }

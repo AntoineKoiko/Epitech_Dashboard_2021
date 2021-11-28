@@ -5,25 +5,29 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import AddWidgetModal from '../AddWidgetModal/AddWidgetModal';
+import SettingModal from '../SettingModal/SettingModal';
 
 function HeaderOptions () {
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+    const [openAdd, setOpenAdd] = useState(false);
+    const [openSetting, setOpenSetting] = useState(false);
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
         setAnchorEl(null);
     };
-    const [openModal, setOpenModal] = useState(false);
 
     const openAddModal = () => {
         handleClose();
-        setOpenModal(true);
+        setOpenAdd(true);
     }
 
-    const handler = (val) => {
-        setOpenModal(val);
+    const openSettingModal = () => {
+        handleClose();
+        setOpenSetting(true);
     }
 
     return (
@@ -47,11 +51,12 @@ function HeaderOptions () {
                 }}
             >
                 <MenuItem onClick={openAddModal}>Add Widget</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={openSettingModal}>My account</MenuItem>
                 <MenuItem onClick={() => window.open("http://localhost:8080/auth/logout", "_self")}>Logout</MenuItem>
             </Menu>
 
-            <AddWidgetModal handler={handler} open={openModal}/>
+            <AddWidgetModal handler={setOpenAdd} open={openAdd}/>
+            <SettingModal open={openSetting} openHandler={setOpenSetting}/>
         </div>
     );
 }

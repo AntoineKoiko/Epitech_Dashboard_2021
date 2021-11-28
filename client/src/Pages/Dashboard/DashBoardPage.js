@@ -61,8 +61,6 @@ function DashboardPage() {
 
     return (
         <div>
-            <ToDrag x={0} y={0}><RenderStockWidget stockID="AAPL"/></ToDrag>
-            <ToDrag x={0} y={0}><WeatherWidget cityID="Rennes" refresh={30} /></ToDrag>
             <ToDrag x={0} y={0}><YoutubeCommentWidget videoId="yeYGZmnW_kc" videoTitle="test"/></ToDrag>
             <ToDrag x={0} y={0}><YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug"/></ToDrag>
             <ToDrag x={0} y={0}><RedditSubFeedWidget subredditName="r/mac" sort="new"/></ToDrag>
