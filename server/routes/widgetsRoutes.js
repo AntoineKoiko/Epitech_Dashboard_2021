@@ -23,4 +23,28 @@ router.post("/", async (req, res) => {
         })
 })
 
+router.put("/", (req, res) => {
+    const widgetId = req.query.id;
+
+    widgetService.updateWidget(widgetId, req.body)
+        .then(() => {
+            res.send(`Sucessfully update widget id: ${widgetId}`);
+        })
+        .catch(error => {
+            res.status(500).send(error.toString());
+        })
+})
+
+router.delete("/", (req, res) => {
+    const widgetId = req.query.id;
+
+    widgetService.deleteWidget(req.user._id, widgetId)
+        .then(() => {
+            res.send(`Sucessfully delete widget id: ${widgetId}`);
+        })
+        .catch(error => {
+            res.status(500).send(error.toString());
+        })
+})
+
 module.exports = router;

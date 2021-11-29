@@ -22,12 +22,32 @@ const getUserWidget = async (userId) => {
     return currentUser.widgets;
 }
 
-const updateWidget = () => {
-
+const updateWidget = async (widgetId, widget) => {
+    try {
+        User.updateOne({
+            "widgets._id": widgetId
+        }, {
+            '$set': {
+                'widgets.$.params': widget.params,
+                'widgets$.refresh': widget.refresh
+            }
+        })
+        return widgetId;
+    } catch (error) {
+        throw `updateWidget: ${error.toString()}`;
+    }
 }
 
-const deleteWidget = () => {
-
+const deleteWidget = async (userId, widgetId) => {
+    try {
+        const docs = await User.updateOne({_id: userId}, {
+            $pullAll: {
+                widgets: [widgetId]
+            }
+        })
+    } catch (error) {
+        throw `delete widget: ${widgetId} of user: ${userId}: ${error.toString()}`;
+    }
 }
 
 module.exports = {
