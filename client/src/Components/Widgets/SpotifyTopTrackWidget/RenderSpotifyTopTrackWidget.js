@@ -52,7 +52,7 @@ function RenderSpotifyTopTrackWidget({timeRange, refresh}) {
 
     }, []);
 
-    return <SpotifyTopTrackWidget mode="tracks" data={items}/>;
+    return <SpotifyTopTrackWidget data={items} timeRange={timeRange}/>;
 }
 
 export default RenderSpotifyTopTrackWidget;
