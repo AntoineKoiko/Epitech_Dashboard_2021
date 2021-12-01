@@ -34,9 +34,9 @@ function Comment ({pseudo, avatar, comment}) {
     )
 }
 
-function YoutubeCommentWidget ({videoTitle, commentList}) {
+function YoutubeCommentWidget ({videoTitle, commentList, widgetData}) {
     return (
-        <WidgetFrame title="Youtube">
+        <WidgetFrame title="Youtube" widgetId={'TODO REPLACE IT'}>
             <h4>Comment of the video: {videoTitle}</h4>
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
 

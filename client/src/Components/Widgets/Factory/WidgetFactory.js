@@ -20,7 +20,7 @@ function WidgetFactory({widget}) {
     }
     if (widget.service === "youtube") {
         if (widget.type === "video_comment") {
-            return <YoutubeCommentWidget videoId="yeYGZmnW_kc" refresh={widget.refresh}/>;
+            return <YoutubeCommentWidget videoId="yeYGZmnW_kc" refresh={widget.refresh} widgetData={widget}/>;
         }
         if (widget.type === "channel_stat") {
             return <YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug"/>;
