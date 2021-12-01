@@ -2,27 +2,7 @@ import React from 'react';
 import './StockWidget.css';
 import WidgetFrame from '../WidgetFrame';
 
-function StockDetail ({stockInfo}) {
-    return (
-        <div className="stock-widget">
-            <p>
-                lowestPrice: {stockInfo.lowestPrice}
-            </p>
-            <p>
-                Highest price: {stockInfo.highestPrice}
-            </p>
-            <p>
-                Open price: {stockInfo.openPrice}
-            </p>
-            <p>
-                Last close price: {stockInfo.prevClosePrice}
-            </p>
-        </div>
-    )
-}
-
 function StockWidget({stockID, stockInfo, widgetData}) {
-    const expandContent = <StockDetail stockInfo={stockInfo} />;
     const tableur = [
         {label: "Ouverture", value: Math.round(stockInfo.openPrice * 100) / 100},
         {label: "+Haut", value: Math.round(stockInfo.highestPrice * 100) / 100},
@@ -31,7 +11,7 @@ function StockWidget({stockID, stockInfo, widgetData}) {
     ];
 
     return (
-        <WidgetFrame title="Stock" subtitle={stockID} expand={true} expandContent={expandContent} widgetId={widgetData._id}>
+        <WidgetFrame title="Stock" subtitle={stockID} widgetId={widgetData._id}>
             <div className="stock-widget">
                 <h2>${stockInfo.currentPrice}</h2>
                 <h4 style={{color: stockInfo.percentChange < 0 ? '#D0312D' : '#3CB043', fontWeight: "bold", margin: "0 0 4% 0"}}>
