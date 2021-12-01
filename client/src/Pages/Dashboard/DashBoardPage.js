@@ -1,6 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
-import RenderStockWidget from '../../Components/Widgets/StockWidget/RenderStockWidget';
-import WeatherWidget from '../../Components/Widgets/WeatherWidget/';
+import React, { useEffect, useState } from 'react';
 import YoutubeCommentWidget from '../../Components/Widgets/YoutubeCommentWidget';
 import YoutubeSubNBWidget from '../../Components/Widgets/YoutubeSubNBWidget';
 import RedditSubFeedWidget from '../../Components/Widgets/RedditSubFeedWidget';
@@ -10,6 +8,8 @@ import WidgetFactory from '../../Components/Widgets/Factory/WidgetFactory';
 
 //Drag
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
+
+import './DashboardPage.css';
 
 const requestOptions = {
     method: "GET",
@@ -24,14 +24,15 @@ const requestOptions = {
 function ToDrag({x, y, children}) {
     return (
         <Draggable
+            bounds=".dashboard-container"
             axis="both"
-            handle=".handle"
+            handle=".dragable-container"
             defaultPosition={{x: x, y: y}}
             position={null}
-            grid={[25, 25]}
+            grid={[3, 25]}
             scale={1}
         >
-            <div className="handle">
+            <div className="dragable-container">
                 {children}
             </div>
         </Draggable>
@@ -60,12 +61,12 @@ function DashboardPage() {
     }, []);
 
     return (
-        <div>
+        <div className="dashboard-container">
             <ToDrag x={0} y={0}><YoutubeCommentWidget videoId="yeYGZmnW_kc" videoTitle="test"/></ToDrag>
-            <ToDrag x={0} y={0}><YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug"/></ToDrag>
-            <ToDrag x={0} y={0}><RedditSubFeedWidget subredditName="r/mac" sort="new"/></ToDrag>
-            <ToDrag x={0} y={0}><SpotifyTopTrackWidget timeRange="short_term"/></ToDrag>
-            <ToDrag x={0} y={0}><SpotifyTopArtistsWidget timeRange="short_term"/></ToDrag>
+            <ToDrag x={1} y={0}><YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug"/></ToDrag>
+            <ToDrag x={2} y={0}><RedditSubFeedWidget subredditName="r/mac" sort="new"/></ToDrag>
+            <ToDrag x={0} y={1}><SpotifyTopTrackWidget timeRange="short_term"/></ToDrag>
+            <ToDrag x={1} y={1}><SpotifyTopArtistsWidget timeRange="short_term"/></ToDrag>
             {
                 widgetList.length ? widgetList.map((widget) => {
                     return <ToDrag x={0} y={0}><WidgetFactory key={widget._id} widget={widget}/></ToDrag>;

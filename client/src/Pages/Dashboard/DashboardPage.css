@@ -1,0 +1,11 @@
+.dragable-container {
+    background-color: red;
+    height: fit-content;
+    width: fit-content;
+}
+
+.dashboard-container {
+    display: flex;
+    flex: 1;
+    background-color: green;
+}
