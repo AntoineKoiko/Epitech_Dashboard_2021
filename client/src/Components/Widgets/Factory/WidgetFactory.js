@@ -33,10 +33,10 @@ function WidgetFactory({widget}) {
     }
     if (widget.service === "spotify") {
         if (widget.type === "top_artists") {
-            return <SpotifyTopArtistsWidget timeRange={widget.params.params1} refresh={widget.refresh}/>;
+            return <SpotifyTopArtistsWidget timeRange={widget.params.params1} refresh={widget.refresh} widgetData={widget}/>;
         }
         if (widget.type === "top_tracks") {
-            return <SpotifyTopTrackWidget timeRange={widget.params.params1} refresh={widget.refresh}/>;
+            return <SpotifyTopTrackWidget timeRange={widget.params.params1} refresh={widget.refresh} widgetData={widget}/>;
         }
     }
     return <></>

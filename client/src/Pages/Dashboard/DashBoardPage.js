@@ -65,8 +65,6 @@ function DashboardPage() {
             <ToDrag x={0} y={0}><YoutubeCommentWidget videoId="yeYGZmnW_kc" videoTitle="test"/></ToDrag>
             <ToDrag x={1} y={0}><YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug"/></ToDrag>
             <ToDrag x={2} y={0}><RedditSubFeedWidget subredditName="r/mac" sort="new"/></ToDrag>
-            <ToDrag x={0} y={1}><SpotifyTopTrackWidget timeRange="short_term"/></ToDrag>
-            <ToDrag x={1} y={1}><SpotifyTopArtistsWidget timeRange="short_term"/></ToDrag>
             {
                 widgetList.length ? widgetList.map((widget) => {
                     return <ToDrag x={0} y={0}><WidgetFactory key={widget._id} widget={widget}/></ToDrag>;

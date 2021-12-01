@@ -23,7 +23,7 @@ function TopArtistItem({artists, avatar, ranking}) {
     )
 }
 
-function SpotifyTopArtistsWidget ({data, timeRange}) {
+function SpotifyTopArtistsWidget ({data, timeRange, widgetData}) {
     const timeRangeTextArray = [
         {value: "short_term", label: "(last 4 weeks)"},
         {value: "medium_term", label: "(last 6 monts)"},
@@ -32,7 +32,7 @@ function SpotifyTopArtistsWidget ({data, timeRange}) {
     const timeRangeText = timeRangeTextArray.find(element => element.value === timeRange);
 
     return (
-        <WidgetFrame title="Spotify" subtitle="User top artists">
+        <WidgetFrame title="Spotify" subtitle="User top artists" widgetId={widgetData._id}>
             <Typography align="left" sx={{fontWeight: "bold"}}>Top artists {timeRangeText.label}</Typography>
             <List sx={{ width: '100%'}}>
                 {data.map((item, idx) => {

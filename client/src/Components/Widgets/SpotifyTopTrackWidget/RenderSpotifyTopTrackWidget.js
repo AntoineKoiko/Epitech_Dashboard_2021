@@ -11,7 +11,7 @@ const requestOptions = {
     }
 }
 
-function RenderSpotifyTopTrackWidget({timeRange, refresh}) {
+function RenderSpotifyTopTrackWidget({timeRange, refresh, widgetData}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
     const [items, setItems] = useState([]);
 
@@ -52,7 +52,7 @@ function RenderSpotifyTopTrackWidget({timeRange, refresh}) {
 
     }, []);
 
-    return <SpotifyTopTrackWidget data={items} timeRange={timeRange}/>;
+    return <SpotifyTopTrackWidget data={items} timeRange={timeRange} widgetData={widgetData}/>;
 }
 
 export default RenderSpotifyTopTrackWidget;
