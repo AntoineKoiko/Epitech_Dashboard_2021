@@ -35,7 +35,7 @@ function SpotifyTopTrackWidget ({data, timeRange}) {
     return (
         <WidgetFrame title="Spotify" subtitle="User top tracks">
             <Typography align="left" sx={{fontWeight: "bold"}}>Top tracks {timeRangeText.label}</Typography>
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            <List sx={{ width: '100%'}}>
                 {data.map((item, idx) => {
                     const arrayArtists = item.artists.map(artist => {
                         return artist.name;

@@ -52,7 +52,7 @@ function RenderSpotifyTopArtistsWidget({timeRange, refresh}) {
 
     }, []);
 
-    return <SpotifyTopArtistsWidget mode="artists" data={items}/>;
+    return <SpotifyTopArtistsWidget data={items} timeRange={timeRange}/>;
 }
 
 export default RenderSpotifyTopArtistsWidget;
