@@ -31,9 +31,9 @@ function StatNb ({text, value}) {
     )
 }
 
-function YoutubeSubNBWidget ({channelName, channelInfo}) {
+function YoutubeSubNBWidget ({channelName, channelInfo, widgetData}) {
     return (
-        <WidgetFrame title="Youtube" subtitle={channelName}>
+        <WidgetFrame title="Youtube" subtitle={channelName} widgetId={'TODO REPLACE IT)'}>
             <StatNb text="Subscribers:" value={channelInfo.subscriberCount}/>
             <StatNb text="Views:" value={channelInfo.viewCount}/>
             <StatNb text="Videos:" value={channelInfo.videoCount}/>

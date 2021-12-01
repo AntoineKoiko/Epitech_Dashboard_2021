@@ -23,7 +23,7 @@ function WidgetFactory({widget}) {
             return <YoutubeCommentWidget videoId="yeYGZmnW_kc" refresh={widget.refresh} widgetData={widget}/>;
         }
         if (widget.type === "channel_stat") {
-            return <YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug"/>;
+            return <YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug" widgetData={widget}/>;
         }
     }
     if (widget.service === "reddit") {
