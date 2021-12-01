@@ -15,7 +15,7 @@ function WidgetFactory({widget}) {
     }
     if (widget.service === "weather") {
         if (widget.type === "actual_weather") {
-            return <WeatherWidget cityID={widget.params.params1} refresh={widget.refresh}/>;
+            return <WeatherWidget cityID={widget.params.params1} refresh={widget.refresh} widgetData={widget}/>;
         }
     }
     if (widget.service === "youtube") {

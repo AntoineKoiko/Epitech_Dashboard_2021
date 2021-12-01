@@ -10,9 +10,26 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import { Collapse } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 
+function LoadingFrame() {
+    return (<Box sx={{ display: 'flex', justifyContent: "center"}}>
+        <CircularProgress />
+    </Box>);
+}
 
-function WidgetFrame({title, subtitle, expand, children, expandContent}) {
+const requestOptions = {
+    method: "DELETE",
+    credentials: "include",
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Credentials": true
+    },
+}
+
+function WidgetFrame({title, subtitle, expand, children, expandContent, loadingCircle, widgetId}) {
     const [expanded, setExpanded] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -29,6 +46,18 @@ function WidgetFrame({title, subtitle, expand, children, expandContent}) {
         setExpanded(!expanded);
     };
 
+    const handleDelete = () => {
+        fetch(`http://localhost:8080/widgets?id=${widgetId}`, requestOptions)
+            .then(response => {
+                response.text().then(function (text) {
+                    console.log(text);
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
     return (
         <Card
             variant="outlined"
@@ -43,7 +72,7 @@ function WidgetFrame({title, subtitle, expand, children, expandContent}) {
                 title={title}
                 subheader={subtitle}
             />
-            <CardContent>{children}</CardContent>
+            <CardContent>{loadingCircle ? <LoadingFrame/> : children}</CardContent>
             {expand
                 ? (<><CardActions disableSpacing>
                     <ExpandMore
@@ -71,7 +100,7 @@ function WidgetFrame({title, subtitle, expand, children, expandContent}) {
             >
                 <MenuItem >Update</MenuItem>
                 <MenuItem >Lock position</MenuItem>
-                <MenuItem >Delete</MenuItem>
+                <MenuItem onClick={handleDelete}>Delete</MenuItem>
             </Menu>
 
         </Card>

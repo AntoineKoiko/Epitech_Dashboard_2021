@@ -12,12 +12,10 @@ const requestOptions = {
     }
 }
 
-function RenderWeatherWidget ({cityID, refresh}) {
+function RenderWeatherWidget ({cityID, refresh, widgetData}) {
     const refreshRate = refresh ? refresh : 60;
     const cityName = cityID ? cityID : 'Paris';
-    const [weatherInfo, setInfo] = useState({
-        'temperature': 0,
-    });
+    const [weatherInfo, setInfo] = useState({loading: true});
 
 
     function fetchData() {
@@ -53,7 +51,7 @@ function RenderWeatherWidget ({cityID, refresh}) {
         };
     }, [cityID]);
 
-    return <WeatherWidget weatherInfo={weatherInfo} city={cityName}/>
+    return <WeatherWidget weatherInfo={weatherInfo} city={cityName} widgetData={widgetData}/>
 }
 
 export default RenderWeatherWidget;
