@@ -28,7 +28,7 @@ function WidgetFactory({widget}) {
     }
     if (widget.service === "reddit") {
         if (widget.type === "subreddit_post") {
-            return <RedditSubFeedWidget subredditName={widget.params.params1} sort="new" refresh={widget.refresh}/>;
+            return <RedditSubFeedWidget subredditName={widget.params.params1} sort="new" refresh={widget.refresh} widgetData={widget}/>;
         }
     }
     if (widget.service === "spotify") {

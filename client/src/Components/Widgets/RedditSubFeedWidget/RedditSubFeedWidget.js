@@ -23,9 +23,9 @@ function Post({title}) {
 
 
 
-function RedditSubFeedWidget ({subName, data}) {
+function RedditSubFeedWidget ({subName, data, widgetData}) {
     return (
-        <WidgetFrame title="Reddit" subtitle="sub of the Charcuterie club">
+        <WidgetFrame title="Reddit" subtitle="sub of the Charcuterie club" widgetId={'TODO REPLACE IT'}>
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                 {data.map((item, idx) => {
                     return (

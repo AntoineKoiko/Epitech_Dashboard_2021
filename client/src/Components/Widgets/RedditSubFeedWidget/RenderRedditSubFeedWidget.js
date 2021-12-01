@@ -11,7 +11,7 @@ const requestOptions = {
     }
 }
 
-function RenderRedditSubFeedWidget ({subredditName, sort, refresh}) {
+function RenderRedditSubFeedWidget ({subredditName, sort, refresh, widgetData}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
     const [posts, setPosts] = useState([]);
 
@@ -56,7 +56,7 @@ function RenderRedditSubFeedWidget ({subredditName, sort, refresh}) {
     }, [subredditName, sort]);
 
 
-    return <RedditSubFeedWidget name={subredditName} data={posts}/>;
+    return <RedditSubFeedWidget name={subredditName} data={posts} widgetData={widgetData}/>;
 }
 
 export default RenderRedditSubFeedWidget;
