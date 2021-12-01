@@ -1,9 +1,19 @@
 const router = require('express').Router();
+const moment = require("moment");
 const localPassport = require("../passport/localPassport");
-const about = require("../about.json");
+const services = require("../about.json").services;
 
 router.get('/about.json', (req, res) => {
-    res.json(about)
+    const aboutJson = {
+        client: {
+            host: req.ip
+        },
+        server: {
+            current_time: moment().unix(),
+            services: services
+        }
+    }
+    res.json(aboutJson)
 })
 
 router.post("/register", (req, res) => {
