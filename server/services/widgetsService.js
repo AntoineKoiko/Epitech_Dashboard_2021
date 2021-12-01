@@ -41,8 +41,8 @@ const updateWidget = async (widgetId, widget) => {
 const deleteWidget = async (userId, widgetId) => {
     try {
         const docs = await User.updateOne({_id: userId}, {
-            $pullAll: {
-                widgets: [widgetId]
+            $pull: {
+                widgets: { _id: widgetId}
             }
         })
     } catch (error) {
