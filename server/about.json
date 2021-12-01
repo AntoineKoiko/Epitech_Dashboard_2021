@@ -1,1 +1,103 @@
-{}
+{
+    "services": [
+        {
+            "name": "stock",
+            "widgets": [
+                {
+                    "name": "stock_value",
+                    "description": "Displays information about a stock",
+                    "params": [
+                        {
+                            "name": "stock_id",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "weather",
+            "widgets": [
+                {
+                    "name": "weather_forecast",
+                    "description ": "Displaying actual weather of a city and forecast",
+                    "params": [
+                        {
+                            "name": "city",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "youtube",
+            "widgets": [
+                {
+                    "name": "channel_stat",
+                    "description ": "Displaying statistique about a youtube channel",
+                    "params": [
+                        {
+                            "name": "channel_id",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "video_comment",
+                    "description ": "Displaying last comments of a youtube video",
+                    "params": [
+                        {
+                            "name": "video_id",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "reddit",
+            "widgets": [
+                {
+                    "name": "subreddit_post",
+                    "description ": "Displaying last post of a subreddit",
+                    "params": [
+                        {
+                            "name": "subreddit_name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "sort",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "spotify",
+            "widgets": [
+                {
+                    "name": "top_artists",
+                    "description ": "Displaying user spotify top artists",
+                    "params": [
+                        {
+                            "name": "short_term",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "top_tracks",
+                    "description ": "Displaying user spotify top tracks",
+                    "params": [
+                        {
+                            "name": "short_term",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
