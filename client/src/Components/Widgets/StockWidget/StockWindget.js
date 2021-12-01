@@ -21,7 +21,7 @@ function StockDetail ({stockInfo}) {
     )
 }
 
-function StockWidget({stockID, stockInfo}) {
+function StockWidget({stockID, stockInfo, widgetData}) {
     const expandContent = <StockDetail stockInfo={stockInfo} />;
     const tableur = [
         {label: "Ouverture", value: Math.round(stockInfo.openPrice * 100) / 100},
@@ -31,11 +31,11 @@ function StockWidget({stockID, stockInfo}) {
     ];
 
     return (
-        <WidgetFrame title="Stock" subtitle={stockID} expand={true} expandContent={expandContent}>
+        <WidgetFrame title="Stock" subtitle={stockID} expand={true} expandContent={expandContent} widgetId={widgetData._id}>
             <div className="stock-widget">
                 <h2>${stockInfo.currentPrice}</h2>
                 <h4 style={{color: stockInfo.percentChange < 0 ? '#D0312D' : '#3CB043', fontWeight: "bold", margin: "0 0 4% 0"}}>
-                    {stockInfo.change < 0 ? '' : '+'}{(Math.round(stockInfo.change * 100) / 100).toFixed(2)} ({Math.round(stockInfo.percentChange * 100) / 100} %) aujourd'hui 
+                    {stockInfo.change < 0 ? '' : '+'}{(Math.round(stockInfo.change * 100) / 100).toFixed(2)} ({Math.round(stockInfo.percentChange * 100) / 100} %) aujourd'hui
                 </h4>
                 <table style={{width: "100%"}}>
                     <tbody>
@@ -44,7 +44,7 @@ function StockWidget({stockID, stockInfo}) {
                                 return <tr key={value.label}>
                                     <td><h5>{value.label}</h5></td>
                                     <td style={{textAlign: "right"}}><h5>{value.value.toFixed(2)}</h5></td>
-                                </tr>      
+                                </tr>
                             })
                         }
                     </tbody>

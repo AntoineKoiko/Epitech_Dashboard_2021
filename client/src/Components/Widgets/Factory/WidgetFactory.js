@@ -10,7 +10,7 @@ function WidgetFactory({widget}) {
     console.log('widget factory: ', widget)
     if (widget.service === "stock") {
         if (widget.type === "stock_value") {
-            return <RenderStockWidget stockID={widget.params.params1} refresh={widget.refresh}/>;
+            return <RenderStockWidget stockID={widget.params.params1} refresh={widget.refresh} widgetData={widget}/>;
         }
     }
     if (widget.service === "weather") {

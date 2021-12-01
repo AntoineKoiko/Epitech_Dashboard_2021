@@ -13,7 +13,7 @@ const requestOptions = {
     }
 }
 
-function RenderStockWidget({stockID, refresh}) {
+function RenderStockWidget({stockID, refresh, widgetData}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
     const stockName = stockID ? stockID : 'MSFT';
     const [stockInfo, setStockInfo] = useState({
@@ -41,8 +41,6 @@ function RenderStockWidget({stockID, refresh}) {
             })
             .catch(error => {
                 console.log('fetch error');
-            // setAutenticated(false);
-            // setError("Failed to authenticate user");
             })
     };
 
@@ -61,7 +59,7 @@ function RenderStockWidget({stockID, refresh}) {
         };
     }, []);
 
-    return <StockWidget stockID={stockID} stockInfo={stockInfo}/>;
+    return <StockWidget stockID={stockID} stockInfo={stockInfo} widgetData={widgetData}/>;
 }
 
 export default RenderStockWidget;
