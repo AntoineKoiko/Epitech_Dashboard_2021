@@ -14,6 +14,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import WidgetInputParams from './WidgetInputParams';
 
 const requestOptions = {
     method: "Post",
@@ -241,10 +242,7 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
                                 })}
 
                             </Select>
-                            <TextField id="opt" label={widgetSelect.optionLabel} variant="standard" onChange={e => setTextParams(e.target.value)}/>
-
-                        </FormControl>
-                    </div>
+                                <WidgetInputParams serviceId={serviceSelect.id} widgetSelect={widgetSelect} setParams={setTextParams}/>
 
                 </DialogContent>
                 <DialogActions>
