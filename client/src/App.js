@@ -6,7 +6,6 @@ import DefaultHeader from "./Components/DefaultHeader/"
 function App() {
     return (
         <div>
-            <DefaultHeader />
             <AppRouter/>
         </div>
     );
