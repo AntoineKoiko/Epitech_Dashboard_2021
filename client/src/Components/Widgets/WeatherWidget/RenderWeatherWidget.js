@@ -2,15 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import WeatherWidget from "./WeatherWidget";
 
-const requestOptions = {
-    method: "GET",
-    credentials: "include",
-    headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Credentials": true
-    }
-}
+import { fetchWeatherkWidget } from "../../../utils/fetchAPI";
 
 function RenderWeatherWidget ({cityID, refresh, widgetData}) {
     const refreshRate = refresh ? refresh : 60;
@@ -19,17 +11,9 @@ function RenderWeatherWidget ({cityID, refresh, widgetData}) {
 
 
     function fetchData() {
-        const weatherURL = new URL('http://localhost:8080/weather');
-        weatherURL.searchParams.append('city', cityName);
-
-        fetch(weatherURL, requestOptions)
+        fetchWeatherkWidget(cityName)
             .then(response => {
-                if (response.status === 200)
-                    return response.json();
-                throw new Error("failed to authenticate user")
-            })
-            .then(responseJSON => {
-                setInfo(responseJSON);
+                setInfo(response);
             })
             .catch(error => {
                 console.log('fetch error with wather', error);
