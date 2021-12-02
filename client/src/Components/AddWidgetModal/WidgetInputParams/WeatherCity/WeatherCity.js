@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Autocomplete, TextField } from '@mui/material';
 
-function WeatherCity({setParams}) {
-    const [queryParams, setQueryParams] = useState("");
+function WeatherCity({setParams, value}) {
+    const [queryParams, setQueryParams] = useState(value !== undefined ? value : "");
     const [searchResult, setSearchResult] = useState([{label: "Paris"}]);
 
     function searchCity() {
@@ -41,18 +41,19 @@ function WeatherCity({setParams}) {
             disablePortal
             id="params-widget"
             options={searchResult}
-            renderInput={(params) => 
-                <TextField 
-                    {...params} 
-                    id="opt" 
-                    label={"PARAMS UNDEFINED"} 
-                    variant="standard" 
+            value={queryParams}
+            renderInput={(params) =>
+                <TextField
+                    {...params}
+                    id="opt"
+                    label={"PARAMS UNDEFINED"}
+                    variant="standard"
                     onChange={e => {
                         setQueryParams(e.target.value)
                         setParams(e.target.value);
                     }}
                 />}
-        />    
+        />
     );
 }
 

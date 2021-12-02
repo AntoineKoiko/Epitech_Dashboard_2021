@@ -3,12 +3,12 @@ import TextField from '@mui/material/TextField';
 import TimeRange from './TimeRange';
 import WeatherCity from './WeatherCity';
 
-function WidgetInputParams({serviceId, widgetSelect, setParams}) {
+function WidgetInputParams({serviceId, widgetSelect, setParams, value}) {
     console.log("serviceID", serviceId);
     if (serviceId === "spotify") {
         return <TimeRange setParams={setParams}/>
     } else if (serviceId === "weather") {
-        return <WeatherCity setParams={setParams}/>
+        return <WeatherCity setParams={setParams} value={value}/>
     } else {
         return <TextField id="opt" label={widgetSelect.optionLabel} variant="standard" onChange={e => setParams(e.target.value)}/>
     }
