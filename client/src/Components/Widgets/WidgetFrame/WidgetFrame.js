@@ -105,7 +105,7 @@ function WidgetFrame({title, subtitle, expand, children, expandContent, loadingC
                 <MenuItem onClick={handleDelete}>Delete</MenuItem>
             </Menu>
 
-            <UpdateWidgetModal open={openUpdate} handler={setOpenUpdate}/>
+            <UpdateWidgetModal open={openUpdate} handler={setOpenUpdate} widgetId={widgetId}/>
         </Card>
     )
 }
