@@ -30,8 +30,8 @@ function RenderRedditSubFeedWidget ({subredditName, sort, refresh, widgetData}) 
                 throw new Error("failed to authenticate user")
             })
             .then(responseJSON => {
-                console.log('json reddit response ', responseJSON);
-                setPosts(responseJSON.data.children);
+                console.log('json reddit response ', responseJSON.data.children);
+                setPosts(responseJSON.data.children.slice(0, 5));
             })
             .catch(error => {
                 console.log('fetch error for reddit');
@@ -56,7 +56,7 @@ function RenderRedditSubFeedWidget ({subredditName, sort, refresh, widgetData}) 
     }, [subredditName, sort]);
 
 
-    return <RedditSubFeedWidget name={subredditName} data={posts} widgetData={widgetData}/>;
+    return <RedditSubFeedWidget subName={subredditName} data={posts} widgetData={widgetData}/>;
 }
 
 export default RenderRedditSubFeedWidget;

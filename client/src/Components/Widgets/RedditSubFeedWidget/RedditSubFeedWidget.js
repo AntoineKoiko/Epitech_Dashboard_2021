@@ -1,23 +1,15 @@
 import React from 'react';
 import WidgetFrame from '../WidgetFrame';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemIcon from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
 
+import './RedditSubFeedWidget.css';
 
-function Post({title}) {
+function Post({title, url}) {
+
     return (
-        <ListItem alignItems="center" >
-            <ListItemText
-                primary={title}
-
-            />
-            <Divider variant="inset" component="li" />
-        </ListItem>
+        <div className="post-elt" onClick={()=> window.open(url, "_blank")}>
+            <h4>{title}</h4>
+        </div>
     )
 }
 
@@ -25,17 +17,16 @@ function Post({title}) {
 
 function RedditSubFeedWidget ({subName, data, widgetData}) {
     return (
-        <WidgetFrame title="Reddit" subtitle="sub of the Charcuterie club" widgetId={'TODO REPLACE IT'}>
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                {data.map((item, idx) => {
-                    return (
-                        <Post
-                            key={idx}
-                            title={item.data.title}
-                        />
-                    );
-                })}
-            </List>
+        <WidgetFrame title="Reddit" subtitle={subName} widgetId={'TODO REPLACE IT'}>
+            {data.map((item, idx) => {
+                return (
+                    <Post
+                        key={idx}
+                        title={item.data.title}
+                        url={item.data.url}
+                    />
+                );
+            })}
         </WidgetFrame>
     )
 }

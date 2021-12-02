@@ -1,0 +1,14 @@
+.post-elt {
+    margin: 8px 0;
+    border: solid 1px;
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.post-elt:hover {
+    cursor: pointer;
+    margin: 10px 0;
+    border: solid 2px;
+}
