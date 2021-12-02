@@ -14,9 +14,9 @@ function RegisterPage() {
                 <div className="main-container">
                     <p>Pour continuer, inscrivez-vous a Dashboard</p>
 
-                    <Button sx={theme.inputField} className="input-field" href="https://www.spotify.com" variant="contained">Inscrivez-vous avec spotify</Button>
-                    <Button sx={theme.inputField} className="input-field" href="https://www.reddit.com" variant="contained">Inscrivez-vous avec reddit</Button>
-                    <Button sx={theme.inputField} className="input-field" href="https://www.google.com" variant="contained">Inscrivez-vous avec google</Button>
+                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/spotify" variant="contained">Inscrivez-vous avec google</Button>
+                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/reddit" variant="contained">Inscrivez-vous avec spotify</Button>
+                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/google" variant="contained">Inscrivez-vous avec reddit</Button>
 
                     <h2 className="word-divider"><span>ou</span></h2>
 
