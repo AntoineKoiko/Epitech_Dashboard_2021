@@ -7,6 +7,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AddWidgetModal from '../AddWidgetModal/AddWidgetModal';
 import SettingModal from '../SettingModal/SettingModal';
 
+import './HeaderOptions.css';
+
 function HeaderOptions () {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -32,14 +34,10 @@ function HeaderOptions () {
 
     return (
         <div>
-            <Button
-                startIcon={<MenuIcon/>}
-                id="basic-button"
-                aria-controls="basic-menu"
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-            />
+            <button>
+                <MenuIcon onClick={handleClick}/>
+            </button>
+
 
             <Menu
                 id="basic-menu"
