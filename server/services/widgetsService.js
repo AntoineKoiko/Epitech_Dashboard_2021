@@ -22,6 +22,17 @@ const getUserWidget = async (userId) => {
     return currentUser.widgets;
 }
 
+const getWidgetById = async (widgetId) => {
+    try {
+        const current = await User.findOne({widgetId: widgetId});
+        const widget = current.widgets.find(widget => widget._id == widgetId)
+        
+        return widget;
+    } catch (error) {
+        throw `getWidgetById ${error.toString()}`;
+    }
+}
+
 const updateWidget = async (widgetId, widget) => {
     try {
         User.updateOne({
@@ -53,6 +64,7 @@ const deleteWidget = async (userId, widgetId) => {
 module.exports = {
     createWidget,
     getUserWidget,
+    getWidgetById,
     updateWidget,
     deleteWidget
 }

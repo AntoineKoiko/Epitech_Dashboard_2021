@@ -3,12 +3,23 @@ const widgetService = require("../services/widgetsService");
 
 router.get("/", (req, res) => {
     widgetService.getUserWidget(req.user._id)
+        .then(widgets => {
+            res.json(widgets);
+        })
+        .catch(error => {
+            console.log(error.toString());
+            res.status(500).send("Failed to get user widget");
+        })
+})
+
+router.get("/:id", (req, res) => {
+    widgetService.getWidgetById(req.params.id)
         .then(widget => {
             res.json(widget);
         })
         .catch(error => {
             console.log(error.toString());
-            res.status(500).send("Failed to get user widget");
+            res.status(500).send(`Failed to get widget: ${req.params.id}`);
         })
 })
 
