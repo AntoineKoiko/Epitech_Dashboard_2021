@@ -17,7 +17,7 @@ const fetchAPI = (url) => {
     });
 };
 
-const fetchWeatherkWidget = async (city) => {
+const fetchWeatherWidget = async (city) => {
     return new Promise(async (resolve, reject) => {
         const weatherURL = new URL('http://localhost:8080/weather');
         weatherURL.searchParams.append('city', city);
@@ -30,6 +30,20 @@ const fetchWeatherkWidget = async (city) => {
     });
 };
 
+const fetchStockWidget = async (stockCode) => {
+    return new Promise(async (resolve, reject) => {
+        const stockURL = new URL('http://localhost:8080/stock');
+        stockURL.searchParams.append('name', stockCode);
+
+        await fetchAPI(stockURL)
+            .then(result => {
+                resolve(result);
+            })
+            .catch(err => reject(err));
+    });
+};
+
 module.exports = {
-    fetchWeatherkWidget,
+    fetchWeatherWidget,
+    fetchStockWidget,
 };

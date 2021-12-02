@@ -3,15 +3,7 @@ import './StockWidget.css';
 import { useState, useEffect } from 'react';
 import StockWidget from "./StockWidget";
 
-const requestOptions = {
-    method: "GET",
-    credentials: "include",
-    headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Crendetials": true
-    }
-}
+import {fetchStockWidget} from '../../../utils/fetchAPI';
 
 function RenderStockWidget({stockID, refresh, widgetData}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
@@ -20,17 +12,10 @@ function RenderStockWidget({stockID, refresh, widgetData}) {
         loading: true
     });
 
-
     function fetchData() {
-        fetch('http://localhost:8080/stock?name=' + stockName, requestOptions)
+        fetchStockWidget(stockName)
             .then(response => {
-                if (response.status === 200)
-                    return response.json();
-                throw new Error("failed to authenticate user")
-            })
-            .then(responseJSON => {
-                console.log('json response', responseJSON);
-                setStockInfo(responseJSON)
+                setStockInfo(response);
             })
             .catch(error => {
                 console.log('fetch error');
