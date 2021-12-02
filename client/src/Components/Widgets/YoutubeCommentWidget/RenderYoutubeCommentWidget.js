@@ -20,6 +20,7 @@ function RenderYoutubeCommentWidget({videoId, refresh, widgetData}) {
         const ytURL = new URL('http://localhost:8080/youtube/comments');
         ytURL.searchParams.append('video_id', videoId);
 
+        console.log('yt url:', ytURL.toString())
         fetch(ytURL, requestOptions)
             .then(response => {
                 if (response.status === 200)

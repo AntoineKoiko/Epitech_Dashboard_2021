@@ -2,20 +2,39 @@ import React from 'react';
 import WidgetFrame from '../WidgetFrame';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import moment from 'moment';
 
-function Comment ({pseudo, avatar, comment}) {
+import './YoutubeCommentWidget.css';
+
+function getCommentHeader (pseudo, like, published) {
+    return (
+        <div className="comment-header">
+            <div>
+                <p>{pseudo}</p>
+                <div>
+                    <p style={{marginRight: '5px'}}>{like}</p>
+                    <ThumbUpAltIcon/>
+                </div>
+            </div>
+            <p>{moment(published).format("MM-DD hh:mm")}</p>
+        </div>
+    );
+}
+
+function Comment ({pseudo, avatar, comment, like, published}) {
+    const header = getCommentHeader(pseudo, like, published);
     return (
         <ListItem alignItems="flex-start">
             <ListItemAvatar>
                 <Avatar alt={pseudo} src={avatar} />
             </ListItemAvatar>
             <ListItemText
-                primary={pseudo}
+                primary={header}
                 secondary={
                     <React.Fragment>
                         <Typography
@@ -29,7 +48,6 @@ function Comment ({pseudo, avatar, comment}) {
                     </React.Fragment>
                 }
             />
-            <Divider variant="inset" component="li" />
         </ListItem>
     )
 }
@@ -47,6 +65,8 @@ function YoutubeCommentWidget ({videoTitle, commentList, widgetData}) {
                             pseudo={item.snippet.topLevelComment.snippet.authorDisplayName}
                             avatar={item.snippet.topLevelComment.snippet.authorProfileImageUrl}
                             comment={item.snippet.topLevelComment.snippet.textDisplay}
+                            like={item.snippet.topLevelComment.snippet.likeCount}
+                            published={item.snippet.topLevelComment.snippet.publishedAt}
                         />
                     );
                 })}
