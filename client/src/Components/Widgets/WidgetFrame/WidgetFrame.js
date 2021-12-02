@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import { CardContent } from '@material-ui/core';
@@ -12,6 +12,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
+import UpdateWidgetModal from '../../UpdataeWidgetModal/UpdateWidgetModal';
 
 function LoadingFrame() {
     return (<Box sx={{ display: 'flex', justifyContent: "center"}}>
@@ -30,9 +31,10 @@ const requestOptions = {
 }
 
 function WidgetFrame({title, subtitle, expand, children, expandContent, loadingCircle, widgetId}) {
-    const [expanded, setExpanded] = React.useState(false);
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [expanded, setExpanded] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+    const [openUpdate, setOpenUpdate] = useState(false);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -98,11 +100,12 @@ function WidgetFrame({title, subtitle, expand, children, expandContent, loadingC
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem >Update</MenuItem>
+                <MenuItem onClick={() => setOpenUpdate(true)}>Update</MenuItem>
                 <MenuItem >Lock position</MenuItem>
                 <MenuItem onClick={handleDelete}>Delete</MenuItem>
             </Menu>
 
+            <UpdateWidgetModal open={openUpdate} handler={setOpenUpdate}/>
         </Card>
     )
 }
