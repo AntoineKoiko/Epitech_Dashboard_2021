@@ -3,14 +3,14 @@ import './DefaultHeader.css';
 
 import HeaderOptions from '../HeaderOptions';
 
-function DefaultHeader() {
+function DefaultHeader({setWidgetAdded, displayOptions}) {
 
     return (
         <div className="header">
             <h1>Dashboard</h1>
 
             <div className="header-buttons">
-                <HeaderOptions/>
+                {displayOptions ? <HeaderOptions setWidgetAdded={setWidgetAdded}/> : <></>}
             </div>
         </div>
     )

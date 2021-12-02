@@ -3,6 +3,7 @@ import YoutubeCommentWidget from '../../Components/Widgets/YoutubeCommentWidget'
 import YoutubeSubNBWidget from '../../Components/Widgets/YoutubeSubNBWidget';
 import RedditSubFeedWidget from '../../Components/Widgets/RedditSubFeedWidget';
 import WidgetFactory from '../../Components/Widgets/Factory/WidgetFactory';
+import DefaultHeader from '../../Components/DefaultHeader';
 import Grid from '@mui/material/Grid';
 
 //Drag
@@ -43,6 +44,7 @@ function ToDrag({x, y, children}) {
 
 function DashboardPage() {
     const [widgetList, setWidgetList] = useState([]);
+    const [refreshWidget, setRefreshWidget] = useState(false);
 
     useEffect(() => {
         fetch("http://localhost:8080/widgets", requestOptions)
@@ -59,27 +61,30 @@ function DashboardPage() {
             .catch(error => {
                 console.log(error);
             })
-    }, []);
+    }, [refreshWidget]);
 
     return (
-        <div className="dashboard-container">
-            <Grid container columnSpacing={0.5} rowSpacing={0.3}>
-                <Grid item xs={4}>
-                    <ToDrag x={0} y={0}><YoutubeCommentWidget videoId="yeYGZmnW_kc" videoTitle="test"/></ToDrag>
+        <>
+            <DefaultHeader setWidgetAdded={() => {setRefreshWidget(true)}} displayOptions={true}/>
+            <div className="dashboard-container">
+                <Grid container columnSpacing={0.5} rowSpacing={0.3}>
+                    <Grid item xs={4}>
+                        <ToDrag x={0} y={0}><YoutubeCommentWidget videoId="yeYGZmnW_kc" videoTitle="test"/></ToDrag>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <ToDrag x={1} y={0}><YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug"/></ToDrag>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <ToDrag x={2} y={0}><RedditSubFeedWidget subredditName="r/mac" sort="new"/></ToDrag>
+                    </Grid>
+                    {
+                        widgetList.length ? widgetList.map((widget) => {
+                            return <ToDrag x={0} y={0}><WidgetFactory key={widget._id} widget={widget}/></ToDrag>;
+                        }) : <></>
+                    }
                 </Grid>
-                <Grid item xs={4}>
-                    <ToDrag x={1} y={0}><YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug"/></ToDrag>
-                </Grid>
-                <Grid item xs={4}>
-                    <ToDrag x={2} y={0}><RedditSubFeedWidget subredditName="r/mac" sort="new"/></ToDrag>
-                </Grid>
-                {
-                    widgetList.length ? widgetList.map((widget) => {
-                        return <ToDrag x={0} y={0}><WidgetFactory key={widget._id} widget={widget}/></ToDrag>;
-                    }) : <></>
-                }
-            </Grid>
-        </div>
+            </div>
+        </>
     )
 }
 

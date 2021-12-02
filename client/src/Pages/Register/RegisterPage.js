@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import RegistrationForm from '../../Components/Forms/RegistrationForm';
+import DefaultHeader from '../../Components/DefaultHeader';
 import { createTheme } from '@mui/system';
 import './RegisterPage.css';
 import '../../Styles/GlobalStyle.css';
@@ -8,6 +9,7 @@ import '../../Styles/GlobalStyle.css';
 function RegisterPage() {
     return (
         <div>
+            <DefaultHeader />
             <div className="center-h">
                 <div className="main-container">
                     <p>Pour continuer, inscrivez-vous a Dashboard</p>

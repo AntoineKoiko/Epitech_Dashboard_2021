@@ -9,7 +9,7 @@ import SettingModal from '../SettingModal/SettingModal';
 
 import './HeaderOptions.css';
 
-function HeaderOptions () {
+function HeaderOptions ({setWidgetAdded}) {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const [openAdd, setOpenAdd] = useState(false);
@@ -53,7 +53,7 @@ function HeaderOptions () {
                 <MenuItem onClick={() => window.open("http://localhost:8080/auth/logout", "_self")}>Logout</MenuItem>
             </Menu>
 
-            <AddWidgetModal handler={setOpenAdd} open={openAdd}/>
+            <AddWidgetModal handler={setOpenAdd} open={openAdd} setWidgetAdded={setWidgetAdded}/>
             <SettingModal open={openSetting} openHandler={setOpenSetting}/>
         </div>
     );

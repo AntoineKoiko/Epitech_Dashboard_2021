@@ -1,7 +1,7 @@
-import { Header } from "../Components/Header"
 import React from "react"
 import useAuth from "../Context/AuthConsumer/AuthConsumer"
 import Button from '@mui/material/Button';
+import DefaultHeader from "../Components/DefaultHeader";
 import './HomePage.css';
 
 export default function HomePage() {
@@ -9,6 +9,7 @@ export default function HomePage() {
     const { user } = useAuth();
 
     return (<div>
+        <DefaultHeader />
         <div>
             {!authed ? (
                 <div className="container">

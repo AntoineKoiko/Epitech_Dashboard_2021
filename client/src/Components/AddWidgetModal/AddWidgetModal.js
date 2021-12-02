@@ -134,7 +134,7 @@ const RefreshRateList = [
 
 
 
-function AddWidgetModal ({handler, open}) {
+function AddWidgetModal ({handler, open, setWidgetAdded}) {
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
     const [serviceSelect, setService] = useState(FormItems[0]);
@@ -145,6 +145,7 @@ function AddWidgetModal ({handler, open}) {
     const handleClose = () => {
         addWidgetReq();
         handler(false);
+        setWidgetAdded(true);
     };
 
     const addWidgetReq = () => {
