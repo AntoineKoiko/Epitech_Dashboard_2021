@@ -10,9 +10,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import WidgetInputParams from '../AddWidgetModal/WidgetInputParams';
 
 import {fetchWidgetById} from '../../utils/fetchAPI';
-import WidgetFrame from '../Widgets/WidgetFrame';
+
 
 //value in seconds
 
@@ -40,6 +41,13 @@ function UpdateWidgetModal ({handler, open, widgetId}) {
     },
     []);
 
+    const setParam = (value) => {
+        setWidgetData(prevState => ({
+            ...prevState,
+            'params': {'params1': value},
+        }))
+    };
+
     const handleClose = () => {
         handler(false);
     };
@@ -62,7 +70,7 @@ function UpdateWidgetModal ({handler, open, widgetId}) {
                         id="refresh-select"
                         value={widgetData.refresh}
                         onChange={(event) => setWidgetData(prevState =>
-                            ({...prevState, ['refresh']: event.target.value}
+                            ({...prevState, 'refresh': event.target.value}
                             ))}
                         label="Service"
                     >
@@ -70,13 +78,19 @@ function UpdateWidgetModal ({handler, open, widgetId}) {
                             return <MenuItem key={rate.value} value={rate.value}>{rate.label}</MenuItem>;
                         })}
                     </Select>
+                    <WidgetInputParams
+                        serviceId={widgetData.service}
+                        widgetSelect={widgetData.type}
+                        setParams={setParam}
+                        value={widgetData.params !== undefined ? widgetData.params.params1 : ""}/>
+
                 </FormControl>
 
             </DialogContent>
 
             <DialogActions>
                 <Button autoFocus onClick={handleClose}>
-              Cancel
+                    Cancel
                 </Button>
                 <Button onClick={handleClose} autoFocus>
               Update
