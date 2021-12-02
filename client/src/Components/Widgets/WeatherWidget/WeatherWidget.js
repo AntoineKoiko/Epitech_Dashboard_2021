@@ -62,10 +62,9 @@ function WeatherToday({weatherInfo}) {
 function WeatherWidget ({city, weatherInfo, widgetData}) {
     const region = weatherInfo.location ? weatherInfo.location.region : "";
     const date = weatherInfo.location ? weatherInfo.localtime_epoch : 0;
-    console.log(weatherInfo);
 
     return (
-        <WidgetFrame title="Weather" subtitle={city} loadingCircle={weatherInfo.loading} widgetId={widgetData._id}>
+        <WidgetFrame title="Weather" subtitle={"Forecast"} loadingCircle={weatherInfo.loading} widgetId={widgetData._id}>
             <Typography variant="h5">{city}, {region}</Typography>
             <Typography variant="subtitle1" style={{color: "gray"}}>{moment(date).format("ddd, HH:mm")}</Typography>
             <WeatherToday weatherInfo={weatherInfo}/>
