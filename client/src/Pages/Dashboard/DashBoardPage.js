@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import YoutubeCommentWidget from '../../Components/Widgets/YoutubeCommentWidget';
 import YoutubeSubNBWidget from '../../Components/Widgets/YoutubeSubNBWidget';
 import RedditSubFeedWidget from '../../Components/Widgets/RedditSubFeedWidget';
-import SpotifyTopTrackWidget from '../../Components/Widgets/SpotifyTopTrackWidget';
-import SpotifyTopArtistsWidget from '../../Components/Widgets/SpotifyTopArtistsWidget';
 import WidgetFactory from '../../Components/Widgets/Factory/WidgetFactory';
+import Grid from '@mui/material/Grid';
 
 //Drag
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
@@ -32,9 +31,11 @@ function ToDrag({x, y, children}) {
             grid={[3, 25]}
             scale={1}
         >
-            <div className="dragable-container">
-                {children}
-            </div>
+            <Grid item xs={4}>
+                <div className="dragable-container">
+                    {children}
+                </div>
+            </Grid>
         </Draggable>
     );
 }
@@ -62,14 +63,22 @@ function DashboardPage() {
 
     return (
         <div className="dashboard-container">
-            <ToDrag x={0} y={0}><YoutubeCommentWidget videoId="yeYGZmnW_kc" videoTitle="test"/></ToDrag>
-            <ToDrag x={1} y={0}><YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug"/></ToDrag>
-            <ToDrag x={2} y={0}><RedditSubFeedWidget subredditName="r/mac" sort="new"/></ToDrag>
-            {
-                widgetList.length ? widgetList.map((widget) => {
-                    return <ToDrag x={0} y={0}><WidgetFactory key={widget._id} widget={widget}/></ToDrag>;
-                }) : <></>
-            }
+            <Grid container columnSpacing={0.5} rowSpacing={0.3}>
+                <Grid item xs={4}>
+                    <ToDrag x={0} y={0}><YoutubeCommentWidget videoId="yeYGZmnW_kc" videoTitle="test"/></ToDrag>
+                </Grid>
+                <Grid item xs={4}>
+                    <ToDrag x={1} y={0}><YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug"/></ToDrag>
+                </Grid>
+                <Grid item xs={4}>
+                    <ToDrag x={2} y={0}><RedditSubFeedWidget subredditName="r/mac" sort="new"/></ToDrag>
+                </Grid>
+                {
+                    widgetList.length ? widgetList.map((widget) => {
+                        return <ToDrag x={0} y={0}><WidgetFactory key={widget._id} widget={widget}/></ToDrag>;
+                    }) : <></>
+                }
+            </Grid>
         </div>
     )
 }
