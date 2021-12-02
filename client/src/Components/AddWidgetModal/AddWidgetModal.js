@@ -193,11 +193,13 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="responsive-dialog-title"
+                maxWidth="md"
+                fullWidth={true}
             >
                 <DialogTitle id="responsive-dialog-title">
                     {"Which widget do you want to add ? "}
                 </DialogTitle>
-                <DialogContent>
+                <DialogContent sx={{height: "50vh"}}>
                     <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                         <InputLabel id="service-input-label">Service</InputLabel>
                         <Select
