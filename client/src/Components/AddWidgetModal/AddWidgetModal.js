@@ -243,6 +243,7 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
 
                             </Select>
                                 <WidgetInputParams serviceId={serviceSelect.id} widgetSelect={widgetSelect} setParams={setTextParams}/>
+                            </FormControl>
 
                 </DialogContent>
                 <DialogActions>
