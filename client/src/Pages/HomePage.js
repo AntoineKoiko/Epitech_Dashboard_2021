@@ -17,10 +17,10 @@ export default function HomePage() {
                         <h1>Welcome!</h1>
                     </div>
                     <div className="button-container">
-                        <Button variant="contained" href="/login">
+                        <Button sx={{width: '150px'}} variant="contained" href="/login">
                             Login
                         </Button>
-                        <Button variant="contained" href="/register">
+                        <Button sx={{width: '150px'}} variant="contained" href="/register">
                             Register
                         </Button>
                     </div>
