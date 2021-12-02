@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import WeatherWidget from "./WeatherWidget";
 
-import { fetchWeatherkWidget } from "../../../utils/fetchAPI";
+import { fetchWeatherWidget } from "../../../utils/fetchAPI";
 
 function RenderWeatherWidget ({cityID, refresh, widgetData}) {
     const refreshRate = refresh ? refresh : 60;
@@ -11,7 +11,7 @@ function RenderWeatherWidget ({cityID, refresh, widgetData}) {
 
 
     function fetchData() {
-        fetchWeatherkWidget(cityName)
+        fetchWeatherWidget(cityName)
             .then(response => {
                 setInfo(response);
             })
