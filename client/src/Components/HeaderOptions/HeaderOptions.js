@@ -33,14 +33,14 @@ function HeaderOptions () {
     return (
         <div>
             <Button
+                startIcon={<MenuIcon/>}
                 id="basic-button"
                 aria-controls="basic-menu"
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
-            >
-                <MenuIcon/>
-            </Button>
+            />
+
             <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
