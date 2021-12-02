@@ -155,6 +155,7 @@ function RegistrationForm() {
 const theme = createTheme({
     inputField: {
         width: '60%',
+        maxWidth: '300px',
         marginTop: 2,
     },
 });

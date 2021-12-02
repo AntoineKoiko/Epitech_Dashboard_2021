@@ -6,8 +6,9 @@
 
 .main-container {
     display: flex;
+    width: 80%;
+    margin: auto;
     flex-direction: column;
-    width: 50%;
     align-items: center;
     padding: 2% 10%;
 }
@@ -29,3 +30,14 @@
      background:#fff;
      padding:0 10px;
  }
+
+.other-option-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 25px;
+    padding: 15px 0;
+
+}
