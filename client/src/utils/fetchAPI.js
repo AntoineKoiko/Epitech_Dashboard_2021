@@ -43,7 +43,37 @@ const fetchStockWidget = async (stockCode) => {
     });
 };
 
+const fetchSpotifyTopTracksWidget = async (timeRange) => {
+    return new Promise(async (resolve, reject) => {
+        const spotifyURL = new URL('http://localhost:8080/spotify/tracks');
+        spotifyURL.searchParams.append('time_range', timeRange);
+
+        await fetchAPI(spotifyURL)
+            .then(result => {
+                resolve(result);
+            })
+            .catch(err => reject(err));
+    });
+};
+
+
+const fetchWidgetById = async (id) => {
+    return new Promise(async (resolve, reject) => {
+        const widgetURL = new URL(`http://localhost:8080/widgets/${id}`);
+
+        await fetchAPI(widgetURL)
+            .then(result => {
+                resolve(result);
+            })
+            .catch(err => reject(err));
+    });
+};
+
+
+
 module.exports = {
     fetchWeatherWidget,
     fetchStockWidget,
+    fetchSpotifyTopTracksWidget,
+    fetchWidgetById,
 };
