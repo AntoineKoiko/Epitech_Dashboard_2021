@@ -76,7 +76,8 @@ function LoginForm() {
 
 const theme = createTheme({
     inputField: {
-        width: '60%',
+        width: '80%',
+        maxWidth: '300px',
         marginTop: 2,
     },
 });
