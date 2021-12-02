@@ -198,52 +198,51 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
                     {"Which widget do you want to add ? "}
                 </DialogTitle>
                 <DialogContent>
-                    <div>
-                        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                            <InputLabel id="service-input-label">Service</InputLabel>
-                            <Select
-                                labelId="Service-select-label"
-                                id="service-select"
-                                value={serviceSelect.id}
-                                onChange={handleChangeService}
-                                label="Service"
-                            >
-                                {FormItems.map((service) => {
-                                    return <MenuItem key={service.id} value={service.id}>{service.label}</MenuItem>;
-                                })}
-                            </Select>
+                    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                        <InputLabel id="service-input-label">Service</InputLabel>
+                        <Select
+                            labelId="Service-select-label"
+                            id="service-select"
+                            value={serviceSelect.id}
+                            onChange={handleChangeService}
+                            label="Service"
+                        >
+                            {FormItems.map((service) => {
+                                return <MenuItem key={service.id} value={service.id}>{service.label}</MenuItem>;
+                            })}
+                        </Select>
 
-                            <InputLabel id="refresh-input-label">Refresh rate</InputLabel>
-                            <Select
-                                labelId="refresh-select-label"
-                                id="refresh-select"
-                                value={timeRefresh}
-                                onChange={(event) => setTimeRefresh(event.target.value)}
-                                label="Service"
-                            >
-                                {RefreshRateList.map((rate) => {
-                                    return <MenuItem key={rate.value} value={rate.value}>{rate.label}</MenuItem>;
-                                })}
-                            </Select>
+                        <InputLabel id="refresh-input-label">Refresh rate</InputLabel>
+                        <Select
+                            labelId="refresh-select-label"
+                            id="refresh-select"
+                            value={timeRefresh}
+                            onChange={(event) => setTimeRefresh(event.target.value)}
+                            label="Service"
+                        >
+                            {RefreshRateList.map((rate) => {
+                                return <MenuItem key={rate.value} value={rate.value}>{rate.label}</MenuItem>;
+                            })}
+                        </Select>
 
 
-                        </FormControl>
-                        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                            <InputLabel id="widget-input-label">Widget</InputLabel>
-                            <Select
-                                labelId="widget-select-label"
-                                id="widget-select"
-                                value={widgetSelect.id}
-                                onChange={handleChangeWidget}
-                                label="Widget"
-                            >
-                                {serviceSelect.widgets.map((widget) => {
-                                    return <MenuItem key={widget.id} value={widget.id}>{widget.label}</MenuItem>;
-                                })}
+                    </FormControl>
+                    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                        <InputLabel id="widget-input-label">Widget</InputLabel>
+                        <Select
+                            labelId="widget-select-label"
+                            id="widget-select"
+                            value={widgetSelect.id}
+                            onChange={handleChangeWidget}
+                            label="Widget"
+                        >
+                            {serviceSelect.widgets.map((widget) => {
+                                return <MenuItem key={widget.id} value={widget.id}>{widget.label}</MenuItem>;
+                            })}
 
-                            </Select>
-                                <WidgetInputParams serviceId={serviceSelect.id} widgetSelect={widgetSelect} setParams={setTextParams}/>
-                            </FormControl>
+                        </Select>
+                        <WidgetInputParams serviceId={serviceSelect.id} widgetSelect={widgetSelect} setParams={setTextParams}/>
+                    </FormControl>
 
                 </DialogContent>
                 <DialogActions>
