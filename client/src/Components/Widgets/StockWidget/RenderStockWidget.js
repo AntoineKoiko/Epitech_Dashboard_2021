@@ -17,14 +17,7 @@ function RenderStockWidget({stockID, refresh, widgetData}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
     const stockName = stockID ? stockID : 'MSFT';
     const [stockInfo, setStockInfo] = useState({
-        'currentPrice': 0,
-        'change': 0,
-        'percentChange': 0,
-        'highestPrice': 0,
-        'lowestPrice': 0,
-        'openPrice': 0,
-        'prevClosePrice': 0,
-        'timestamp': 0,
+        loading: true
     });
 
 
