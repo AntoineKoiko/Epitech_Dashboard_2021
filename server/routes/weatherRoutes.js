@@ -16,4 +16,17 @@ router.get("/", (req, res) => {
         })
 })
 
+router.get("/query", (req, res) => {
+    console.log("Never here");
+    const query = req.query.q || "Paris";
+
+    weatherService.searchLocation(query)
+        .then(response => {
+            res.json(response);
+        })
+        .catch(error => {
+            res.status(500).send(error.toString());
+        })
+})
+
 module.exports = router;
