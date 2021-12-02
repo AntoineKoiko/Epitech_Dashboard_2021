@@ -1,7 +1,7 @@
 import React from "react";
 import './StockWidget.css';
 import { useState, useEffect } from 'react';
-import StockWidget from "./StockWindget";
+import StockWidget from "./StockWidget";
 
 const requestOptions = {
     method: "GET",

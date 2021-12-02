@@ -11,7 +11,7 @@ function StockWidget({stockID, stockInfo, widgetData}) {
     ];
 
     return (
-        <WidgetFrame title="Stock" subtitle={stockID} widgetId={widgetData._id}>
+        <WidgetFrame title="Stock" subtitle={stockID} widgetId={widgetData._id} loadingCircle={stockInfo.loading}>
             <div className="stock-widget">
                 <h2>${stockInfo.currentPrice}</h2>
                 <h4 style={{color: stockInfo.percentChange < 0 ? '#D0312D' : '#3CB043', fontWeight: "bold", margin: "0 0 4% 0"}}>
