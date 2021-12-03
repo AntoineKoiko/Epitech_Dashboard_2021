@@ -1,6 +1,5 @@
 import React from 'react';
 import WidgetFrame from '../WidgetFrame';
-import List from '@mui/material/List';
 
 import './RedditSubFeedWidget.css';
 
