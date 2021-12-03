@@ -1,4 +1,5 @@
 
+
 const requestHeader = {
     method: "GET",
     credentials: "include",
@@ -9,6 +10,12 @@ const requestHeader = {
     }
 }
 
+/**
+ * Send GET request to our dachboard API running localy
+ *
+ * @param {string} url url to fetch data to
+ * @returns {Promise} the response
+ */
 const fetchAPI = (url) => {
     return new Promise((res, rej) => {
         fetch(url, requestHeader)
@@ -17,6 +24,12 @@ const fetchAPI = (url) => {
     });
 };
 
+/**
+ * Get current and forecast weather of a city
+ *
+ * @param {string} city city to get weather of
+ * @returns {Promise} location, curent and forecast weather of a city
+ */
 const fetchWeatherWidget = (city) => {
     return new Promise(async (resolve, reject) => {
         const weatherURL = new URL('http://localhost:8080/weather');
@@ -30,6 +43,12 @@ const fetchWeatherWidget = (city) => {
     });
 };
 
+/**
+ * Get current information about a stock
+ *
+ * @param {string} stockCode code of the stock (ex: AAPL, MSFT)
+ * @returns {Promise} cureent information about the stock: price, lowest, highest...
+ */
 const fetchStockWidget =(stockCode) => {
     return new Promise(async (resolve, reject) => {
         const stockURL = new URL('http://localhost:8080/stock');
@@ -43,6 +62,12 @@ const fetchStockWidget =(stockCode) => {
     });
 };
 
+/**
+ * Get spotify top tracs for a duration
+ *
+ * @param {string} time_range duration to take in account (eg: short_term, medium_term, long_term)
+ * @returns {Promise} list of top tracks
+ */
 const fetchSpotifyTopTracksWidget = (timeRange) => {
     return new Promise(async (resolve, reject) => {
         const spotifyURL = new URL('http://localhost:8080/spotify/tracks');
@@ -56,7 +81,12 @@ const fetchSpotifyTopTracksWidget = (timeRange) => {
     });
 };
 
-
+/**
+ * Get a specific id in function of his id
+ *
+ * @param {string} id ID of the widget to get from the DB
+ * @returns {Promise} Widget object
+ */
 const fetchWidgetById = (id) => {
     return new Promise(async (resolve, reject) => {
         const widgetURL = new URL(`http://localhost:8080/widgets/${id}`);
@@ -69,6 +99,11 @@ const fetchWidgetById = (id) => {
     });
 };
 
+/**
+ * Get all widgets from the DB
+ *
+ * @returns {Promise} list of Widget object
+ */
 const fetchAllWidgets = () => {
     return new Promise(async (resolve, reject) => {
         const widgetURL = new URL(`http://localhost:8080/widgets`);
@@ -81,6 +116,13 @@ const fetchAllWidgets = () => {
     });
 };
 
+/**
+ * Get post of a subReddit
+ *
+ * @param {string} name name of the subReddditi (eg: r/mac)
+ * @param {string} sort sorting of the post (eg: top, new, hot,...)
+ * @returns {Promise} Widget object
+ */
 const fetchRedditSubFedd = (name, sort = "new") => {
     return new Promise(async (resolve, reject) => {
         const redditURL = new URL('http://localhost:8080/reddit/post');
