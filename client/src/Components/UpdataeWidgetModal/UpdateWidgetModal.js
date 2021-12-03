@@ -18,6 +18,16 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import './UpdateWidgetModal.css';
 
+const requestOptions = {
+    method: "Put",
+    credentials: "include",
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Credentials": true
+    },
+}
+
 //value in seconds
 
 const RefreshRateList = [
@@ -33,6 +43,30 @@ function UpdateWidgetModal ({handler, open, widgetId}) {
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const [widgetData, setWidgetData] = useState({});
+
+
+    const updateWidgetReq = () => {
+        const config = {...requestOptions, body: JSON.stringify({
+            service: widgetData.service,
+            type: widgetData.type,
+            params: {
+                params1: widgetData.params !== undefined ? widgetData.params.params1 : "",
+            },
+            refresh: widgetData.refresh
+        })}
+        fetch("http://localhost:8080/widgets/?id=" + widgetId, config)
+            .then(response => {
+                response.text().then(function (text) {
+                    console.log(text);
+                });
+                console.log(response.statusText)
+                console.log(response.status);
+                console.log(response.text);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
     useEffect(() => {
         fetchWidgetById(widgetId)
@@ -56,6 +90,11 @@ function UpdateWidgetModal ({handler, open, widgetId}) {
     const handleClose = () => {
         handler(false);
     };
+
+    const handleValidate = () => {
+        updateWidgetReq();
+        handleClose();
+    }
 
     return (
         <Dialog
@@ -104,7 +143,7 @@ function UpdateWidgetModal ({handler, open, widgetId}) {
                 <Button autoFocus onClick={handleClose}>
                     Cancel
                 </Button>
-                <Button onClick={handleClose} autoFocus>
+                <Button onClick={handleValidate} autoFocus>
               Update
                 </Button>
             </DialogActions>
