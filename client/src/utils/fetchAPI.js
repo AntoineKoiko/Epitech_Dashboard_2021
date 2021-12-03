@@ -17,12 +17,12 @@ const fetchAPI = (url) => {
     });
 };
 
-const fetchWeatherWidget = async (city) => {
+const fetchWeatherWidget = (city) => {
     return new Promise(async (resolve, reject) => {
         const weatherURL = new URL('http://localhost:8080/weather');
         weatherURL.searchParams.append('city', city);
 
-        await fetchAPI(weatherURL)
+        fetchAPI(weatherURL)
             .then(result => {
                 resolve(result);
             })
@@ -30,12 +30,12 @@ const fetchWeatherWidget = async (city) => {
     });
 };
 
-const fetchStockWidget = async (stockCode) => {
+const fetchStockWidget =(stockCode) => {
     return new Promise(async (resolve, reject) => {
         const stockURL = new URL('http://localhost:8080/stock');
         stockURL.searchParams.append('name', stockCode);
 
-        await fetchAPI(stockURL)
+        fetchAPI(stockURL)
             .then(result => {
                 resolve(result);
             })
@@ -43,12 +43,12 @@ const fetchStockWidget = async (stockCode) => {
     });
 };
 
-const fetchSpotifyTopTracksWidget = async (timeRange) => {
+const fetchSpotifyTopTracksWidget = (timeRange) => {
     return new Promise(async (resolve, reject) => {
         const spotifyURL = new URL('http://localhost:8080/spotify/tracks');
         spotifyURL.searchParams.append('time_range', timeRange);
 
-        await fetchAPI(spotifyURL)
+        fetchAPI(spotifyURL)
             .then(result => {
                 resolve(result);
             })
@@ -57,11 +57,11 @@ const fetchSpotifyTopTracksWidget = async (timeRange) => {
 };
 
 
-const fetchWidgetById = async (id) => {
+const fetchWidgetById = (id) => {
     return new Promise(async (resolve, reject) => {
         const widgetURL = new URL(`http://localhost:8080/widgets/${id}`);
 
-        await fetchAPI(widgetURL)
+        fetchAPI(widgetURL)
             .then(result => {
                 resolve(result);
             })
@@ -69,11 +69,11 @@ const fetchWidgetById = async (id) => {
     });
 };
 
-const fetchAllWidgets = async () => {
+const fetchAllWidgets = () => {
     return new Promise(async (resolve, reject) => {
         const widgetURL = new URL(`http://localhost:8080/widgets`);
 
-        await fetchAPI(widgetURL)
+        fetchAPI(widgetURL)
             .then(result => {
                 resolve(result);
             })
@@ -81,13 +81,13 @@ const fetchAllWidgets = async () => {
     });
 };
 
-const fetchRedditSubFedd = async (name, sort = "new") => {
+const fetchRedditSubFedd = (name, sort = "new") => {
     return new Promise(async (resolve, reject) => {
         const redditURL = new URL('http://localhost:8080/reddit/post');
         redditURL.searchParams.append('name', name);
         redditURL.searchParams.append('sort', sort);
 
-        await fetchAPI(redditURL)
+        fetchAPI(redditURL)
             .then(result => {
                 resolve(result);
             })
