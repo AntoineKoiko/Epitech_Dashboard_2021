@@ -178,7 +178,7 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
             <DialogContent sx={{height: "50vh"}}>
                 <div className="content-container">
                     <div className="form-side-container">
-                        <FormControl>
+                        <FormControl variant="standard">
                             <InputLabel id="widget-select-label">Service</InputLabel>
                             <Select
                                 labelId="widget-select-label"
@@ -192,7 +192,7 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
                             </Select>
                         </FormControl>
 
-                        <FormControl>
+                        <FormControl variant="standard">
                             <InputLabel id="refresh-rate-select-label">Refresh Rate</InputLabel>
                             <Select
                                 labelId="refresh-rate-select-label"
@@ -208,7 +208,7 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
                         </FormControl>
                     </div>
                     <div className="form-side-container">
-                        <FormControl>
+                        <FormControl variant="standard">
                             <InputLabel id="widget-select-label">Widget</InputLabel>
                             <Select
                                 labelId="widget-select-label"
