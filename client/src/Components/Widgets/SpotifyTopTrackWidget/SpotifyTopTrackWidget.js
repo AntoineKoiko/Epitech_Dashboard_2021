@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 function TopTrackItem({title, artists, albumCover, ranking}) {
     return (
         <ListItem alignItems="center" >
-            <Typography sx={{marginRight: 5, fontWeight: "bold"}} >
+            <Typography sx={{fontWeight: "bold", padding: "0% 5% 0% 0%"}} >
                 {ranking}
             </Typography>
             <ListItemIcon>
@@ -34,7 +34,7 @@ function SpotifyTopTrackWidget ({data, timeRange, widgetData}) {
 
     return (
         <WidgetFrame title="Spotify" subtitle="User top tracks" widgetId={widgetData._id}>
-            <Typography align="left" sx={{fontWeight: "bold"}}>Top tracks {timeRangeText.label}</Typography>
+            <h4 align="left" sx={{fontWeight: "bold"}}>Top tracks {timeRangeText.label}</h4>
             <List sx={{ width: '100%'}}>
                 {data.map((item, idx) => {
                     const arrayArtists = item.artists.map(artist => {
