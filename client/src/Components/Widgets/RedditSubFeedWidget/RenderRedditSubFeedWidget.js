@@ -1,37 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import RedditSubFeedWidget from './RedditSubFeedWidget';
 
-const requestOptions = {
-    method: "GET",
-    credentials: "include",
-    headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Credentials": true
-    }
-}
+import { fetchRedditSubFedd } from '../../../utils/fetchAPI';
 
-function RenderRedditSubFeedWidget ({subredditName, sort, refresh, widgetData}) {
+function RenderRedditSubFeedWidget ({subredditName, sort="new", refresh, widgetData}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
     const [posts, setPosts] = useState([]);
 
-
     function fetchData() {
-        const redditURL = new URL('http://localhost:8080/reddit/post');
-
-        redditURL.searchParams.append('name', subredditName);
-        redditURL.searchParams.append('sort', sort);
-
-        console.log('reddit url ', redditURL.toString());
-        fetch(redditURL, requestOptions)
+        fetchRedditSubFedd(subredditName, sort)
             .then(response => {
-                if (response.status === 200)
-                    return response.json();
-                throw new Error("failed to authenticate user")
-            })
-            .then(responseJSON => {
-                console.log('json reddit response ', responseJSON.data.children);
-                setPosts(responseJSON.data.children.slice(0, 5));
+                console.log('json reddit response ', response.data.children);
+                setPosts(response.data.children.slice(0, 5));
             })
             .catch(error => {
                 console.log('fetch error for reddit');

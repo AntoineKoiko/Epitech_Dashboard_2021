@@ -81,10 +81,25 @@ const fetchAllWidgets = async () => {
     });
 };
 
+const fetchRedditSubFedd = async (name, sort = "new") => {
+    return new Promise(async (resolve, reject) => {
+        const redditURL = new URL('http://localhost:8080/reddit/post');
+        redditURL.searchParams.append('name', name);
+        redditURL.searchParams.append('sort', sort);
+
+        await fetchAPI(redditURL)
+            .then(result => {
+                resolve(result);
+            })
+            .catch(err => reject(err));
+    });
+};
+
 module.exports = {
     fetchWeatherWidget,
     fetchStockWidget,
     fetchSpotifyTopTracksWidget,
     fetchWidgetById,
     fetchAllWidgets,
+    fetchRedditSubFedd
 };
