@@ -100,38 +100,13 @@ const FormItems = [
 //value in seconds
 
 const RefreshRateList = [
-    {
-        value: 30,
-        label: '30 Seconds'
-    },
-
-    {
-        value: 60,
-        label: '1 Minute'
-    },
-
-    {
-        value: 300,
-        label: '5 Minutes'
-    },
-
-    {
-        value: 600,
-        label: '10 Minutes'
-    },
-
-    {
-        value: 1800,
-        label: '30 Minutes'
-    },
-
-    {
-        value: 3600,
-        label: '1 Hour'
-    },
+    {value: 30, label: '30 Seconds'},
+    {value: 60, label: '1 Minute'},
+    {value: 300, label: '5 Minutes'},
+    {value: 600, label: '10 Minutes'},
+    {value: 1800, label: '30 Minutes'},
+    {value: 3600, label: '1 Hour'},
 ];
-
-
 
 function AddWidgetModal ({handler, open, setWidgetAdded}) {
     const theme = useTheme();
@@ -188,26 +163,25 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
     };
 
     return (
-        <div>
+        <Dialog
+            fullScreen={fullScreen}
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="responsive-dialog-title"
+            maxWidth="md"
+            fullWidth={true}
+        >
+            <DialogTitle id="responsive-dialog-title">
+                {"Which widget do you want to add ? "}
+            </DialogTitle>
 
-            <Dialog
-                fullScreen={fullScreen}
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="responsive-dialog-title"
-                maxWidth="md"
-                fullWidth={true}
-            >
-                <DialogTitle id="responsive-dialog-title">
-                    {"Which widget do you want to add ? "}
-                </DialogTitle>
-                <DialogContent sx={{height: "50vh"}}>
-                    <div className="content-container">
-                        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                            <InputLabel id="service-input-label">Service</InputLabel>
+            <DialogContent sx={{height: "50vh"}}>
+                <div className="content-container">
+                    <div className="form-side-container">
+                        <FormControl>
+                            <InputLabel id="widget-select-label">Service</InputLabel>
                             <Select
-                                labelId="Service-select-label"
-                                id="service-select"
+                                labelId="widget-select-label"
                                 value={serviceSelect.id}
                                 onChange={handleChangeService}
                                 label="Service"
@@ -217,10 +191,11 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
                                 })}
                             </Select>
                         </FormControl>
+
                         <FormControl>
-                            <InputLabel id="refresh-input-label">Refresh rate</InputLabel>
+                            <InputLabel id="refresh-rate-select-label">Refresh Rate</InputLabel>
                             <Select
-                                labelId="refresh-select-label"
+                                labelId="refresh-rate-select-label"
                                 id="refresh-select"
                                 value={timeRefresh}
                                 onChange={(event) => setTimeRefresh(event.target.value)}
@@ -230,11 +205,11 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
                                     return <MenuItem key={rate.value} value={rate.value}>{rate.label}</MenuItem>;
                                 })}
                             </Select>
-
-
                         </FormControl>
-                        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                            <InputLabel id="widget-input-label">Widget</InputLabel>
+                    </div>
+                    <div className="form-side-container">
+                        <FormControl>
+                            <InputLabel id="widget-select-label">Widget</InputLabel>
                             <Select
                                 labelId="widget-select-label"
                                 id="widget-select"
@@ -245,22 +220,24 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
                                 {serviceSelect.widgets.map((widget) => {
                                     return <MenuItem key={widget.id} value={widget.id}>{widget.label}</MenuItem>;
                                 })}
-
                             </Select>
+                        </FormControl>
+
+                        <FormControl>
                             <WidgetInputParams serviceId={serviceSelect.id} widgetSelect={widgetSelect} setParams={setTextParams}/>
                         </FormControl>
                     </div>
-                </DialogContent>
-                <DialogActions>
-                    <Button autoFocus onClick={handleClose}>
+                </div>
+            </DialogContent>
+            <DialogActions>
+                <Button autoFocus onClick={handleClose}>
               Cancel
-                    </Button>
-                    <Button onClick={handleValidation} autoFocus>
+                </Button>
+                <Button onClick={handleValidation} autoFocus>
               Add
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </div>
+                </Button>
+            </DialogActions>
+        </Dialog>
     );
 }
 
