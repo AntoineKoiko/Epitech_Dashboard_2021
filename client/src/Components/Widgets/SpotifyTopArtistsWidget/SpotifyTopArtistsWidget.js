@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 function TopArtistItem({artists, avatar, ranking}) {
     return (
         <ListItem alignItems="center" >
-            <Typography sx={{marginRight: 5, fontWeight: "bold"}}>
+            <Typography sx={{fontWeight: "bold", padding: "0% 5% 0% 0%"}}>
                 {ranking}
             </Typography>
             <ListItemIcon>
@@ -33,7 +33,7 @@ function SpotifyTopArtistsWidget ({data, timeRange, widgetData}) {
 
     return (
         <WidgetFrame title="Spotify" subtitle="User top artists" widgetId={widgetData._id}>
-            <Typography align="left" sx={{fontWeight: "bold"}}>Top artists {timeRangeText.label}</Typography>
+            <h4>Top artists {timeRangeText.label}</h4>
             <List sx={{ width: '100%'}}>
                 {data.map((item, idx) => {
                     let img = item.images[0] ? item.images[0].url : item.name;
