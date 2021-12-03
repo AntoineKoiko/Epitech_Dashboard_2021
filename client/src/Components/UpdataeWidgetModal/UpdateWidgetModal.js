@@ -14,6 +14,9 @@ import WidgetInputParams from '../AddWidgetModal/WidgetInputParams';
 
 import {fetchWidgetById} from '../../utils/fetchAPI';
 
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import './UpdateWidgetModal.css';
 
 //value in seconds
 
@@ -27,6 +30,8 @@ const RefreshRateList = [
 ];
 
 function UpdateWidgetModal ({handler, open, widgetId}) {
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const [widgetData, setWidgetData] = useState({});
 
     useEffect(() => {
@@ -57,35 +62,42 @@ function UpdateWidgetModal ({handler, open, widgetId}) {
             open={open}
             onClose={handleClose}
             aria-labelledby="responsive-dialog-title"
+            maxWidth="md"
+            fullWidth={true}
+            fullScreen={fullScreen}
         >
             <DialogTitle id="responsive-dialog-title">
                 {"Which widget do you want to add ? "}
             </DialogTitle>
 
-            <DialogContent sx={{width: '100%', height: '100%',  m: 1, minWidth: 120 }}>
-                <FormControl>
-                    <InputLabel id="refresh-input-label">Refresh rate</InputLabel>
-                    <Select
-                        labelId="refresh-select-label"
-                        id="refresh-select"
-                        value={widgetData.refresh}
-                        onChange={(event) => setWidgetData(prevState =>
-                            ({...prevState, 'refresh': event.target.value}
-                            ))}
-                        label="Service"
-                    >
-                        {RefreshRateList.map((rate) => {
-                            return <MenuItem key={rate.value} value={rate.value}>{rate.label}</MenuItem>;
-                        })}
-                    </Select>
-                    <WidgetInputParams
-                        serviceId={widgetData.service}
-                        widgetSelect={widgetData.type}
-                        setParams={setParam}
-                        value={widgetData.params !== undefined ? widgetData.params.params1 : ""}/>
+            <DialogContent sx={{m: 1, minWidth: 120}}>
+                <div className="form-container">
+                    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                        <InputLabel id="refresh-input-label">Refresh rate</InputLabel>
+                        <Select
+                            labelId="refresh-select-label"
+                            id="refresh-select"
+                            value={widgetData.refresh}
+                            onChange={(event) => setWidgetData(prevState =>
+                                ({...prevState, 'refresh': event.target.value}
+                                ))}
+                            label="Service"
+                        >
+                            {RefreshRateList.map((rate) => {
+                                return <MenuItem key={rate.value} value={rate.value}>{rate.label}</MenuItem>;
+                            })}
+                        </Select>
+                    </FormControl>
 
-                </FormControl>
+                    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                        <WidgetInputParams
+                            serviceId={widgetData.service}
+                            widgetSelect={widgetData.type}
+                            setParams={setParam}
+                            value={widgetData.params !== undefined ? widgetData.params.params1 : ""}/>
 
+                    </FormControl>
+                </div>
             </DialogContent>
 
             <DialogActions>
