@@ -6,7 +6,6 @@
 .dashboard-container {
     position: relative;
     display: flex;
-    flex: 1;
     padding-top: 10px;
-    background-color: green;
+    height: 100%;
 }

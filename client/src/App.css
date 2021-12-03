@@ -1,13 +1,14 @@
 *, *::before, *::after {
     box-sizing: inherit;
   }
-  
+
   html {
     /* this makes sure the padding and the border is included in the box sizing */
     box-sizing: border-box;
     /* overflow-y: hidden; */
+    background-color: #00171F;
   }
-  
+
   html body {
     padding: 0;
     margin: 0;

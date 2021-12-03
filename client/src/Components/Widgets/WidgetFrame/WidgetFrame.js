@@ -63,7 +63,7 @@ function WidgetFrame({title, subtitle, expand, children, expandContent, loadingC
     return (
         <Card
             variant="outlined"
-            sx={{width: 400, borderRadius: 4}}
+            sx={{width: 400, borderRadius: 4, borderColor: '#003459'}}
         >
             <CardHeader
                 action={
