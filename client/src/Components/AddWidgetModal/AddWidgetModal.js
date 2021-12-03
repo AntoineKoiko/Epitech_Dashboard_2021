@@ -30,23 +30,6 @@ const requestOptions = {
 
 const FormItems = [
     {
-        id: 'youtube',
-        label: 'Youtube',
-        widgets: [
-            {
-                id: 'video_comment',
-                label: 'Comment',
-                optionLabel: 'Choose a video',
-            },
-            {
-                id: 'channel_stat',
-                label: 'View',
-                optionLabel: 'Choose a video',
-            },
-        ],
-    },
-
-    {
         id: 'spotify',
         label: 'Spotify',
         widgets: [
@@ -62,7 +45,22 @@ const FormItems = [
             },
         ],
     },
-
+    {
+        id: 'youtube',
+        label: 'Youtube',
+        widgets: [
+            {
+                id: 'video_comment',
+                label: 'Comment',
+                optionLabel: 'Choose a video',
+            },
+            {
+                id: 'channel_stat',
+                label: 'View',
+                optionLabel: 'Choose a video',
+            },
+        ],
+    },
     {
         id: 'reddit',
         label: 'Reddit',
@@ -142,14 +140,18 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
     const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
     const [serviceSelect, setService] = useState(FormItems[0]);
     const [widgetSelect, setWidget] = useState(serviceSelect.widgets[0]);
-    const [timeRefresh, setTimeRefresh] = useState(60);
+    const [timeRefresh, setTimeRefresh] = useState(3600);
     const [textParams, setTextParams] = useState("");
 
-    const handleClose = () => {
+    const handleValidation = () => {
         addWidgetReq();
         handler(false);
         setWidgetAdded(true);
     };
+
+    const handleClose = () => {
+        handler(false);
+    }
 
     const addWidgetReq = () => {
         const config = {...requestOptions, body: JSON.stringify({
@@ -216,7 +218,8 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
                                     return <MenuItem key={service.id} value={service.id}>{service.label}</MenuItem>;
                                 })}
                             </Select>
-
+                        </FormControl>
+                        <FormControl>
                             <InputLabel id="refresh-input-label">Refresh rate</InputLabel>
                             <Select
                                 labelId="refresh-select-label"
@@ -254,7 +257,7 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
                     <Button autoFocus onClick={handleClose}>
               Cancel
                     </Button>
-                    <Button onClick={handleClose} autoFocus>
+                    <Button onClick={handleValidation} autoFocus>
               Add
                     </Button>
                 </DialogActions>
