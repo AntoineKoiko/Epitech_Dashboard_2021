@@ -69,11 +69,22 @@ const fetchWidgetById = async (id) => {
     });
 };
 
+const fetchAllWidgets = async () => {
+    return new Promise(async (resolve, reject) => {
+        const widgetURL = new URL(`http://localhost:8080/widgets`);
 
+        await fetchAPI(widgetURL)
+            .then(result => {
+                resolve(result);
+            })
+            .catch(err => reject(err));
+    });
+};
 
 module.exports = {
     fetchWeatherWidget,
     fetchStockWidget,
     fetchSpotifyTopTracksWidget,
     fetchWidgetById,
+    fetchAllWidgets,
 };

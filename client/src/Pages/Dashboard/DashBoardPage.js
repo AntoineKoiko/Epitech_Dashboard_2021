@@ -6,20 +6,12 @@ import WidgetFactory from '../../Components/Widgets/Factory/WidgetFactory';
 import DefaultHeader from '../../Components/DefaultHeader';
 import Grid from '@mui/material/Grid';
 
+import { fetchAllWidgets } from '../../utils/fetchAPI';
+
 //Drag
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 
 import './DashboardPage.css';
-
-const requestOptions = {
-    method: "GET",
-    credentials: "include",
-    headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Credentials": true
-    }
-}
 
 function ToDrag({x, y, children}) {
     return (
@@ -47,16 +39,10 @@ function DashboardPage() {
     const [refreshWidget, setRefreshWidget] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:8080/widgets", requestOptions)
+        fetchAllWidgets()
             .then(response => {
-                console.log(response.status);
-                if (response.status === 200)
-                    return response.json();
-                throw new Error("failed to parse json");
-            })
-            .then(responseJSON => {
-                setWidgetList(responseJSON);
-                console.log("JSON widget: ", responseJSON)
+                setWidgetList(response);
+                console.log("JSON widget: ", response);
             })
             .catch(error => {
                 console.log(error);
