@@ -34,7 +34,7 @@ function HeaderOptions ({setWidgetAdded}) {
     return (
         <div>
             <button>
-                <MenuIcon onClick={handleClick}/>
+                <MenuIcon onClick={handleClick} sx={{color: '#00171F'}} fontSize="large"/>
             </button>
 
 
