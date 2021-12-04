@@ -24,7 +24,7 @@ function TopTrackItem({title, artists, albumCover, ranking}) {
     )
 }
 
-function SpotifyTopTrackWidget ({data, timeRange, widgetData}) {
+function SpotifyTopTrackWidget ({data, timeRange, widgetData, setRefreshWidget}) {
     const timeRangeTextArray = [
         {value: "short_term", label: "(last 4 weeks)"},
         {value: "medium_term", label: "(last 6 monts)"},
@@ -33,7 +33,7 @@ function SpotifyTopTrackWidget ({data, timeRange, widgetData}) {
     const timeRangeText = timeRangeTextArray.find(element => element.value === timeRange);
 
     return (
-        <WidgetFrame title="Spotify" subtitle="User top tracks" widgetId={widgetData._id}>
+        <WidgetFrame title="Spotify" subtitle="User top tracks" widgetId={widgetData._id} setRefreshWidget={setRefreshWidget}>
             <h4 align="left" sx={{fontWeight: "bold"}}>Top tracks {timeRangeText.label}</h4>
             <List sx={{ width: '100%'}}>
                 {data.map((item, idx) => {

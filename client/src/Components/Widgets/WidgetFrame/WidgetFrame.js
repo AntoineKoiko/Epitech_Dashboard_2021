@@ -30,7 +30,7 @@ const requestOptions = {
     },
 }
 
-function WidgetFrame({title, subtitle, children, loadingCircle, widgetId}) {
+function WidgetFrame({title, subtitle, children, loadingCircle, widgetId, setRefreshWidget}) {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const [openUpdate, setOpenUpdate] = useState(false);
@@ -49,6 +49,7 @@ function WidgetFrame({title, subtitle, children, loadingCircle, widgetId}) {
                 response.text().then(function (text) {
                     console.log(text);
                 });
+                setRefreshWidget();
             })
             .catch(err => {
                 console.log(err);
@@ -86,7 +87,7 @@ function WidgetFrame({title, subtitle, children, loadingCircle, widgetId}) {
                 <MenuItem onClick={handleDelete}>Delete</MenuItem>
             </Menu>
 
-            <UpdateWidgetModal open={openUpdate} handler={setOpenUpdate} widgetId={widgetId}/>
+            <UpdateWidgetModal open={openUpdate} handler={setOpenUpdate} widgetId={widgetId} setRefreshWidget={setRefreshWidget}/>
         </Card>
     )
 }

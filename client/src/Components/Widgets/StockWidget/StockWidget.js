@@ -2,7 +2,7 @@ import React from 'react';
 import './StockWidget.css';
 import WidgetFrame from '../WidgetFrame';
 
-function StockWidget({stockID, stockInfo, widgetData}) {
+function StockWidget({stockID, stockInfo, widgetData, setRefreshWidget}) {
     const tableur = [
         {label: "Ouverture", value: Math.round(stockInfo.openPrice * 100) / 100},
         {label: "+Haut", value: Math.round(stockInfo.highestPrice * 100) / 100},
@@ -11,7 +11,7 @@ function StockWidget({stockID, stockInfo, widgetData}) {
     ];
 
     return (
-        <WidgetFrame title="Stock" subtitle={stockID} widgetId={widgetData._id} loadingCircle={stockInfo.loading}>
+        <WidgetFrame title="Stock" subtitle={stockID} widgetId={widgetData._id} loadingCircle={stockInfo.loading} setRefreshWidget={setRefreshWidget}>
             <div className="stock-widget">
                 <h2>${stockInfo.currentPrice}</h2>
                 <h4 style={{color: stockInfo.percentChange < 0 ? '#D0312D' : '#3CB043', fontWeight: "bold", margin: "0 0 4% 0"}}>

@@ -39,7 +39,7 @@ const RefreshRateList = [
     {value: 3600, label: '1 Hour'},
 ];
 
-function UpdateWidgetModal ({handler, open, widgetId}) {
+function UpdateWidgetModal ({handler, open, widgetId, setRefreshWidget}) {
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const [widgetData, setWidgetData] = useState({});
@@ -62,6 +62,7 @@ function UpdateWidgetModal ({handler, open, widgetId}) {
                 console.log(response.statusText)
                 console.log(response.status);
                 console.log(response.text);
+                setRefreshWidget();
             })
             .catch(err => {
                 console.log(err);

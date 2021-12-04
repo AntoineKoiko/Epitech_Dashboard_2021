@@ -52,13 +52,12 @@ function Comment ({pseudo, avatar, comment, like, published}) {
     )
 }
 
-function YoutubeCommentWidget ({videoTitle, commentList, widgetData}) {
+function YoutubeCommentWidget ({videoTitle, commentList, widgetData, setRefreshWidget}) {
     return (
-        <WidgetFrame title="Youtube" widgetId={'TODO REPLACE IT'}>
-            <h4>Comment of the video: {videoTitle}</h4>
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-
-                {commentList.map((item, idx) => {
+        <WidgetFrame title="Youtube" widgetId={'TODO REPLACE IT'} setRefreshWidget={setRefreshWidget}>
+            <h4>{videoTitle ? videoTitle : "undefined video name"}</h4>
+            <List sx={{ width: '100%'}}>
+                {commentList.map((item) => {
                     return (
                         <Comment
                             key={item.id}

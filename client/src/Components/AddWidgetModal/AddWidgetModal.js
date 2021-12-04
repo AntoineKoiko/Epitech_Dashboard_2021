@@ -119,7 +119,7 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
     const handleValidation = () => {
         addWidgetReq();
         handler(false);
-        setWidgetAdded(true);
+        setWidgetAdded();
     };
 
     const handleClose = () => {

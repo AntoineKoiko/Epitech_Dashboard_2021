@@ -12,7 +12,7 @@ const requestOptions = {
     }
 }
 
-function RenderYoutubeSubNBWidget ({channelId, refresh, widgetData}) {
+function RenderYoutubeSubNBWidget ({channelId, refresh, widgetData, setRefreshWidget}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
     const [channelName, setChannelName] = useState("TauteYT");
     const [channelInfo, setChannelInfo] = useState({
@@ -60,7 +60,7 @@ function RenderYoutubeSubNBWidget ({channelId, refresh, widgetData}) {
 
     }, [channelId]);
 
-    return <YoutubeSubNBWidget channelName={channelName} channelInfo={channelInfo} widgetData={widgetData}/>
+    return <YoutubeSubNBWidget channelName={channelName} channelInfo={channelInfo} widgetData={widgetData} setRefreshWidget={setRefreshWidget}/>
 }
 
 export default RenderYoutubeSubNBWidget;

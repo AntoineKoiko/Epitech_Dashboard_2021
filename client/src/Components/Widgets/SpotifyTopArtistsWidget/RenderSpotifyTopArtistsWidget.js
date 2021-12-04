@@ -11,7 +11,7 @@ const requestOptions = {
     }
 }
 
-function RenderSpotifyTopArtistsWidget({timeRange, refresh, widgetData}) {
+function RenderSpotifyTopArtistsWidget({timeRange, refresh, widgetData, setRefreshWidget}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
     const [items, setItems] = useState([]);
 
@@ -52,7 +52,7 @@ function RenderSpotifyTopArtistsWidget({timeRange, refresh, widgetData}) {
 
     }, []);
 
-    return <SpotifyTopArtistsWidget data={items} timeRange={timeRange} widgetData={widgetData}/>;
+    return <SpotifyTopArtistsWidget data={items} timeRange={timeRange} widgetData={widgetData} setRefreshWidget={setRefreshWidget}/>;
 }
 
 export default RenderSpotifyTopArtistsWidget;

@@ -5,7 +5,7 @@ import StockWidget from "./StockWidget";
 
 import {fetchStockWidget} from '../../../utils/fetchAPI';
 
-function RenderStockWidget({stockID, refresh, widgetData}) {
+function RenderStockWidget({stockID, refresh, widgetData, setRefreshWidget}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
     const stockName = stockID ? stockID : 'MSFT';
     const [stockInfo, setStockInfo] = useState({
@@ -37,7 +37,7 @@ function RenderStockWidget({stockID, refresh, widgetData}) {
         };
     }, []);
 
-    return <StockWidget stockID={stockID} stockInfo={stockInfo} widgetData={widgetData}/>;
+    return <StockWidget stockID={stockID} stockInfo={stockInfo} widgetData={widgetData}  setRefreshWidget={setRefreshWidget}/>;
 }
 
 export default RenderStockWidget;

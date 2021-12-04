@@ -4,7 +4,7 @@ import WeatherWidget from "./WeatherWidget";
 
 import { fetchWeatherWidget } from "../../../utils/fetchAPI";
 
-function RenderWeatherWidget ({cityID, refresh, widgetData}) {
+function RenderWeatherWidget ({cityID, refresh, widgetData, setRefreshWidget}) {
     const refreshRate = refresh ? refresh : 60;
     const cityName = cityID ? cityID : 'Paris';
     const [weatherInfo, setInfo] = useState({loading: true});
@@ -35,7 +35,7 @@ function RenderWeatherWidget ({cityID, refresh, widgetData}) {
         };
     }, [cityID]);
 
-    return <WeatherWidget weatherInfo={weatherInfo} city={cityName} widgetData={widgetData}/>
+    return <WeatherWidget weatherInfo={weatherInfo} city={cityName} widgetData={widgetData} setRefreshWidget={setRefreshWidget}/>
 }
 
 export default RenderWeatherWidget;

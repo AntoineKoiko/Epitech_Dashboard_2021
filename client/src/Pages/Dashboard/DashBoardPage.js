@@ -69,7 +69,7 @@ function DashboardPage() {
                     </Grid> */}
                     {
                         widgetList.length ? widgetList.map((widget) => {
-                            return <ToDrag x={0} y={0} key={widget._id}><WidgetFactory widget={widget}/></ToDrag>;
+                            return <ToDrag x={0} y={0} key={widget._id}><WidgetFactory widget={widget} setRefreshWidget={triggerRefreshWidget}/></ToDrag>;
                         }) : <></>
                     }
                 </Grid>

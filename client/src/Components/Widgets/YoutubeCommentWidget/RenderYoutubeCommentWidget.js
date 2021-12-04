@@ -11,7 +11,7 @@ const requestOptions = {
     }
 }
 
-function RenderYoutubeCommentWidget({videoId, refresh, widgetData}) {
+function RenderYoutubeCommentWidget({videoId, refresh, widgetData, setRefreshWidget}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
     const [videoName, setName] = useState('Unknown');
     const [comments, setComments] = useState([]);
@@ -53,7 +53,7 @@ function RenderYoutubeCommentWidget({videoId, refresh, widgetData}) {
 
     }, [videoId]);
 
-    return <YoutubeCommentWidget commentList={comments} widgetData={widgetData}/>;
+    return <YoutubeCommentWidget commentList={comments} widgetData={widgetData} setRefreshWidget={setRefreshWidget}/>;
 }
 
 export default RenderYoutubeCommentWidget;

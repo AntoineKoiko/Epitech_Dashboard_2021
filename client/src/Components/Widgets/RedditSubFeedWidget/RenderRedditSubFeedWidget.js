@@ -3,7 +3,7 @@ import RedditSubFeedWidget from './RedditSubFeedWidget';
 
 import { fetchRedditSubFedd } from '../../../utils/fetchAPI';
 
-function RenderRedditSubFeedWidget ({subredditName, sort="new", refresh, widgetData}) {
+function RenderRedditSubFeedWidget ({subredditName, sort="new", refresh, widgetData, setRefreshWidget}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
     const [posts, setPosts] = useState([]);
 
@@ -36,7 +36,7 @@ function RenderRedditSubFeedWidget ({subredditName, sort="new", refresh, widgetD
     }, [subredditName, sort]);
 
 
-    return <RedditSubFeedWidget subName={subredditName} data={posts} widgetData={widgetData}/>;
+    return <RedditSubFeedWidget subName={subredditName} data={posts} widgetData={widgetData} setRefreshWidget={setRefreshWidget}/>;
 }
 
 export default RenderRedditSubFeedWidget;
