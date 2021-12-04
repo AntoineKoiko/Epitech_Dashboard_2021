@@ -72,7 +72,7 @@ function WeatherWidget ({city, weatherInfo, widgetData, setRefreshWidget}) {
             <Grid container alignItems="center" justifyContent="center">
                 {
                     weatherInfo.forecast ? weatherInfo.forecast.forecastday.map((day) => {
-                        return <ForecastDailyColumn forecastDay={day}/>;     
+                        return <ForecastDailyColumn key={day.date_epoch} forecastDay={day}/>;     
                     }) : <></>
                 }
             </Grid>
