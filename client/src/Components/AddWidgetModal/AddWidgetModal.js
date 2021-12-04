@@ -117,9 +117,12 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
     const [textParams, setTextParams] = useState("");
 
     const handleValidation = () => {
-        addWidgetReq();
-        handler(false);
-        setWidgetAdded();
+        if (textParams.length) {
+            addWidgetReq();
+            handler(false);
+            setTextParams("");
+            setWidgetAdded();
+        }
     };
 
     const handleClose = () => {
