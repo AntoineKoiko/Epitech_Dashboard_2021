@@ -9,21 +9,20 @@ function RenderWeatherWidget ({cityID, refresh, widgetData, setRefreshWidget}) {
     const cityName = cityID ? cityID : 'Paris';
     const [weatherInfo, setInfo] = useState({loading: true});
 
-
-    function fetchData() {
+    const fetchData = useCallback(() => {
         fetchWeatherWidget(cityName)
             .then(response => {
                 setInfo(response);
             })
             .catch(error => {
-                console.log('fetch error with wather', error);
+                console.log('fetch error with wather', error.toString());
             })
-    }
+    }, [cityName]);
 
     useEffect(() => {
         console.log(`initializing interval`);
         const interval = setInterval(() => {
-            console.log("weather of ", cityID, "refresh is ", refreshRate, "mount at ", new Date().getSeconds() );
+            console.log("weather of ", cityName, "refresh is ", refreshRate, "mount at ", new Date().getSeconds() );
             fetchData();
         }, refreshRate * 1000);
 
@@ -33,7 +32,7 @@ function RenderWeatherWidget ({cityID, refresh, widgetData, setRefreshWidget}) {
             console.log(`clearing interval`);
             clearInterval(interval);
         };
-    }, [cityID]);
+    }, [cityName, fetchData, refreshRate]);
 
     return <WeatherWidget weatherInfo={weatherInfo} city={cityName} widgetData={widgetData} setRefreshWidget={setRefreshWidget}/>
 }
