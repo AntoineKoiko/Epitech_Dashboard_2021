@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import './StockWidget.css';
 import { useState, useEffect } from 'react';
 import StockWidget from "./StockWidget";
@@ -12,15 +12,15 @@ function RenderStockWidget({stockID, refresh, widgetData, setRefreshWidget}) {
         loading: true
     });
 
-    function fetchData() {
+    const fetchData = useCallback(() => {
         fetchStockWidget(stockName)
             .then(response => {
                 setStockInfo(response);
             })
             .catch(error => {
-                console.log('fetch error');
+                console.log('fetch error: ', error.toString());
             })
-    };
+    }, [stockName]);
 
     useEffect(() => {
         console.log(`initializing interval`);
@@ -35,7 +35,7 @@ function RenderStockWidget({stockID, refresh, widgetData, setRefreshWidget}) {
             console.log(`clearing interval`);
             clearInterval(interval);
         };
-    }, []);
+    }, [fetchData, refreshRate, stockName]);
 
     return <StockWidget stockID={stockID} stockInfo={stockInfo} widgetData={widgetData}  setRefreshWidget={setRefreshWidget}/>;
 }
