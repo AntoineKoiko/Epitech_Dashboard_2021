@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -44,8 +44,7 @@ function UpdateWidgetModal ({handler, open, widgetId, setRefreshWidget}) {
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const [widgetData, setWidgetData] = useState({});
 
-
-    const updateWidgetReq = () => {
+    const updateWidgetReq = useCallback(() => {
         const config = {...requestOptions, body: JSON.stringify({
             service: widgetData.service,
             type: widgetData.type,
@@ -67,7 +66,7 @@ function UpdateWidgetModal ({handler, open, widgetId, setRefreshWidget}) {
             .catch(err => {
                 console.log(err);
             })
-    }
+    }, [widgetData, widgetId, setRefreshWidget]);
 
     useEffect(() => {
         fetchWidgetById(widgetId)
@@ -79,7 +78,7 @@ function UpdateWidgetModal ({handler, open, widgetId, setRefreshWidget}) {
                 console.log('fetch error getting widget of id', widgetId, error);
             })
     },
-    []);
+    [widgetId]);
 
     const setParam = (value) => {
         setWidgetData(prevState => ({
