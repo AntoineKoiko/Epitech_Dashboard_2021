@@ -73,6 +73,7 @@ function WidgetFrame({title, subtitle, expand, children, expandContent, loadingC
                 }
                 title={title}
                 subheader={subtitle}
+                sx={{padding: "2% 4% 0% 4%"}}
             />
             <CardContent>{loadingCircle ? <LoadingFrame/> : children}</CardContent>
             {expand
