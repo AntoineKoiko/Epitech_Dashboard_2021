@@ -30,7 +30,7 @@ const requestOptions = {
     },
 }
 
-function WidgetFrame({title, subtitle, expand, children, expandContent, loadingCircle, widgetId}) {
+function WidgetFrame({title, subtitle, children, loadingCircle, widgetId}) {
     const [expanded, setExpanded] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -76,21 +76,6 @@ function WidgetFrame({title, subtitle, expand, children, expandContent, loadingC
                 sx={{padding: "2% 4% 0% 4%"}}
             />
             <CardContent>{loadingCircle ? <LoadingFrame/> : children}</CardContent>
-            {expand
-                ? (<><CardActions disableSpacing>
-                    <ExpandMore
-                        expand={expanded}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                    >
-                        <ExpandMoreIcon />
-                    </ExpandMore>
-                </CardActions><Collapse in={expanded} timeout="auto" unmountOnExit>
-                    {expandContent}
-                </Collapse></>
-                )
-                : []}
 
             <Menu
                 id="basic-menu"
