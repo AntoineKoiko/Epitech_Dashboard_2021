@@ -16,10 +16,7 @@ function RenderYoutubeSubNBWidget ({channelId, refresh, widgetData, setRefreshWi
     const refreshRate = refresh !== undefined ? refresh : 60;
     const [channelName, setChannelName] = useState("TauteYT");
     const [channelInfo, setChannelInfo] = useState({
-        viewCount: "0",
-        subscriberCount: "0",
-        hiddenSubscriberCount: false,
-        videoCount: "0",
+        loading: true
     });
 
     function fetchData() {
