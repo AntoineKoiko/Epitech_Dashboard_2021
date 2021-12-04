@@ -33,10 +33,10 @@ function SpotifyTopTrackWidget ({data, timeRange, widgetData, setRefreshWidget})
     const timeRangeText = timeRangeTextArray.find(element => element.value === timeRange);
 
     return (
-        <WidgetFrame title="Spotify" subtitle="User top tracks" widgetId={widgetData._id} setRefreshWidget={setRefreshWidget}>
+        <WidgetFrame title="Spotify" subtitle="User top tracks" widgetId={widgetData._id} setRefreshWidget={setRefreshWidget} loadingCircle={data.loading}>
             <h4 align="left" sx={{fontWeight: "bold"}}>Top tracks {timeRangeText.label}</h4>
             <List sx={{ width: '100%'}}>
-                {data.map((item, idx) => {
+                {!data.loading && data.map((item, idx) => {
                     const arrayArtists = item.artists.map(artist => {
                         return artist.name;
                     });
