@@ -44,6 +44,9 @@ function WeatherCity({setParams, value}) {
             id="params-widget"
             options={searchResult}
             value={queryParams}
+            onChange={(event, value) => {
+                setParams(value.label);
+            }}
             renderInput={(params) =>
                 <TextField
                     {...params}
@@ -52,7 +55,6 @@ function WeatherCity({setParams, value}) {
                     variant="standard"
                     onChange={e => {
                         setQueryParams(e.target.value)
-                        setParams(e.target.value);
                     }}
                 />}
         />
