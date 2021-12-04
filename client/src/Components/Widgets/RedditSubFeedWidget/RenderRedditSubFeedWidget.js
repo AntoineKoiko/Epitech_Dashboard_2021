@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import RedditSubFeedWidget from './RedditSubFeedWidget';
 
 import { fetchRedditSubFedd } from '../../../utils/fetchAPI';
@@ -7,7 +7,7 @@ function RenderRedditSubFeedWidget ({subredditName, sort="new", refresh, widgetD
     const refreshRate = refresh !== undefined ? refresh : 60;
     const [posts, setPosts] = useState({loading: true});
 
-    function fetchData() {
+    const fetchData = useCallback(() => {
         fetchRedditSubFedd(subredditName, sort)
             .then(response => {
                 console.log('json reddit response ', response.data.children);
@@ -15,14 +15,14 @@ function RenderRedditSubFeedWidget ({subredditName, sort="new", refresh, widgetD
             })
             .catch(error => {
                 console.log('fetch error for reddit');
-                console.log(error);
+                console.log(error.toString());
             })
-    };
+    }, [subredditName, sort])
 
     useEffect(() => {
         console.log(`initializing interval`);
         const interval = setInterval(() => {
-            console.log("spotify top Artist of ", "unknown" , "refresh is ", refresh, " mount at ", new Date().getSeconds() );
+            console.log("spotify top Artist of ", "unknown" , "refresh is ", refreshRate, " mount at ", new Date().getSeconds() );
             fetchData();
         }, refreshRate * 1000);
 
@@ -33,7 +33,7 @@ function RenderRedditSubFeedWidget ({subredditName, sort="new", refresh, widgetD
             clearInterval(interval);
         };
 
-    }, [subredditName, sort]);
+    }, [refreshRate, fetchData]);
 
 
     return <RedditSubFeedWidget subName={subredditName} data={posts} widgetData={widgetData} setRefreshWidget={setRefreshWidget}/>;

@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import YoutubeCommentWidget from '../../Components/Widgets/YoutubeCommentWidget';
-import YoutubeSubNBWidget from '../../Components/Widgets/YoutubeSubNBWidget';
-import RedditSubFeedWidget from '../../Components/Widgets/RedditSubFeedWidget';
 import WidgetFactory from '../../Components/Widgets/Factory/WidgetFactory';
 import DefaultHeader from '../../Components/DefaultHeader';
 import Grid from '@mui/material/Grid';
@@ -58,15 +55,6 @@ function DashboardPage() {
             <DefaultHeader setWidgetAdded={triggerRefreshWidget} displayOptions={true}/>
             <div className="dashboard-container">
                 <Grid container columnSpacing={0.5} rowSpacing={0.3}>
-                    {/* <Grid item xs={4}>
-                        <ToDrag x={0} y={0}><YoutubeCommentWidget videoId="yeYGZmnW_kc" videoTitle="test"/></ToDrag>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <ToDrag x={1} y={0}><YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug"/></ToDrag>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <ToDrag x={2} y={0}><RedditSubFeedWidget subredditName="r/mac" sort="new"/></ToDrag>
-                    </Grid> */}
                     {
                         widgetList.length ? widgetList.map((widget) => {
                             return <ToDrag x={0} y={0} key={widget._id}><WidgetFactory widget={widget} setRefreshWidget={triggerRefreshWidget}/></ToDrag>;

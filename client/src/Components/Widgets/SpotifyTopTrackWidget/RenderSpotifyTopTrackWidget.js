@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useCallback} from 'react';
 import SpotifyTopTrackWidget from './SpotifyTopTrackWidget';
 
 const requestOptions = {
@@ -15,26 +15,27 @@ function RenderSpotifyTopTrackWidget({timeRange, refresh, widgetData, setRefresh
     const refreshRate = refresh !== undefined ? refresh : 60;
     const [items, setItems] = useState({loading: true});
 
+    const fetchData = useCallback(
+        () => {
+            const spotifyURL = new URL('http://localhost:8080/spotify/tracks');
+            spotifyURL.searchParams.append('time_range', timeRange);
 
-    function fetchData() {
-        const spotifyURL = new URL('http://localhost:8080/spotify/tracks');
-        spotifyURL.searchParams.append('time_range', timeRange);
-
-        fetch(spotifyURL, requestOptions)
-            .then(response => {
-                if (response.status === 200)
-                    return response.json();
-                throw new Error("failed to authenticate user")
-            })
-            .then(responseJSON => {
-                console.log('json spotify response ', responseJSON);
-                setItems(responseJSON.items.slice(0, 5));
-            })
-            .catch(error => {
-                console.log('fetch error for spotify');
-                console.log(error);
-            })
-    }
+            fetch(spotifyURL, requestOptions)
+                .then(response => {
+                    if (response.status === 200)
+                        return response.json();
+                    throw new Error("failed to authenticate user")
+                })
+                .then(responseJSON => {
+                    console.log('json spotify response ', responseJSON);
+                    setItems(responseJSON.items.slice(0, 5));
+                })
+                .catch(error => {
+                    console.log('fetch error for spotify');
+                    console.log(error);
+                })
+        }, [timeRange]
+    );
 
     useEffect(() => {
         console.log(`initializing interval`);
@@ -50,7 +51,7 @@ function RenderSpotifyTopTrackWidget({timeRange, refresh, widgetData, setRefresh
             clearInterval(interval);
         };
 
-    }, []);
+    }, [fetchData, refreshRate]);
 
     return <SpotifyTopTrackWidget data={items} timeRange={timeRange} widgetData={widgetData} setRefreshWidget={setRefreshWidget}/>;
 }
