@@ -27,7 +27,7 @@ function TopTrackItem({title, artists, albumCover, ranking}) {
 function SpotifyTopTrackWidget ({data, timeRange, widgetData, setRefreshWidget}) {
     const timeRangeTextArray = [
         {value: "short_term", label: "(last 4 weeks)"},
-        {value: "medium_term", label: "(last 6 monts)"},
+        {value: "medium_term", label: "(last 6 months)"},
         {value: "long_term", label: "(all time)"}
     ]
     const timeRangeText = timeRangeTextArray.find(element => element.value === timeRange);

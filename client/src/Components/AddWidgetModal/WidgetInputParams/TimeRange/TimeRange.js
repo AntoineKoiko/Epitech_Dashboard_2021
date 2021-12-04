@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 function TimeRange({setParams}) {
     const timeRangeTextArray = [
         {value: "short_term", label: "Last 4 weeks"},
-        {value: "medium_term", label: "Last 6 monts"},
+        {value: "medium_term", label: "Last 6 months"},
         {value: "long_term", label: "All time"}
     ];
     const [timeRange, setTimeRange] = useState(timeRangeTextArray[0]);
