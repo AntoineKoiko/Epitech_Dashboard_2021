@@ -13,7 +13,7 @@ const requestOptions = {
 
 function RenderSpotifyTopArtistsWidget({timeRange, refresh, widgetData, setRefreshWidget}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState({loading: true});
 
     function fetchData() {
         const spotifyURL = new URL('http://localhost:8080/spotify/artists');

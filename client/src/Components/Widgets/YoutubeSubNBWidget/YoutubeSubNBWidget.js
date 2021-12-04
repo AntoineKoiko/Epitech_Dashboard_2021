@@ -33,7 +33,7 @@ function StatNb ({text, value}) {
 
 function YoutubeSubNBWidget ({channelName, channelInfo, widgetData, setRefreshWidget}) {
     return (
-        <WidgetFrame title="Youtube" subtitle={channelName} widgetId={'TODO REPLACE IT)'} loadingCircle={channelInfo.loading} setRefreshWidget={setRefreshWidget}>
+        <WidgetFrame title="Youtube" subtitle={channelName} widgetId={widgetData._id} loadingCircle={channelInfo.loading} setRefreshWidget={setRefreshWidget}>
             <StatNb text="Subscribers:" value={channelInfo.subscriberCount}/>
             <StatNb text="Views:" value={channelInfo.viewCount}/>
             <StatNb text="Videos:" value={channelInfo.videoCount}/>

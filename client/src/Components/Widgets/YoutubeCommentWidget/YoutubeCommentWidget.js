@@ -54,7 +54,7 @@ function Comment ({pseudo, avatar, comment, like, published}) {
 
 function YoutubeCommentWidget ({videoTitle, commentList, widgetData, setRefreshWidget}) {
     return (
-        <WidgetFrame title="Youtube" widgetId={'TODO REPLACE IT'} loadingCircle={commentList.loading} setRefreshWidget={setRefreshWidget}>
+        <WidgetFrame title="Youtube" subtitle="Comments of the video" widgetId={widgetData._id} loadingCircle={commentList.loading} setRefreshWidget={setRefreshWidget}>
             <h4>{videoTitle ? videoTitle : "undefined video name"}</h4>
             <List sx={{ width: '100%'}}>
                 {!commentList.loading && commentList.map((item) => {

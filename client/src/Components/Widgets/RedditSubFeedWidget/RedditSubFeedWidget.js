@@ -16,7 +16,7 @@ function Post({title, url}) {
 
 function RedditSubFeedWidget ({subName, data, widgetData, setRefreshWidget}) {
     return (
-        <WidgetFrame title="Reddit" subtitle={subName} widgetId={'TODO REPLACE IT'} loadingCircle={data.loading} setRefreshWidget={setRefreshWidget}>
+        <WidgetFrame title="Reddit" subtitle={subName} widgetId={widgetData._id} loadingCircle={data.loading} setRefreshWidget={setRefreshWidget}>
             {!data.loading && data.map((item, idx) => {
                 return (
                     <Post
