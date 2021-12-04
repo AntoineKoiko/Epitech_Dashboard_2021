@@ -157,6 +157,7 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
         const newSelected = FormItems.find(elt => elt.id === newID);
         setService(newSelected);
         setWidget(newSelected.widgets[0]);
+        setTextParams("");
     };
 
     const handleChangeWidget = (event) => {
