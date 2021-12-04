@@ -31,7 +31,6 @@ const requestOptions = {
 }
 
 function WidgetFrame({title, subtitle, children, loadingCircle, widgetId}) {
-    const [expanded, setExpanded] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const [openUpdate, setOpenUpdate] = useState(false);
@@ -42,10 +41,6 @@ function WidgetFrame({title, subtitle, children, loadingCircle, widgetId}) {
 
     const handleClose = () => {
         setAnchorEl(null);
-    };
-
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
     };
 
     const handleDelete = () => {
