@@ -12,7 +12,7 @@ import moment from "moment";
 function ForecastDailyColumn({forecastDay}) {
     return (
         <Box sx={{textAlign: "center"}}>
-            <Typography variant="h7">{moment(forecastDay.date).format("ddd")}</Typography>
+            <Typography variant="subtitle1">{moment(forecastDay.date).format("ddd")}</Typography>
             <CardMedia
                 component="img"
                 image={forecastDay.day.condition.icon}
@@ -61,11 +61,14 @@ function WeatherToday({weatherInfo}) {
 
 function WeatherWidget ({city, weatherInfo, widgetData, setRefreshWidget}) {
     const region = weatherInfo.location ? weatherInfo.location.region : "";
+    const name = weatherInfo.location ? weatherInfo.location.name : "";
+    const country = weatherInfo.location ? weatherInfo.location.country : "";
+
     const date = weatherInfo.location ? weatherInfo.localtime_epoch : 0;
 
     return (
         <WidgetFrame title="Weather" subtitle={"Forecast"} loadingCircle={weatherInfo.loading} widgetId={widgetData._id} setRefreshWidget={setRefreshWidget}>
-            <Typography variant="h5">{city}, {region}</Typography>
+            <Typography variant="h5">{name}, {region}, {country}</Typography>
             <Typography variant="subtitle1" style={{color: "gray"}}>{moment(date).format("ddd, HH:mm")}</Typography>
             <WeatherToday weatherInfo={weatherInfo}/>
             <Divider style={{margin: "5% 0% 5% 0%"}}/>
