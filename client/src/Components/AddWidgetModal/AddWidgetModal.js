@@ -117,9 +117,12 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
     const [textParams, setTextParams] = useState("");
 
     const handleValidation = () => {
-        addWidgetReq();
-        handler(false);
-        setWidgetAdded();
+        if (textParams.length) {
+            addWidgetReq();
+            handler(false);
+            setTextParams("");
+            setWidgetAdded();
+        }
     };
 
     const handleClose = () => {
@@ -154,6 +157,7 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
         const newSelected = FormItems.find(elt => elt.id === newID);
         setService(newSelected);
         setWidget(newSelected.widgets[0]);
+        setTextParams("");
     };
 
     const handleChangeWidget = (event) => {

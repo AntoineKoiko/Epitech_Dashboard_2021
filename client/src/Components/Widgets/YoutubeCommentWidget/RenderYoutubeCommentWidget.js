@@ -14,7 +14,7 @@ const requestOptions = {
 function RenderYoutubeCommentWidget({videoId, refresh, widgetData, setRefreshWidget}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
     const [videoName, setName] = useState('Unknown');
-    const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState({loading: true});
 
     function fetchData() {
         const ytURL = new URL('http://localhost:8080/youtube/comments');
