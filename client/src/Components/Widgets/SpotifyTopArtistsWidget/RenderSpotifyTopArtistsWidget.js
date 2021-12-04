@@ -15,26 +15,28 @@ function RenderSpotifyTopArtistsWidget({timeRange, refresh, widgetData, setRefre
     const refreshRate = refresh !== undefined ? refresh : 60;
     const [items, setItems] = useState({loading: true});
 
-    function fetchData() {
-        const spotifyURL = new URL('http://localhost:8080/spotify/artists');
-        spotifyURL.searchParams.append('time_range', timeRange);
+    const fetchData = useCallback(
+        () => {
+            const spotifyURL = new URL('http://localhost:8080/spotify/artists');
+            spotifyURL.searchParams.append('time_range', timeRange);
 
-        console.log('spotify  url ', spotifyURL.toString());
-        fetch(spotifyURL, requestOptions)
-            .then(response => {
-                if (response.status === 200)
-                    return response.json();
-                throw new Error("failed to authenticate user")
-            })
-            .then(responseJSON => {
-                console.log('json spotify response ', responseJSON);
-                setItems(responseJSON.items.slice(0, 5));
-            })
-            .catch(error => {
-                console.log('fetch error for spotify');
-                console.log(error);
-            })
-    }
+            console.log('spotify  url ', spotifyURL.toString());
+            fetch(spotifyURL, requestOptions)
+                .then(response => {
+                    if (response.status === 200)
+                        return response.json();
+                    throw new Error("failed to authenticate user")
+                })
+                .then(responseJSON => {
+                    console.log('json spotify response ', responseJSON);
+                    setItems(responseJSON.items.slice(0, 5));
+                })
+                .catch(error => {
+                    console.log('fetch error for spotify');
+                    console.log(error);
+                })
+        }, [timeRange]
+    );
 
     useEffect(() => {
         console.log(`initializing interval`);
@@ -50,7 +52,7 @@ function RenderSpotifyTopArtistsWidget({timeRange, refresh, widgetData, setRefre
             clearInterval(interval);
         };
 
-    }, []);
+    }, [refreshRate, fetchData]);
 
     return <SpotifyTopArtistsWidget data={items} timeRange={timeRange} widgetData={widgetData} setRefreshWidget={setRefreshWidget}/>;
 }
