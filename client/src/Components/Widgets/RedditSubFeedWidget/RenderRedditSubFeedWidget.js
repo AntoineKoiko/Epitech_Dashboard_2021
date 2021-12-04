@@ -5,7 +5,7 @@ import { fetchRedditSubFedd } from '../../../utils/fetchAPI';
 
 function RenderRedditSubFeedWidget ({subredditName, sort="new", refresh, widgetData, setRefreshWidget}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState({loading: true});
 
     function fetchData() {
         fetchRedditSubFedd(subredditName, sort)
