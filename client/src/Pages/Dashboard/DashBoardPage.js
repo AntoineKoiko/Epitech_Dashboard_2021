@@ -38,6 +38,10 @@ function DashboardPage() {
     const [widgetList, setWidgetList] = useState([]);
     const [refreshWidget, setRefreshWidget] = useState(false);
 
+    const triggerRefreshWidget = () => {
+        setRefreshWidget(!refreshWidget)
+    }
+
     useEffect(() => {
         fetchAllWidgets()
             .then(response => {
@@ -51,7 +55,7 @@ function DashboardPage() {
 
     return (
         <>
-            <DefaultHeader setWidgetAdded={() => {setRefreshWidget(true)}} displayOptions={true}/>
+            <DefaultHeader setWidgetAdded={triggerRefreshWidget} displayOptions={true}/>
             <div className="dashboard-container">
                 <Grid container columnSpacing={0.5} rowSpacing={0.3}>
                     {/* <Grid item xs={4}>
