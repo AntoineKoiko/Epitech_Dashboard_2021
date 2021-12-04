@@ -43,16 +43,18 @@ Our project is divide in two pats:
 - An ExpressJS server
 - A ReactJS frontend
 
-### **The services**
+### **API Sub-Services**
 
-- Users API
-- Widget API
-- Stock API
-- Weather API
-- Reddit API
-- Spotify API
-- Youtube API
-- Frontend
+- User management ([documentation](./doc/API_User_Documentation.md))
+    - Users API
+- User's widgets management ([documentation](./doc/API_Widget_Documentation.md))
+    - Widget API
+- Data services ([documentation](./doc/API_Service_Documentation.md))
+    - Stock API
+    - Weather API
+    - Reddit API
+    - Spotify API
+    - Youtube API
 
 ## **Get Startedt**
 

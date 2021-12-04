@@ -1,4 +1,4 @@
-# **Dashboard API**
+# **Dashboard API - Services**
 
 ## **Version**
 
@@ -11,13 +11,12 @@ v1.0.0
 ## **Tech choice**
 
 This API is a node-js api made with the ExpressJS framework.
+It's taking part of the Dashboard API.
 
 ## **Description**
 
-This API is used for all Dashboard services:
+This part of API is used to retrieve widget datan in function of the used service:
 
-- Users API
-- Widget API
 - Stock API
 - Weather API
 - Reddit API
