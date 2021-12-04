@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useCallback} from 'react';
 import YoutubeCommentWidget from './YoutubeCommentWidget';
 
 const requestOptions = {
@@ -16,31 +16,33 @@ function RenderYoutubeCommentWidget({videoId, refresh, widgetData, setRefreshWid
     const [videoName, setName] = useState('Unknown');
     const [comments, setComments] = useState({loading: true});
 
-    function fetchData() {
-        const ytURL = new URL('http://localhost:8080/youtube/comments');
-        ytURL.searchParams.append('video_id', videoId);
+    const fetchData = useCallback(
+        () => {
+            const ytURL = new URL('http://localhost:8080/youtube/comments');
+            ytURL.searchParams.append('video_id', videoId);
 
-        console.log('yt url:', ytURL.toString())
-        fetch(ytURL, requestOptions)
-            .then(response => {
-                if (response.status === 200)
-                    return response.json();
-                throw new Error("failed to authenticate user")
-            })
-            .then(responseJSON => {
-                console.log('json youtube comment response ', responseJSON);
-                setComments(responseJSON.slice(0, 5));
-            })
-            .catch(error => {
-                console.log('fetch error for youtube comment');
-                console.log(error);
-            })
-    }
+            console.log('yt url:', ytURL.toString())
+            fetch(ytURL, requestOptions)
+                .then(response => {
+                    if (response.status === 200)
+                        return response.json();
+                    throw new Error("failed to authenticate user")
+                })
+                .then(responseJSON => {
+                    console.log('json youtube comment response ', responseJSON);
+                    setComments(responseJSON.slice(0, 5));
+                })
+                .catch(error => {
+                    console.log('fetch error for youtube comment');
+                    console.log(error);
+                })
+        }, [videoId]
+    );
 
     useEffect(() => {
         console.log(`initializing interval`);
         const interval = setInterval(() => {
-            console.log("youtube comment of ", videoName , "refresh is ", refresh, " mount at ", new Date().getSeconds() );
+            console.log("youtube comment of ", videoName , "refresh is ", refreshRate, " mount at ", new Date().getSeconds() );
             fetchData();
         }, refreshRate * 1000);
 
@@ -51,7 +53,7 @@ function RenderYoutubeCommentWidget({videoId, refresh, widgetData, setRefreshWid
             clearInterval(interval);
         };
 
-    }, [videoId]);
+    }, [fetchData, videoName, refreshRate]);
 
     return <YoutubeCommentWidget commentList={comments} widgetData={widgetData} setRefreshWidget={setRefreshWidget}/>;
 }
