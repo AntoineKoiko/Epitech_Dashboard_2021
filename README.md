@@ -87,6 +87,11 @@ We used EpressJS. Why did we?
 
 We have chosen EpressJS because it's becoming more and more popular and permit to setup quickly a server API. Moreover it allow to categorized easily services and get a clean and easy to use and maintain API.
 
+## **See Also**
+
+For more technical details see the [technical documentation](./doc/Technical_Documentation.md)
+
+
 ## **Authors**
 
 - aurelien.joncour@epitech.eu
