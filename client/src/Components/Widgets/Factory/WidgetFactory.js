@@ -20,10 +20,10 @@ function WidgetFactory({widget, setRefreshWidget}) {
     }
     if (widget.service === "youtube") {
         if (widget.type === "video_comment") {
-            return <YoutubeCommentWidget videoId="yeYGZmnW_kc" refresh={widget.refresh} widgetData={widget} setRefreshWidget={setRefreshWidget}/>;
+            return <YoutubeCommentWidget videoId={widget.params.params1} refresh={widget.refresh} widgetData={widget} setRefreshWidget={setRefreshWidget}/>;
         }
         if (widget.type === "channel_stat") {
-            return <YoutubeSubNBWidget channelId="UCAuUUnT6oDeKwE6v1NGQxug" widgetData={widget} setRefreshWidget={setRefreshWidget}/>;
+            return <YoutubeSubNBWidget channelId={widget.params.params1} widgetData={widget} setRefreshWidget={setRefreshWidget}/>;
         }
     }
     if (widget.service === "reddit") {

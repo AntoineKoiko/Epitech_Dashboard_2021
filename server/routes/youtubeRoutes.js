@@ -1,6 +1,30 @@
 const router = require("express").Router();
 const youtubeService = require("../services/youtubeService");
 
+router.get("/channelInfo", (req, res) => {
+    const channelId = req.query.channel_id;
+
+    youtubeService.getChannelInfo(channelId)
+        .then(response => {
+            res.json({title: response.title});
+        })
+        .catch(error => {
+            res.status(500).send(error.toString());
+        })
+})
+
+router.get("/videoInfo", (req, res) => {
+    const videoId = req.query.video_id;
+
+    youtubeService.getVideoInfo(videoId)
+        .then(response => {
+            res.json({title: response.title});
+        })
+        .catch(error => {
+            res.status(500).send(error.toString());
+        })
+})
+
 router.get("/comments", (req, res) => {
     const videoId = req.query.video_id;
     

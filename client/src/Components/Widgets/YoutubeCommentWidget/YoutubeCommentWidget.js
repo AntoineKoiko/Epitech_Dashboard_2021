@@ -21,7 +21,7 @@ function getCommentHeader (pseudo, like, published) {
                     <ThumbUpAltIcon/>
                 </div>
             </div>
-            <p>{moment(published).format("MM-DD hh:mm")}</p>
+            <p>{moment(published).format("DD/MM/yy hh:mm")}</p>
         </div>
     );
 }

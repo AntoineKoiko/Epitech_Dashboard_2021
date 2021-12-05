@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import YoutubeSubNBWidget from './YoutubeSubNBWidget';
 import { useState, useEffect } from 'react';
+import { fetchYoutubeChannelName } from '../../../utils/fetchAPI';
 
 const requestOptions = {
     method: "GET",
@@ -39,6 +40,13 @@ function RenderYoutubeSubNBWidget ({channelId, refresh, widgetData, setRefreshWi
                 .catch(error => {
                     console.log('fetch error for youtube sub nb');
                     console.log(error);
+                })
+            fetchYoutubeChannelName(channelId)
+                .then(response => {
+                    setChannelName(response.title);
+                })
+                .catch(error => {
+                    console.log("Failed to get error channel name: ", error.toString());
                 })
         }, [channelId]
     );

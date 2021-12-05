@@ -137,11 +137,82 @@ const fetchRedditSubFedd = (name, sort = "new") => {
     });
 };
 
+/**
+ * Get search result of youtube
+ *
+ * @param {string} query search on youtube (eg: squeezie)
+ * @param {string} type type of the search (eg: video, channel)
+ * @returns {Promise} search result array
+ */
+const fetchYoutubeSearch = (query, type) => {
+    return new Promise(async (resolve, reject) => {
+        const youtubeURL = new URL("http://localhost:8080/youtube/search");
+
+        youtubeURL.searchParams.append("query", query);
+        youtubeURL.searchParams.append("type", type);
+        fetchAPI(youtubeURL)
+            .then(result => {
+                resolve(result);
+            })
+            .catch(error => {
+                reject(error);
+            })
+    })
+    
+}
+
+/**
+ * Get youtube video name by id result of youtube
+ *
+ * @param {string} query search on youtube (eg: squeezie)
+ * @returns {Promise} video name
+ */
+const fetchYoutubeVideoName = (videoId) => {
+    return new Promise(async (resolve, reject) => {
+        const youtubeURL = new URL("http://localhost:8080/youtube/videoInfo");
+
+        youtubeURL.searchParams.append("video_id", videoId);
+        fetchAPI(youtubeURL)
+            .then(result => {
+                resolve(result);
+            })
+            .catch(error => {
+                reject(error);
+            })
+    })
+    
+}
+
+/**
+ * Get youtube channel name by id result of youtube
+ *
+ * @param {string} query search on youtube (eg: squeezie)
+ * @returns {Promise} video name
+ */
+const fetchYoutubeChannelName = (channelId) => {
+    return new Promise(async (resolve, reject) => {
+        const youtubeURL = new URL("http://localhost:8080/youtube/channelInfo");
+
+        youtubeURL.searchParams.append("channel_id", channelId);
+        fetchAPI(youtubeURL)
+            .then(result => {
+                resolve(result);
+            })
+            .catch(error => {
+                reject(error);
+            })
+    })
+    
+}
+
 module.exports = {
     fetchWeatherWidget,
     fetchStockWidget,
     fetchSpotifyTopTracksWidget,
     fetchWidgetById,
     fetchAllWidgets,
-    fetchRedditSubFedd
+    fetchRedditSubFedd,
+    fetchYoutubeSearch,
+    fetchYoutubeVideoName,
+    fetchYoutubeChannelName
 };
