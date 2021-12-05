@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback} from 'react';
 import YoutubeCommentWidget from './YoutubeCommentWidget';
+import { fetchYoutubeVideoName } from '../../../utils/fetchAPI';
 
 const requestOptions = {
     method: "GET",
@@ -36,6 +37,13 @@ function RenderYoutubeCommentWidget({videoId, refresh, widgetData, setRefreshWid
                     console.log('fetch error for youtube comment');
                     console.log(error);
                 })
+            fetchYoutubeVideoName(videoId)
+                .then(response => {
+                    setName(response.title);
+                })
+                .catch(error => {
+                    console.log("Failed to get error video name: ", error.toString());
+                })
         }, [videoId]
     );
 
@@ -55,7 +63,7 @@ function RenderYoutubeCommentWidget({videoId, refresh, widgetData, setRefreshWid
 
     }, [fetchData, videoName, refreshRate]);
 
-    return <YoutubeCommentWidget commentList={comments} widgetData={widgetData} setRefreshWidget={setRefreshWidget}/>;
+    return <YoutubeCommentWidget videoTitle={videoName} commentList={comments} widgetData={widgetData} setRefreshWidget={setRefreshWidget}/>;
 }
 
 export default RenderYoutubeCommentWidget;
