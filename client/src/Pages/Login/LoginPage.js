@@ -12,10 +12,10 @@ function LoginPage() {
             <DefaultHeader/>
             <div className="center-h main-container">
                 <p className="white">To continue, login to Dashboard</p>
-                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/spotify" variant="contained">Contniue with spotifyd</Button>
-                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/reddit" variant="contained">Contniue with reddit</Button>
-                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/google" variant="contained">Contniue with google</Button>
-                <h2 className="word-divider white"><span>or</span></h2>
+                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/spotify" variant="contained">Continue with spotify</Button>
+                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/reddit" variant="contained">Continue with reddit</Button>
+                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/google" variant="contained">Continue with google</Button>
+                <h2 className="word-divider"><span>or</span></h2>
                 <LoginForm/>
 
                 <div className="other-option-container">
