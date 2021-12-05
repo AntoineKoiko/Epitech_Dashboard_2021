@@ -12,9 +12,9 @@ import './DashboardPage.css';
 
 function EmptyDashboard() {
     return (<div className="empty-container">
-        <h1>You seen to haven't any Widget it's quiet sad...</h1>
+        <h1 className="white">You seen to haven't any Widget it's quiet sad...</h1>
         <br/>
-        <h2>Start to add widget by clicking on the menu icon at the top right of your screen</h2>
+        <h2 className="white">Start to add widget by clicking on the menu icon at the top right of your screen</h2>
     </div>
     )
 }

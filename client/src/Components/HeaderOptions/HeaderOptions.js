@@ -47,9 +47,9 @@ function HeaderOptions ({setWidgetAdded}) {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={openAddModal}>Add Widget</MenuItem>
-                <MenuItem onClick={openSettingModal}>My account</MenuItem>
-                <MenuItem onClick={() => window.open("http://localhost:8080/auth/logout", "_self")}>Logout</MenuItem>
+                <MenuItem className="black" onClick={openAddModal}>Add Widget</MenuItem>
+                <MenuItem className="black" onClick={openSettingModal}>My account</MenuItem>
+                <MenuItem className="black" onClick={() => window.open("http://localhost:8080/auth/logout", "_self")}>Logout</MenuItem>
             </Menu>
 
             <AddWidgetModal handler={setOpenAdd} open={openAdd} setWidgetAdded={setWidgetAdded}/>

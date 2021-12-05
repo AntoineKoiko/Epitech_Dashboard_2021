@@ -9,6 +9,18 @@
     background-color: #00171F;
   }
 
+.white {
+  color: white;
+}
+
+.black {
+  color: black;
+}
+
+.widget-container * {
+  color: black;
+}
+
   html body {
     padding: 0;
     margin: 0;

@@ -46,7 +46,7 @@ function LoginForm() {
 
     return (
         <form className="form-login" onSubmit={handleSubmit}>
-            <p>Continue with your credentials:</p>
+            <p className="white">Continue with your credentials:</p>
             <TextField
                 sx={theme.inputField}
                 required

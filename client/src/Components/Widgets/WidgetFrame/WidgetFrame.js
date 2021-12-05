@@ -54,6 +54,7 @@ function WidgetFrame({title, subtitle, children, loadingCircle, widgetId, setRef
 
     return (
         <Card
+            className="widget-container"
             variant="outlined"
             sx={{width: 400, borderRadius: 4, borderColor: '#003459'}}
         >
@@ -78,9 +79,8 @@ function WidgetFrame({title, subtitle, children, loadingCircle, widgetId, setRef
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={() => setOpenUpdate(true)}>Update</MenuItem>
-                <MenuItem >Lock position</MenuItem>
-                <MenuItem onClick={handleDelete}>Delete</MenuItem>
+                <MenuItem className="black" onClick={() => setOpenUpdate(true)}>Update</MenuItem>
+                <MenuItem className="black" onClick={handleDelete}>Delete</MenuItem>
             </Menu>
 
             <UpdateWidgetModal open={openUpdate} handler={setOpenUpdate} widgetId={widgetId} setRefreshWidget={setRefreshWidget}/>

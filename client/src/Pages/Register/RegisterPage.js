@@ -11,18 +11,18 @@ function RegisterPage() {
         <div>
             <DefaultHeader />
             <div className="center-h main-container">
-                <p>To continue, sign up to Dashboard</p>
+                <p className="white">To continue, sign up to Dashboard</p>
 
                 <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/spotify" variant="contained">Sign up with Spotify</Button>
                 <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/reddit" variant="contained">Sign up with Reddit</Button>
                 <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/google" variant="contained">Sign up with Google</Button>
 
-                <h2 className="word-divider"><span>or</span></h2>
+                <h2 className="word-divider white"><span>or</span></h2>
 
                 <RegistrationForm/>
 
                 <div className="other-option-container">
-                    <h2 className="word-divider"><span>Allready have an account ?</span></h2>
+                    <h2 className="word-divider white"><span>Allready have an account ?</span></h2>
                     <Button href="/login" sx={theme.inputField} variant="contained">
                         Sign in
                     </Button>

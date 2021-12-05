@@ -92,7 +92,7 @@ function RegistrationForm() {
 
     return (
         <form className="form-register" onSubmit={handleSubmit}>
-            <p>Sign up with your email:</p>
+            <p className="white">Sign up with your email:</p>
             <TextField
                 sx={theme.inputField}
                 required
