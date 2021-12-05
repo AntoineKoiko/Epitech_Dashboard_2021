@@ -72,7 +72,7 @@ function LoginForm() {
                 focused
             />
             { loginErrorMsg.length ? <Alert severity="error">{loginErrorMsg}</Alert> : <></> }
-            <Button type="submit" sx={theme.inputField} variant="contained">Sign Inr</Button>
+            <Button type="submit" sx={theme.inputField} variant="contained">Sign In</Button>
         </form>
     )
 }

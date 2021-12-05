@@ -22,7 +22,7 @@ function RegisterPage() {
                 <RegistrationForm/>
 
                 <div className="other-option-container">
-                    <h2 className="word-divider"><span>Allready have an account ?</span></h2>
+                    <h2 className="word-divider"><span>Already have an account ?</span></h2>
                     <Button href="/login" sx={theme.inputField} variant="contained">
                         Sign in
                     </Button>
