@@ -20,9 +20,8 @@ function SettingModal ({open, openHandler}) {
             </DialogTitle>
             <DialogContent>
                 <div className="btn-container">
-                    <Button sx={{width: '60%', marginTop: 2}} className="input-field" href="http://localhost:8080/auth/spotify" variant="contained">Continuer avec spotify</Button>
-                    <Button sx={{width: '60%', marginTop: 2}} className="input-field" href="http://localhost:8080/auth/reddit" variant="contained">Continuer avec reddit</Button>
-                    <Button sx={{width: '60%', marginTop: 2}} className="input-field" href="http://localhost:8080/auth/google" variant="contained">Continuer avec google</Button>
+                    <Button sx={{width: '60%', marginTop: 2}} className="input-field" href="http://localhost:8080/auth/spotify" variant="contained">Add spotify account</Button>
+                    <Button sx={{width: '60%', marginTop: 2}} className="input-field" href="http://localhost:8080/auth/reddit" variant="contained">Add reddit account</Button>
                 </div>
             </DialogContent>
 
