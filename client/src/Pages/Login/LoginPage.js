@@ -11,17 +11,17 @@ function LoginPage() {
         <>
             <DefaultHeader/>
             <div className="center-h main-container">
-                <p>Pour continuer, connectez-vous a Dashboard</p>
-                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/spotify" variant="contained">Continuer avec spotifyd</Button>
-                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/reddit" variant="contained">Continuer avec reddit</Button>
-                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/google" variant="contained">Continuer avec google</Button>
-                <h2 className="word-divider"><span>ou</span></h2>
+                <p>To continue, login to Dashboard</p>
+                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/spotify" variant="contained">Contniue with spotifyd</Button>
+                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/reddit" variant="contained">Contniue with reddit</Button>
+                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/google" variant="contained">Contniue with google</Button>
+                <h2 className="word-divider"><span>or</span></h2>
                 <LoginForm/>
 
                 <div className="other-option-container">
-                    <h2 className="word-divider"><span>Pas encore inscrit ?</span></h2>
+                    <h2 className="word-divider"><span>Not registered yet ?</span></h2>
                     <Button href="/register" sx={theme.inputField} variant="contained">
-                S'inscire
+                Sign up
                     </Button>
                 </div>
             </div>

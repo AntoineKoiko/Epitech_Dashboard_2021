@@ -46,7 +46,7 @@ function LoginForm() {
 
     return (
         <form className="form-login" onSubmit={handleSubmit}>
-            <p>Continuer avec vos identifiants:</p>
+            <p>Continue with your credentials:</p>
             <TextField
                 sx={theme.inputField}
                 required
@@ -61,7 +61,7 @@ function LoginForm() {
                 sx={theme.inputField}
                 required
                 id="login-password"
-                label="Mot de passe"
+                label="Password"
                 variant="outlined"
                 type="password"
                 autoComplete="current-password"
@@ -69,7 +69,7 @@ function LoginForm() {
 
             />
             { loginErrorMsg.length ? <Alert severity="error">{loginErrorMsg}</Alert> : <></> }
-            <Button type="submit" sx={theme.inputField} variant="contained">Se Connecter</Button>
+            <Button type="submit" sx={theme.inputField} variant="contained">Sign Inr</Button>
         </form>
     )
 }
