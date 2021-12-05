@@ -1,4 +1,4 @@
-import RenderStockWidget from '../StockWidget/RenderStockWidget';
+import StockWidget from '../StockWidget';
 import WeatherWidget from '../WeatherWidget';
 import YoutubeCommentWidget from '../YoutubeCommentWidget';
 import YoutubeSubNBWidget from '../YoutubeSubNBWidget';
@@ -10,7 +10,7 @@ function WidgetFactory({widget, setRefreshWidget}) {
     console.log('widget factory: ', widget)
     if (widget.service === "stock") {
         if (widget.type === "stock_value") {
-            return <RenderStockWidget stockID={widget.params.params1} refresh={widget.refresh} widgetData={widget} setRefreshWidget={setRefreshWidget}/>;
+            return <StockWidget stockID={widget.params.params1} refresh={widget.refresh} widgetData={widget} setRefreshWidget={setRefreshWidget}/>;
         }
     }
     if (widget.service === "weather") {
