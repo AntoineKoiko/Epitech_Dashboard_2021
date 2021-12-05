@@ -104,6 +104,8 @@ function RegistrationForm() {
                 placeholder="John.doe@email.com"
                 onChange={e => setEmail(e.target.value)}
                 helperText={emailError ? "Les emails ne correspondent pas !" : ""}
+                color="primary"
+                focused
             />
             <TextField
                 sx={theme.inputField}
@@ -116,6 +118,8 @@ function RegistrationForm() {
                 placeholder="John.doe@email.com"
                 onChange={e => setEmailConfirm(e.target.value)}
                 helperText={emailError ? "Les emails ne correspondent pas !" : ""}
+                color="primary"
+                focused
             />
 
             <TextField
@@ -129,6 +133,8 @@ function RegistrationForm() {
                 autoComplete="current-password"
                 onChange={e => setPassword(e.target.value)}
                 helperText={passwordError ? passwordErrorText : ""}
+                color="primary"
+                focused
             />
             <TextField
                 sx={theme.inputField}
@@ -141,6 +147,8 @@ function RegistrationForm() {
                 autoComplete="current-password"
                 onChange={e => setPasswordConfirm(e.target.value)}
                 helperText={passwordError ? passwordErrorText : ""}
+                color="primary"
+                focused
             />
             {
                 registerErrorMsg.length ? <Alert severity="error">{registerErrorMsg}</Alert> : <></>

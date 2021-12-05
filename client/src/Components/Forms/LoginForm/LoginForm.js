@@ -56,6 +56,8 @@ function LoginForm() {
                 variant="outlined"
                 placeholder="John.doe@email.com"
                 onChange={e => setEmail(e.target.value)}
+                color="primary"
+                focused
             />
             <TextField
                 sx={theme.inputField}
@@ -66,7 +68,8 @@ function LoginForm() {
                 type="password"
                 autoComplete="current-password"
                 onChange={e => setPassword(e.target.value)}
-
+                color="primary"
+                focused
             />
             { loginErrorMsg.length ? <Alert severity="error">{loginErrorMsg}</Alert> : <></> }
             <Button type="submit" sx={theme.inputField} variant="contained">Sign Inr</Button>
@@ -79,6 +82,7 @@ const theme = createTheme({
         width: '80%',
         maxWidth: '300px',
         marginTop: 2,
+
     },
 });
 
