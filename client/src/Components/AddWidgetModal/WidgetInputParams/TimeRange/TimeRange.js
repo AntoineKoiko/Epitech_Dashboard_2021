@@ -1,13 +1,14 @@
 import { MenuItem } from '@material-ui/core';
 import { InputLabel, Select } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-function TimeRange({setParams}) {
-    const timeRangeTextArray = [
-        {value: "short_term", label: "Last 4 weeks"},
-        {value: "medium_term", label: "Last 6 months"},
-        {value: "long_term", label: "All time"}
-    ];
+const timeRangeTextArray = [
+    {value: "short_term", label: "Last 4 weeks"},
+    {value: "medium_term", label: "Last 6 months"},
+    {value: "long_term", label: "All time"}
+];
+
+function TimeRange({setParams}) {  
     const [timeRange, setTimeRange] = useState(timeRangeTextArray[0]);
 
     const handleChangeTimeRange = (event) => {
@@ -16,6 +17,10 @@ function TimeRange({setParams}) {
         setTimeRange(newSelected);
         setParams(newSelected.value);
     }
+
+    useEffect(() => {
+        setParams(timeRangeTextArray[0].value);
+    }, [setParams]);
 
     return (
         <>
