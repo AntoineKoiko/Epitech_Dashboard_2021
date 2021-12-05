@@ -6,6 +6,18 @@
 .dashboard-container {
     position: relative;
     display: flex;
-    padding-top: 10px;
+    padding: 10px;
     height: 100%;
+}
+
+.empty-conatiner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

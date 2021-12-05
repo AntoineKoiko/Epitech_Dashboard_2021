@@ -10,6 +10,16 @@ import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same ti
 
 import './DashboardPage.css';
 
+function EmptyDashboard() {
+    return (<div className="empty-container">
+        <h1>You seen to haven't any Widget it's quiet sad...</h1>
+        <br/>
+        <h2>Start to add widget by clicking on the menu icon at the top right of your screen</h2>
+    </div>
+    )
+}
+
+
 function ToDrag({x, y, children}) {
     return (
         <Draggable
@@ -58,7 +68,7 @@ function DashboardPage() {
                     {
                         widgetList.length ? widgetList.map((widget) => {
                             return <ToDrag x={0} y={0} key={widget._id}><WidgetFactory widget={widget} setRefreshWidget={triggerRefreshWidget}/></ToDrag>;
-                        }) : <></>
+                        }) : <EmptyDashboard/>
                     }
                 </Grid>
             </div>
