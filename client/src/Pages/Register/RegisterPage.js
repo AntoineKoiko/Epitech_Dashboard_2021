@@ -11,20 +11,20 @@ function RegisterPage() {
         <div>
             <DefaultHeader />
             <div className="center-h main-container">
-                <p>Pour continuer, inscrivez-vous a Dashboard</p>
+                <p>To continue, sign up to Dashboard</p>
 
-                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/spotify" variant="contained">Inscrivez-vous avec Spotify</Button>
-                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/reddit" variant="contained">Inscrivez-vous avec Reddit</Button>
-                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/google" variant="contained">Inscrivez-vous avec Google</Button>
+                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/spotify" variant="contained">Sign up with Spotify</Button>
+                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/reddit" variant="contained">Sign up with Reddit</Button>
+                <Button sx={theme.inputField} className="input-field" href="http://localhost:8080/auth/google" variant="contained">Sign up with Google</Button>
 
-                <h2 className="word-divider"><span>ou</span></h2>
+                <h2 className="word-divider"><span>or</span></h2>
 
                 <RegistrationForm/>
 
                 <div className="other-option-container">
-                    <h2 className="word-divider"><span>Déja un compte ?</span></h2>
+                    <h2 className="word-divider"><span>Allready have an account ?</span></h2>
                     <Button href="/login" sx={theme.inputField} variant="contained">
-                        Se connecter
+                        Sign in
                     </Button>
                 </div>
             </div>

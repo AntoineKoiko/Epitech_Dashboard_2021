@@ -92,13 +92,13 @@ function RegistrationForm() {
 
     return (
         <form className="form-register" onSubmit={handleSubmit}>
-            <p>Inscrivez-vous avec votre email:</p>
+            <p>Sign up with your email:</p>
             <TextField
                 sx={theme.inputField}
                 required
                 error={emailError}
                 id="register-mail"
-                label="Quel est votre email ?"
+                label="What is your email ?"
                 variant="outlined"
                 type="email"
                 placeholder="John.doe@email.com"
@@ -110,7 +110,7 @@ function RegistrationForm() {
                 required
                 error={emailError}
                 id="register-mail-conf"
-                label="Confirmez votre email ?"
+                label="Confirm your email"
                 variant="outlined"
                 type="email"
                 placeholder="John.doe@email.com"
@@ -123,7 +123,7 @@ function RegistrationForm() {
                 required
                 error={passwordError}
                 id="register-password"
-                label="Quel est votre mot de passe ?"
+                label="Choose a password"
                 variant="outlined"
                 type="password"
                 autoComplete="current-password"
@@ -135,7 +135,7 @@ function RegistrationForm() {
                 required
                 error={passwordError}
                 id="register-password-conf"
-                label="Confirmez votre mot de passe ?"
+                label="Confirm your password"
                 variant="outlined"
                 type="password"
                 autoComplete="current-password"
@@ -146,7 +146,7 @@ function RegistrationForm() {
                 registerErrorMsg.length ? <Alert severity="error">{registerErrorMsg}</Alert> : <></>
             }
 
-            <Button type="submit" sx={theme.inputField} variant="contained">S'inscrire</Button>
+            <Button type="submit" sx={theme.inputField} variant="contained">Sign UP</Button>
         </form>
 
     )
