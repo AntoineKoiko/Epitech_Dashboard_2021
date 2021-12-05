@@ -26,7 +26,8 @@ function WeatherCity({setParams, value}) {
                     throw new Error("failed to authenticate user")
                 })
                 .then(responseJSON => {
-                    setSearchResult(responseJSON);
+                    if (responseJSON.length && responseJSON[0].label)
+                        setSearchResult(responseJSON);
                 })
                 .catch(error => {
                     console.log('fetch error with wather', error);
@@ -45,13 +46,17 @@ function WeatherCity({setParams, value}) {
             options={searchResult}
             value={queryParams}
             onChange={(event, value) => {
-                setParams(value.label);
+                if (value && value.label)
+                    setParams(value.label);
+                else {
+                    setParams("");
+                }
             }}
             renderInput={(params) =>
                 <TextField
                     {...params}
                     id="opt"
-                    label={"PARAMS UNDEFINED"}
+                    label={"City"}
                     variant="standard"
                     onChange={e => {
                         setQueryParams(e.target.value)
