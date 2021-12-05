@@ -138,6 +138,27 @@ const fetchRedditSubFedd = (name, sort = "new") => {
 };
 
 /**
+ * Search a subReddit
+ *
+ * @param {string} query user search (eg: programming)
+ * @returns {Promise} Widget object
+ */
+const fetchSearchSubreddit= (query) => {
+    return new Promise(async (resolve, reject) => {
+        const redditURL = new URL('http://localhost:8080/reddit/search');
+
+        redditURL.searchParams.append('query', query);
+
+        fetchAPI(redditURL)
+            .then(result => {
+                resolve(result);
+            })
+            .catch(err => reject(err));
+    })
+}
+
+
+/**
  * Get search result of youtube
  *
  * @param {string} query search on youtube (eg: squeezie)
@@ -214,5 +235,6 @@ module.exports = {
     fetchRedditSubFedd,
     fetchYoutubeSearch,
     fetchYoutubeVideoName,
-    fetchYoutubeChannelName
+    fetchYoutubeChannelName,
+    fetchSearchSubreddit
 };

@@ -22,4 +22,16 @@ router.get("/post", (req, res) => {
         })
 })
 
+router.get("/search", (req, res) => {
+    const query = req.query.query;
+
+    redditService.searchSubredditsList(req.user.redditAccessToken, query)
+        .then(response => {
+            res.json(response);
+        })
+        .catch(error => {
+            res.status(500).send(error.toString());
+        })
+})
+
 module.exports = router;

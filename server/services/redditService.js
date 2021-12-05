@@ -35,6 +35,31 @@ const checkValidTime = (time) => {
     return isValid;
 }
 
+const searchSubredditsList = async (token, query) => {
+    if (token) {
+        redditInstance.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+    } else {
+        delete redditInstance.defaults.headers.common['Authorization'];
+    }
+    try {
+        const result = await redditInstance.get('/api/subreddit_autocomplete_v2', {
+            params: {
+                include_profiles: false,
+                query: query
+            }
+        });
+        const resultFormatted = result.data.data.children.map((subreddit) => {
+            return {
+                url: subreddit.data.url,
+                label: subreddit.data.display_name
+            }
+        })
+        return resultFormatted;
+    } catch (error) {
+        throw `searchSubredditsList: ${error.toString()}`;
+    }
+}
+
 const getSubredditPost = async (name, sort, time, token) => {
     if (token) {
         redditInstance.defaults.headers.common['Authorization'] = 'Bearer ' + token;
@@ -42,10 +67,10 @@ const getSubredditPost = async (name, sort, time, token) => {
         delete redditInstance.defaults.headers.common['Authorization'];
     }
     try {
-        //example name: /r/mac
+        //example name: /r/mac/
         //        sort: hot new random rising top
         //top addionnal params t: hour, day, week, month, year, all
-        const result = await redditInstance.get(`/${name}/${sort}`, {
+        const result = await redditInstance.get(`${name}${sort}`, {
             params: {
                 t: time
             }
@@ -59,5 +84,6 @@ const getSubredditPost = async (name, sort, time, token) => {
 module.exports = {
     getSubredditPost,
     checkValidSort,
-    checkValidTime
+    checkValidTime,
+    searchSubredditsList
 }

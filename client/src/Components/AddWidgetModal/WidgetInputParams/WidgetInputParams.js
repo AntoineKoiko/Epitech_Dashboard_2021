@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import TimeRange from './TimeRange';
 import WeatherCity from './WeatherCity';
 import YoutubeId from "./YoutubeId"
+import SubredditName from './SubredditName';
 
 function WidgetInputParams({serviceId, widgetSelect, setParams, value}) {
     console.log("serviceID", serviceId);
@@ -16,8 +17,9 @@ function WidgetInputParams({serviceId, widgetSelect, setParams, value}) {
         } else if (widgetSelect.id === "channel_stat") {
             return <YoutubeId setParams={setParams} type="channel"/>
         }
-    } 
-    else {
+    } else if (serviceId === "reddit") {
+        return <SubredditName setParams={setParams} value={value}/>
+    } else {
         return <TextField id="opt" label={widgetSelect.optionLabel} variant="standard" onChange={e => setParams(e.target.value)}/>
     }
 }
