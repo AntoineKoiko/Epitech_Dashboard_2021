@@ -3,11 +3,12 @@ import './StockWidget.css';
 import { useState, useEffect } from 'react';
 import StockWidget from "./StockWidget";
 
-import {fetchStockWidget} from '../../../utils/fetchAPI';
+import {fetchStockWidget, fetchStockName} from '../../../utils/fetchAPI';
 
 function RenderStockWidget({stockID, refresh, widgetData, setRefreshWidget}) {
     const refreshRate = refresh !== undefined ? refresh : 60;
     const stockName = stockID ? stockID : 'MSFT';
+    const [companyName, setCompanyName] = useState("");
     const [stockInfo, setStockInfo] = useState({
         loading: true
     });
@@ -16,6 +17,13 @@ function RenderStockWidget({stockID, refresh, widgetData, setRefreshWidget}) {
         fetchStockWidget(stockName)
             .then(response => {
                 setStockInfo(response);
+            })
+            .catch(error => {
+                console.log('fetch error: ', error.toString());
+            })
+        fetchStockName(stockName)
+            .then(response => {
+                setCompanyName(response.name);
             })
             .catch(error => {
                 console.log('fetch error: ', error.toString());
@@ -37,7 +45,7 @@ function RenderStockWidget({stockID, refresh, widgetData, setRefreshWidget}) {
         };
     }, [fetchData, refreshRate, stockName]);
 
-    return <StockWidget stockID={stockID} stockInfo={stockInfo} widgetData={widgetData}  setRefreshWidget={setRefreshWidget}/>;
+    return <StockWidget companyName={companyName} stockInfo={stockInfo} widgetData={widgetData}  setRefreshWidget={setRefreshWidget}/>;
 }
 
 export default RenderStockWidget;

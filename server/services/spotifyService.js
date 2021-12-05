@@ -4,7 +4,6 @@ const spotifyConfig = require("../config/spotifyConfig");
 
 const spotifyInstance = axios.create({
     baseURL: spotifyConfig.SPOTIFY_API_URI,
-    timeout: 1000,
     headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json'

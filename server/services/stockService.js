@@ -1,5 +1,6 @@
 const axios = require("axios");
 const stockConfig = require("../config/stockConfig");
+const NASDAQ100 = require("../../data/nasdaq.json").corporations;
 
 const getStockPrice = async (stockName) => {
     const stockURL = new URL(`${stockConfig.STOCK_API_URI}/quote`);
@@ -26,6 +27,32 @@ const getStockPrice = async (stockName) => {
     }
 }
 
+const getNameBySymbol = (symbol) => {
+    const result = NASDAQ100.filter((elem) => {
+        return elem.symbol === symbol;
+    })
+    return result;
+}
+
+const findStock = (query) => {
+    if (!query) {
+        return [];
+    }
+    const result = NASDAQ100.filter((elem) => {
+        if (elem.name.toLowerCase().includes(query.toLowerCase())) {
+            return elem;
+        }
+    }).map((elem) => {
+        return {
+            label: elem.name,
+            symbol: elem.symbol
+        }
+    })
+    return result;
+}
+
 module.exports = {
-    getStockPrice
+    getStockPrice,
+    findStock,
+    getNameBySymbol
 }

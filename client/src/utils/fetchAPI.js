@@ -63,6 +63,46 @@ const fetchStockWidget =(stockCode) => {
 };
 
 /**
+ * Search a stock
+ *
+ * @param {string} query research of the user (ex: microsoft, amazon)
+ * @returns {Promise} cureent information about the stock: price, lowest, highest...
+ */
+const fetchSearchStock = (query) => {
+    return new Promise(async (resolve, reject) => {
+        const stockURL = new URL('http://localhost:8080/stock/search');
+
+        stockURL.searchParams.append("query", query);
+
+        fetchAPI(stockURL)
+            .then(result => {
+                resolve(result);
+            })
+            .catch(err => reject(err));
+    });
+}
+
+/**
+ * Get corporation name
+ *
+ * @param {string} symbol symbol of the stock
+ * @returns {Promise} cureent information about the stock: price, lowest, highest...
+ */
+const fetchStockName = (symbol) => {
+    return new Promise(async (resolve, reject) => {
+        const stockURL = new URL("http://localhost:8080/stock/name");
+
+        stockURL.searchParams.append("symbol", symbol);
+
+        fetchAPI(stockURL)
+            .then(result => {
+                resolve(result);
+            })
+            .catch(err => reject(err));
+    })
+}
+
+/**
  * Get spotify top tracs for a duration
  *
  * @param {string} time_range duration to take in account (eg: short_term, medium_term, long_term)
@@ -236,5 +276,7 @@ module.exports = {
     fetchYoutubeSearch,
     fetchYoutubeVideoName,
     fetchYoutubeChannelName,
-    fetchSearchSubreddit
+    fetchSearchSubreddit,
+    fetchSearchStock,
+    fetchStockName
 };
