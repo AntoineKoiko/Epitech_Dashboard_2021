@@ -73,7 +73,7 @@ const getItemId = async(query, type) => {
         const result = await youtubeInstance.get('/search', {
             params: {
                 part: "snippet",
-                maxResults: 20,
+                maxResults: 5,
                 q: query,
                 type: type
             }

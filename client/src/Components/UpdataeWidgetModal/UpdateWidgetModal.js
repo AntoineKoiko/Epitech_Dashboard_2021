@@ -43,13 +43,14 @@ function UpdateWidgetModal ({handler, open, widgetId, setRefreshWidget}) {
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const [widgetData, setWidgetData] = useState({});
+    const [params, setParams] = useState("");
 
     const updateWidgetReq = useCallback(() => {
         const config = {...requestOptions, body: JSON.stringify({
             service: widgetData.service,
             type: widgetData.type,
             params: {
-                params1: widgetData.params !== undefined ? widgetData.params.params1 : "",
+                params1: params,
             },
             refresh: widgetData.refresh
         })}
@@ -66,7 +67,7 @@ function UpdateWidgetModal ({handler, open, widgetId, setRefreshWidget}) {
             .catch(err => {
                 console.log(err);
             })
-    }, [widgetData, widgetId, setRefreshWidget]);
+    }, [widgetData, widgetId, setRefreshWidget, params]);
 
     useEffect(() => {
         fetchWidgetById(widgetId)
@@ -80,20 +81,15 @@ function UpdateWidgetModal ({handler, open, widgetId, setRefreshWidget}) {
     },
     [widgetId]);
 
-    const setParam = (value) => {
-        setWidgetData(prevState => ({
-            ...prevState,
-            'params': {'params1': value},
-        }))
-    };
-
     const handleClose = () => {
         handler(false);
     };
 
     const handleValidate = () => {
-        updateWidgetReq();
-        handleClose();
+        if (params.length) {
+            updateWidgetReq();
+            handleClose();
+        }
     }
 
     return (
@@ -109,7 +105,7 @@ function UpdateWidgetModal ({handler, open, widgetId, setRefreshWidget}) {
                 {"Which widget do you want to add ? "}
             </DialogTitle>
 
-            <DialogContent sx={{m: 1, minWidth: 120}}>
+            <DialogContent sx={{m: 1, minWidth: 120, height: "35vh"}}>
                 <div className="form-container">
                     <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                         <InputLabel id="refresh-input-label">Refresh rate</InputLabel>
@@ -132,7 +128,7 @@ function UpdateWidgetModal ({handler, open, widgetId, setRefreshWidget}) {
                         <WidgetInputParams
                             serviceId={widgetData.service}
                             widgetSelect={widgetData.type}
-                            setParams={setParam}
+                            setParams={setParams}
                             value={widgetData.params !== undefined ? widgetData.params.params1 : ""}/>
 
                     </FormControl>

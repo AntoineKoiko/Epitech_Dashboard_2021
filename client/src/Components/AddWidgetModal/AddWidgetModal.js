@@ -179,7 +179,7 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
                 {"Which widget do you want to add ? "}
             </DialogTitle>
 
-            <DialogContent sx={{height: "50vh"}}>
+            <DialogContent sx={{height: "60vh"}}>
                 <div className="content-container">
                     <div className="form-side-container">
                         <FormControl variant="standard">

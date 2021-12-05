@@ -12,9 +12,9 @@ function WidgetInputParams({serviceId, widgetSelect, setParams, value}) {
     } else if (serviceId === "weather") {
         return <WeatherCity setParams={setParams} value={value}/>
     } else if (serviceId === "youtube") {
-        if (widgetSelect.id === "video_comment") {
+        if (widgetSelect.id === "video_comment" || widgetSelect === "video_comment") {
             return <YoutubeId setParams={setParams} type="video"/>
-        } else if (widgetSelect.id === "channel_stat") {
+        } else if (widgetSelect.id === "channel_stat" || widgetSelect === "channel_stat") {
             return <YoutubeId setParams={setParams} type="channel"/>
         }
     } else if (serviceId === "reddit") {
