@@ -1,6 +1,6 @@
 const axios = require("axios");
 const stockConfig = require("../config/stockConfig");
-const NASDAQ100 = require("../../data/nasdaq.json").corporations;
+const NASDAQ100 = require("../data/nasdaq.json").corporations;
 
 const getStockPrice = async (stockName) => {
     const stockURL = new URL(`${stockConfig.STOCK_API_URI}/quote`);
