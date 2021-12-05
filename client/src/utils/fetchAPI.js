@@ -266,6 +266,21 @@ const fetchYoutubeChannelName = (channelId) => {
     
 }
 
+const fetchServiceAvailable = () => {
+    return new Promise(async (resolve, reject) => {
+        const url = new URL("http://localhost:8080/auth/service-available");
+
+        fetchAPI(url)
+            .then(result => {
+                console.log(result);
+                resolve(result);
+            })
+            .catch(error => {
+                reject(error);
+            })
+    })
+}
+
 module.exports = {
     fetchWeatherWidget,
     fetchStockWidget,
@@ -278,5 +293,6 @@ module.exports = {
     fetchYoutubeChannelName,
     fetchSearchSubreddit,
     fetchSearchStock,
-    fetchStockName
+    fetchStockName,
+    fetchServiceAvailable
 };

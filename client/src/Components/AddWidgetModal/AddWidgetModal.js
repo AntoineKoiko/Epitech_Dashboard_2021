@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import WidgetInputParams from './WidgetInputParams';
+import { fetchServiceAvailable } from '../../utils/fetchAPI';
 
 import './AddWidgetModal.css';
 
@@ -27,6 +28,17 @@ const requestOptions = {
 }
 
 const FormItems = [
+    {
+        id: 'weather',
+        label: 'Weather',
+        widgets: [
+            {
+                id: 'actual_weather',
+                label: 'Weather of a city',
+                optionLabel: 'Enter a city name'
+            },
+        ],
+    },
     {
         id: 'spotify',
         label: 'Spotify',
@@ -82,18 +94,6 @@ const FormItems = [
             },
         ],
     },
-
-    {
-        id: 'weather',
-        label: 'Weather',
-        widgets: [
-            {
-                id: 'actual_weather',
-                label: 'Weather of a city',
-                optionLabel: 'Enter a city name'
-            },
-        ],
-    },
 ];
 
 
@@ -115,6 +115,38 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
     const [widgetSelect, setWidget] = useState(serviceSelect.widgets[0]);
     const [timeRefresh, setTimeRefresh] = useState(3600);
     const [textParams, setTextParams] = useState("");
+    const [serviceList, setServiceList] = useState([]);
+
+    const [availableService, setAvailableService] = useState({});
+
+    const getAvailableService = useCallback(() => {
+        fetchServiceAvailable()
+            .then(response => {
+                setAvailableService(response);
+            })
+            .catch(error => {
+                console.log("Error to get available service: ", error.toString());
+            })
+    }, []);
+
+    useEffect(() => {
+        setServiceList([]);
+        getAvailableService();
+        FormItems.forEach(service => {
+            if (service.id === "spotify") {
+                if (availableService.spotifyAvailable) {
+                    setServiceList(actualValue => [...actualValue, service]);
+                }
+            } else if (service.id === "reddit") {
+                if (availableService.redditAvailable) {
+                    setServiceList(actualValue => [...actualValue, service]);
+                }
+            } else {
+                setServiceList(actualValue => [...actualValue, service]);
+            }
+        })
+        
+    }, [getAvailableService, availableService]);
 
     const handleValidation = () => {
         if (textParams.length) {
@@ -154,7 +186,7 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
 
     const handleChangeService = (event) => {
         const newID = event.target.value;
-        const newSelected = FormItems.find(elt => elt.id === newID);
+        const newSelected = serviceList.find(elt => elt.id === newID);
         setService(newSelected);
         setWidget(newSelected.widgets[0]);
         setTextParams("");
@@ -190,7 +222,7 @@ function AddWidgetModal ({handler, open, setWidgetAdded}) {
                                 onChange={handleChangeService}
                                 label="Service"
                             >
-                                {FormItems.map((service) => {
+                                {serviceList.map((service) => {
                                     return <MenuItem key={service.id} value={service.id}>{service.label}</MenuItem>;
                                 })}
                             </Select>
