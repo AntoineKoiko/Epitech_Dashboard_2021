@@ -57,7 +57,7 @@ ____
 
 ## **Deployment**
 
-### ***Technology**
+### **Technology**
 
 All deployment is handle by `Docker`.
 
