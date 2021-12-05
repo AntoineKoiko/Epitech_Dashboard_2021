@@ -22,6 +22,18 @@ router.get("/login/success", (req, res) => {
     }
 })
 
+router.get("/service-available", (req, res) => {
+    if (req.user) {
+        res.json({
+            spotifyAvailable: req.user.spotifyAccessToken ? true : false,
+            redditAvailable: req.user.redditAccessToken ? true : false,
+        })
+    } else {
+        res.status(401).send("User is not Login");
+        console.log("user null");
+    }
+})
+
 router.get("/logout", (req, res) => {
     req.logout();
     res.redirect(CLIENT_HOME_PAGE_URL)
