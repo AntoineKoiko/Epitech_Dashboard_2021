@@ -35,7 +35,7 @@ const getWidgetById = async (widgetId) => {
 
 const updateWidget = async (widgetId, widget) => {
     try {
-        User.updateOne({
+        const res = await User.updateOne({
             "widgets._id": widgetId
         }, {
             '$set': {
